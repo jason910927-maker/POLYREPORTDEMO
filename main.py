@@ -464,16 +464,20 @@ def send_email(html_content, run_date, recommendations_count):
     
     print(f"📧 寄送 Email 給 {RECIPIENT_EMAIL}...")
     
+    from email.header import Header
+    from email.utils import formataddr
+    
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"🎯 Polymarket 跟單情報 - {run_date} ({recommendations_count} 個推薦)"
-    msg["From"] = GMAIL_USER
+    subject = f"🎯 Polymarket 跟單情報 - {run_date} ({recommendations_count} 個推薦)"
+    msg["Subject"] = Header(subject, "utf-8")
+    msg["From"] = formataddr(("Polymarket Bot", GMAIL_USER))
     msg["To"] = RECIPIENT_EMAIL
     msg.attach(MIMEText(html_content, "html", "utf-8"))
     
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
-            server.sendmail(GMAIL_USER, RECIPIENT_EMAIL, msg.as_string())
+            server.send_message(msg)
         print("   ✓ Email 寄送成功")
         return True
     except Exception as e:
