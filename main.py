@@ -1,34 +1,34 @@
 """
-Polymarket 跟單情報系統 - 自動化版本 (v1.1 修正 API 端點)
+Polymarket 跟單情報系統 - 最終版 v1.2
+修正項目：
+- v1.1: 修正 API 端點 (/v1/leaderboard, timePeriod 參數)
+- v1.2: 修正 Email 編碼問題（使用現代 EmailMessage）
 """
 
 import os
 import sys
-import json
-import time
 import smtplib
 import requests
 from datetime import datetime, timezone, timedelta
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+from email.message import EmailMessage
 from pathlib import Path
+import time
 
 # ====================================
-# 設定區
+# 設定區（可修改）
 # ====================================
 DATA_API_BASE = "https://data-api.polymarket.com"
 
-# 篩選條件（可修改）
 MIN_PNL_30D = 1000          # 30天最低獲利門檻 ($)
 MAX_POSITIONS = 150          # 最大同時持倉數
 MAX_DAILY_TRADES = 50        # 每日最大交易次數
 MIN_DAILY_TRADES = 1         # 每日最低交易次數
 MIN_DISCRETENESS = 60        # 最低低調分數
 TOP_RANK_EXCLUDE = 50        # 排除 Top N 名（避免太熱門）
-TOTAL_CANDIDATES = 200       # 想抓的候選總數（會分批取，每批最多 50）
+TOTAL_CANDIDATES = 200       # 想抓的候選總數
 RECOMMENDATIONS_COUNT = 10   # 每天推薦幾個
 
-# 從環境變數讀取 Email 設定
+# 從環境變數讀取（GitHub Secrets）
 GMAIL_USER = os.environ.get("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
 RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
@@ -37,15 +37,12 @@ RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
 # 資料抓取
 # ====================================
 def fetch_leaderboard_paginated(time_period="MONTH"):
-    """
-    抓取排行榜資料（分頁取得，最多 200 個）
-    API 限制：每次最多 50 筆，用 offset 分頁
-    """
+    """分頁抓取排行榜（每批最多 50 筆）"""
     print(f"📥 抓取 {time_period} 排行榜...")
     all_results = []
     offset = 0
     batch_size = 50
-    
+
     while offset < TOTAL_CANDIDATES:
         url = f"{DATA_API_BASE}/v1/leaderboard"
         params = {
@@ -55,33 +52,28 @@ def fetch_leaderboard_paginated(time_period="MONTH"):
             "limit": batch_size,
             "offset": offset
         }
-        
         try:
             r = requests.get(url, params=params, timeout=30)
             r.raise_for_status()
             data = r.json()
-            
             if not data:
                 break
-            
             all_results.extend(data)
             print(f"   ✓ 取得第 {offset+1}-{offset+len(data)} 名")
-            
             if len(data) < batch_size:
                 break
-            
             offset += batch_size
-            time.sleep(0.5)  # 避免限流
-            
+            time.sleep(0.5)
         except Exception as e:
             print(f"   ✗ 第 {offset+1} 筆起錯誤: {e}")
             break
-    
+
     print(f"   總計取得: {len(all_results)} 筆")
     return all_results
 
+
 def fetch_positions(wallet):
-    """抓取錢包當前持倉數"""
+    """抓錢包當前持倉數"""
     url = f"{DATA_API_BASE}/positions"
     params = {"user": wallet, "limit": 200, "sizeThreshold": 0.01}
     try:
@@ -93,8 +85,9 @@ def fetch_positions(wallet):
         pass
     return -1
 
+
 def fetch_recent_trades(wallet, days=7):
-    """抓取最近 N 天的交易紀錄"""
+    """抓最近 N 天交易"""
     url = f"{DATA_API_BASE}/trades"
     params = {"user": wallet, "limit": 500, "takerOnly": False}
     try:
@@ -110,24 +103,18 @@ def fetch_recent_trades(wallet, days=7):
         return []
 
 # ====================================
-# 篩選與評分邏輯
+# 篩選與評分
 # ====================================
 def merge_leaderboards(lb_30d, lb_7d):
-    """合併 30 天與 7 天排行榜"""
     merged = {}
-    
-    # 先處理 30d
     for i, entry in enumerate(lb_30d, 1):
         wallet = entry.get("proxyWallet")
         if not wallet:
             continue
-        
-        # API 的 rank 可能是字串或數字
         try:
             rank_val = int(entry.get("rank", i))
         except (ValueError, TypeError):
             rank_val = i
-        
         merged[wallet] = {
             "proxyWallet": wallet,
             "userName": entry.get("userName", ""),
@@ -139,20 +126,17 @@ def merge_leaderboards(lb_30d, lb_7d):
             "pnl_7d": 0,
             "rank_7d": 999,
         }
-    
-    # 再合併 7d 資料
+
     for i, entry in enumerate(lb_7d, 1):
         wallet = entry.get("proxyWallet")
         if not wallet:
             continue
-        
         try:
             rank_7d_val = int(entry.get("rank", i))
         except (ValueError, TypeError):
             rank_7d_val = i
-        
         pnl_7d = float(entry.get("pnl", 0) or 0)
-        
+
         if wallet not in merged:
             merged[wallet] = {
                 "proxyWallet": wallet,
@@ -168,15 +152,11 @@ def merge_leaderboards(lb_30d, lb_7d):
         else:
             merged[wallet]["pnl_7d"] = pnl_7d
             merged[wallet]["rank_7d"] = rank_7d_val
-    
     return list(merged.values())
 
+
 def hard_filter(wallets):
-    """硬性篩選"""
     print(f"\n🔍 開始硬性篩選（共 {len(wallets)} 個候選）...")
-    filtered = []
-    
-    # 先做 PnL 與排名篩選（不需要額外 API call）
     pre_filtered = []
     for w in wallets:
         if not w.get("proxyWallet"):
@@ -186,52 +166,48 @@ def hard_filter(wallets):
         if w.get("pnl_30d", 0) < MIN_PNL_30D:
             continue
         pre_filtered.append(w)
-    
+
     print(f"   PnL & 排名預篩後剩 {len(pre_filtered)} 個，開始查持倉/交易...")
-    
+
+    filtered = []
     for i, w in enumerate(pre_filtered, 1):
         wallet_addr = w["proxyWallet"]
-        
         if i % 10 == 0 or i == len(pre_filtered):
             print(f"   進度 {i}/{len(pre_filtered)}...")
-        
-        # 抓持倉
+
         positions_count = fetch_positions(wallet_addr)
         if positions_count < 0 or positions_count > MAX_POSITIONS:
             continue
-        
-        # 抓近期交易
+
         recent = fetch_recent_trades(wallet_addr, days=7)
         if len(recent) < 1:
             continue
-        
+
         avg_daily = len(recent) / 7
         if avg_daily < MIN_DAILY_TRADES or avg_daily > MAX_DAILY_TRADES:
             continue
-        
+
         w["current_positions"] = positions_count
         w["trades_last_7d"] = len(recent)
         w["avg_daily_trades"] = round(avg_daily, 1)
-        
-        # 估算勝率
+
         wins = sum(1 for t in recent if float(t.get("pnl", 0) or 0) > 0)
         w["win_rate_estimate"] = round(wins / max(len(recent), 1) * 100, 1) if recent else 0
-        
-        # 獲利加速度
+
         pnl_7d = w.get("pnl_7d", 0)
         pnl_30d = w.get("pnl_30d", 0)
         expected_7d = pnl_30d / 4
         w["pnl_acceleration"] = round(pnl_7d / max(expected_7d, 1), 2) if expected_7d > 0 else 0
-        
-        # 7D ROI
+
         vol_30d = w.get("volume_30d", 1)
         w["roi_7d_estimate"] = round(pnl_7d / max(vol_30d / 4, 1) * 100, 2) if vol_30d > 0 else 0
-        
+
         filtered.append(w)
         time.sleep(0.3)
-    
+
     print(f"   ✓ 通過硬性篩選: {len(filtered)} 個")
     return filtered
+
 
 def compute_discreteness_score(wallet):
     score = 0
@@ -240,80 +216,71 @@ def compute_discreteness_score(wallet):
         score += 40
     elif rank > 50:
         score += 20
-    
+
     if not wallet.get("xUsername"):
         score += 30
     elif not wallet.get("verified"):
         score += 15
-    
+
     vol = wallet.get("volume_30d", 0)
     if vol < 100_000:
         score += 30
     elif vol < 500_000:
         score += 15
-    
     return score
+
 
 def compute_profit_score(wallet, all_wallets):
     pnls_30d = [w.get("pnl_30d", 0) for w in all_wallets]
     pnls_7d = [w.get("pnl_7d", 0) for w in all_wallets]
     rois = [w.get("roi_7d_estimate", 0) for w in all_wallets]
-    
+
     max_30d = max(pnls_30d) if pnls_30d else 1
     max_7d = max(pnls_7d) if pnls_7d else 1
     max_roi = max(rois) if rois else 1
-    
+
     norm_30d = (wallet.get("pnl_30d", 0) / max_30d) * 100 if max_30d > 0 else 0
     norm_7d = (wallet.get("pnl_7d", 0) / max_7d) * 100 if max_7d > 0 else 0
     norm_roi = (wallet.get("roi_7d_estimate", 0) / max_roi) * 100 if max_roi > 0 else 0
-    
+
     win_rate = wallet.get("win_rate_estimate", 0)
-    
     accel = wallet.get("pnl_acceleration", 0)
     accel_score = 100 if accel >= 1.5 else (accel / 1.5) * 100 if accel > 0 else 0
-    
+
     score = (norm_30d * 0.25 + norm_7d * 0.25 + norm_roi * 0.20 +
              win_rate * 0.15 + accel_score * 0.15)
     return round(max(0, min(100, score)), 1)
 
+
 def generate_reasoning(wallet):
-    reasons = []
-    warnings = []
-    
+    reasons, warnings = [], []
+
     accel = wallet.get("pnl_acceleration", 0)
     if accel >= 1.5:
         reasons.append(f"近 7 天獲利加速 {accel}x")
-    
     if wallet.get("rank_30d", 0) > 100:
         reasons.append(f"排名第 {wallet.get('rank_30d')} 屬雷達下級別")
-    
     if not wallet.get("xUsername"):
         reasons.append("完全匿名無社群曝光")
-    
     win_rate = wallet.get("win_rate_estimate", 0)
     if win_rate >= 65:
         reasons.append(f"勝率 {win_rate}% 表現穩健")
-    
     if wallet.get("avg_daily_trades", 0) < 5:
         reasons.append("低頻交易適合手動跟單")
-    
+
     if wallet.get("current_positions", 0) > 80:
         warnings.append(f"持倉達 {wallet.get('current_positions')} 個倉位過於分散")
-    
     if wallet.get("avg_daily_trades", 0) > 20:
         warnings.append(f"日均交易 {wallet.get('avg_daily_trades')} 次過於頻繁")
-    
     if wallet.get("pnl_30d", 0) < 1500:
         warnings.append("PnL 剛過門檻需觀察持續性")
-    
-    if accel < 1 and accel > 0:
+    if 0 < accel < 1:
         warnings.append("獲利動能放緩")
-    
+
     if not reasons:
         reasons.append("綜合指標通過篩選")
     if not warnings:
         warnings.append("各項指標健康，但任何跟單仍有風險")
-    
     return "、".join(reasons), "、".join(warnings)
 
 # ====================================
@@ -326,27 +293,28 @@ def get_tier(score):
         return "tier-yellow"
     return "tier-gray"
 
+
 def format_money(n):
     if n >= 0:
         return f"+${n:,.0f}"
     return f"-${abs(n):,.0f}"
 
+
 def generate_html(recommendations, run_date):
     green_count = sum(1 for w in recommendations if w["combined_score"] >= 80)
     yellow_count = sum(1 for w in recommendations if 60 <= w["combined_score"] < 80)
     top_score = max((w["combined_score"] for w in recommendations), default=0)
-    
+
     cards_html = ""
     for i, w in enumerate(recommendations, 1):
         tier = get_tier(w["combined_score"])
         username = w.get("userName") or "未命名錢包"
         wallet_addr = w["proxyWallet"]
         pm_url = f"https://polymarket.com/profile/{wallet_addr}"
-        
         pnl_30d_class = "positive" if w.get("pnl_30d", 0) > 0 else ""
         pnl_7d_class = "positive" if w.get("pnl_7d", 0) > 0 else ""
         accel_class = "positive" if w.get("pnl_acceleration", 0) >= 1.2 else ""
-        
+
         cards_html += f"""
 <div class="wallet-card {tier}">
   <div class="card-header">
@@ -376,7 +344,7 @@ def generate_html(recommendations, run_date):
   <div class="warning">⚠️ {w['risk_warning']}</div>
 </div>
 """
-    
+
     if not recommendations:
         cards_html = """
 <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid #f59e0b; padding: 24px; border-radius: 12px; text-align: center; color: #fbbf24;">
@@ -384,7 +352,7 @@ def generate_html(recommendations, run_date):
   <p style="margin-top: 8px;">所有候選錢包都未通過硬性篩選或低調度門檻。</p>
 </div>
 """
-    
+
     html = f"""<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -455,25 +423,31 @@ def generate_html(recommendations, run_date):
     return html
 
 # ====================================
-# Email 寄送
+# Email 寄送（使用現代 EmailMessage，自動處理編碼）
 # ====================================
 def send_email(html_content, run_date, recommendations_count):
     if not (GMAIL_USER and GMAIL_APP_PASSWORD and RECIPIENT_EMAIL):
         print("⚠️ Email 設定不完整，跳過寄送")
         return False
-    
+
     print(f"📧 寄送 Email 給 {RECIPIENT_EMAIL}...")
-    
-    from email.header import Header
-    from email.utils import formataddr
-    
-    msg = MIMEMultipart("alternative")
-    subject = f"🎯 Polymarket 跟單情報 - {run_date} ({recommendations_count} 個推薦)"
-    msg["Subject"] = Header(subject, "utf-8")
-    msg["From"] = formataddr(("Polymarket Bot", GMAIL_USER))
+
+    msg = EmailMessage()
+    # 主旨用英文避免任何編碼問題
+    msg["Subject"] = f"Polymarket Daily Report - {run_date} ({recommendations_count} picks)"
+    msg["From"] = GMAIL_USER
     msg["To"] = RECIPIENT_EMAIL
-    msg.attach(MIMEText(html_content, "html", "utf-8"))
-    
+
+    # 純文字 fallback
+    msg.set_content(
+        f"Polymarket Daily Report\n"
+        f"Date: {run_date}\n"
+        f"Recommendations: {recommendations_count}\n\n"
+        f"Please view this email in HTML format to see the full report."
+    )
+    # HTML 版本（自動使用 UTF-8）
+    msg.add_alternative(html_content, subtype="html")
+
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
@@ -489,56 +463,50 @@ def send_email(html_content, run_date, recommendations_count):
 # ====================================
 def main():
     print("=" * 60)
-    print("Polymarket 跟單情報系統 v1.1")
+    print("Polymarket 跟單情報系統 v1.2")
     print(f"執行時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
-    
+
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    
-    # 1. 抓資料
+
     lb_30d = fetch_leaderboard_paginated("MONTH")
     time.sleep(1)
     lb_7d = fetch_leaderboard_paginated("WEEK")
-    
+
     if not lb_30d and not lb_7d:
         print("❌ 無法取得排行榜資料")
         html = generate_html([], run_date)
         save_and_send(html, run_date, 0)
         sys.exit(1)
-    
-    # 2. 合併
+
     candidates = merge_leaderboards(lb_30d, lb_7d)
     print(f"\n合併後共 {len(candidates)} 個候選錢包")
-    
-    # 3. 硬性篩選
+
     passed = hard_filter(candidates)
-    
+
     if not passed:
         print("\n⚠️ 沒有錢包通過硬性篩選")
         html = generate_html([], run_date)
         save_and_send(html, run_date, 0)
         return
-    
-    # 4. 計算分數
+
     print(f"\n📊 計算評分...")
     for w in passed:
         w["discreteness_score"] = compute_discreteness_score(w)
         w["profit_score"] = compute_profit_score(w, passed)
         w["combined_score"] = round(w["profit_score"] * 0.7 + w["discreteness_score"] * 0.3, 1)
         w["recommendation_reason"], w["risk_warning"] = generate_reasoning(w)
-    
-    # 5. 排序
+
     passed.sort(key=lambda x: x["combined_score"], reverse=True)
     final = [w for w in passed if w["discreteness_score"] >= MIN_DISCRETENESS][:RECOMMENDATIONS_COUNT]
-    
     if len(final) < 5 and len(passed) >= 5:
         final = passed[:5]
-    
+
     print(f"   ✓ 最終推薦: {len(final)} 個錢包")
-    
-    # 6. 產生 HTML
+
     html = generate_html(final, run_date)
     save_and_send(html, run_date, len(final))
+
 
 def save_and_send(html, run_date, count):
     reports_dir = Path("reports")
@@ -546,15 +514,16 @@ def save_and_send(html, run_date, count):
     report_path = reports_dir / f"report_{run_date}.html"
     report_path.write_text(html, encoding="utf-8")
     print(f"\n💾 報告已存檔: {report_path}")
-    
+
     latest_path = reports_dir / "latest.html"
     latest_path.write_text(html, encoding="utf-8")
-    
+
     send_email(html, run_date, count)
-    
+
     print("\n" + "=" * 60)
     print("✅ 執行完成")
     print("=" * 60)
+
 
 if __name__ == "__main__":
     main()
