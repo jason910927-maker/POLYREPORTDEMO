@@ -1,0 +1,42 @@
+name: Polymarket Daily Report
+
+on:
+  schedule:
+    # 每天 UTC 00:00 執行 = 台灣時間 早上 8:00
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # 允許手動觸發測試
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run Polymarket Bot
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+        run: python main.py
+      
+      - name: Commit reports
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add reports/
+          git diff --staged --quiet || git commit -m "📊 Daily report $(date -u +%Y-%m-%d)"
+          git push
+        continue-on-error: true
