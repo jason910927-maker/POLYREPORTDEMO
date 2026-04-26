@@ -1,14 +1,19 @@
 """
-Polymarket 跟單情報系統 - 最終版 v1.2
-修正項目：
-- v1.1: 修正 API 端點 (/v1/leaderboard, timePeriod 參數)
-- v1.2: 修正 Email 編碼問題（使用現代 EmailMessage）
+Polymarket 跟單情報系統 - 最終版 v1.3
+新增：
+- 抓取瀏覽次數（< 700）
+- 單筆下注中位數（< $1,000）
+- 下注金額穩定性（CV < 2.0）
+- 近 7 天 PnL > 0
+- 金額加權勝率
 """
 
 import os
+import re
 import sys
 import smtplib
 import requests
+import statistics
 from datetime import datetime, timezone, timedelta
 from email.message import EmailMessage
 from pathlib import Path
@@ -18,17 +23,35 @@ import time
 # 設定區（可修改）
 # ====================================
 DATA_API_BASE = "https://data-api.polymarket.com"
+POLYMARKET_PROFILE_URL = "https://polymarket.com/profile/{wallet}"
 
-MIN_PNL_30D = 1000          # 30天最低獲利門檻 ($)
+# === 硬性篩選 ===
+MIN_PNL_30D = 1000          # 30天最低累積獲利 ($)
+MIN_PNL_7D = 0              # 7天 PnL 必須 > 0（剔除最近虧損中）
 MAX_POSITIONS = 150          # 最大同時持倉數
 MAX_DAILY_TRADES = 50        # 每日最大交易次數
 MIN_DAILY_TRADES = 1         # 每日最低交易次數
-MIN_DISCRETENESS = 60        # 最低低調分數
+MAX_VIEWS = 700              # 觀看次數上限（核心：低調指標）
+MAX_MEDIAN_TRADE_SIZE = 1000 # 單筆下注中位數上限 ($)
+MAX_TRADE_CV = 2.0           # 下注金額變異係數上限（標準差/平均）
+
+# === 評分用 ===
+MIN_DISCRETENESS = 60        # 低調分數門檻
 TOP_RANK_EXCLUDE = 50        # 排除 Top N 名（避免太熱門）
+
+# === 抓取設定 ===
 TOTAL_CANDIDATES = 200       # 想抓的候選總數
 RECOMMENDATIONS_COUNT = 10   # 每天推薦幾個
 
-# 從環境變數讀取（GitHub Secrets）
+# 瀏覽器標頭（爬 Polymarket 網頁時用）
+BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+# Email 設定（從 GitHub Secrets 讀取）
 GMAIL_USER = os.environ.get("GMAIL_USER", "")
 GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
 RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
@@ -37,20 +60,15 @@ RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
 # 資料抓取
 # ====================================
 def fetch_leaderboard_paginated(time_period="MONTH"):
-    """分頁抓取排行榜（每批最多 50 筆）"""
     print(f"📥 抓取 {time_period} 排行榜...")
     all_results = []
     offset = 0
     batch_size = 50
-
     while offset < TOTAL_CANDIDATES:
         url = f"{DATA_API_BASE}/v1/leaderboard"
         params = {
-            "category": "OVERALL",
-            "timePeriod": time_period,
-            "orderBy": "PNL",
-            "limit": batch_size,
-            "offset": offset
+            "category": "OVERALL", "timePeriod": time_period,
+            "orderBy": "PNL", "limit": batch_size, "offset": offset
         }
         try:
             r = requests.get(url, params=params, timeout=30)
@@ -67,27 +85,26 @@ def fetch_leaderboard_paginated(time_period="MONTH"):
         except Exception as e:
             print(f"   ✗ 第 {offset+1} 筆起錯誤: {e}")
             break
-
     print(f"   總計取得: {len(all_results)} 筆")
     return all_results
 
 
 def fetch_positions(wallet):
-    """抓錢包當前持倉數"""
+    """抓當前持倉"""
     url = f"{DATA_API_BASE}/positions"
     params = {"user": wallet, "limit": 200, "sizeThreshold": 0.01}
     try:
         r = requests.get(url, params=params, timeout=15)
         if r.status_code == 200:
             data = r.json()
-            return len(data) if isinstance(data, list) else 0
+            return data if isinstance(data, list) else []
     except Exception:
         pass
-    return -1
+    return None
 
 
 def fetch_recent_trades(wallet, days=7):
-    """抓最近 N 天交易"""
+    """抓最近交易（含 usdcSize 用於計算中位數）"""
     url = f"{DATA_API_BASE}/trades"
     params = {"user": wallet, "limit": 500, "takerOnly": False}
     try:
@@ -102,8 +119,105 @@ def fetch_recent_trades(wallet, days=7):
     except Exception:
         return []
 
+
+def fetch_view_count(wallet):
+    """從 Polymarket profile 頁面 HTML 抓觀看次數
+    回傳整數；失敗回傳 -1
+    支援英文 "X views" 與中文 "X 次觀看"
+    """
+    url = POLYMARKET_PROFILE_URL.format(wallet=wallet)
+    try:
+        r = requests.get(url, headers=BROWSER_HEADERS, timeout=20)
+        if r.status_code != 200:
+            return -1
+        html = r.text
+        
+        # 嘗試英文版：matches "X views", "X.XK views", "X.XM views"
+        match = re.search(r'(\d+(?:\.\d+)?)\s*([KMB]?)\s*views?\b', html, re.IGNORECASE)
+        # 若沒匹配，嘗試中文版
+        if not match:
+            match = re.search(r'(\d+(?:\.\d+)?)\s*([KMB]?)\s*次觀看', html)
+        if not match:
+            return -1
+        
+        num = float(match.group(1))
+        suffix = match.group(2).upper()
+        if suffix == "K":
+            num *= 1_000
+        elif suffix == "M":
+            num *= 1_000_000
+        elif suffix == "B":
+            num *= 1_000_000_000
+        return int(num)
+    except Exception:
+        return -1
+
+
+def fetch_closed_positions(wallet):
+    """抓已平倉的部位（用於計算金額加權勝率）"""
+    url = f"{DATA_API_BASE}/closed-positions"
+    params = {"user": wallet, "limit": 100}
+    try:
+        r = requests.get(url, params=params, timeout=15)
+        if r.status_code == 200:
+            data = r.json()
+            return data if isinstance(data, list) else []
+    except Exception:
+        pass
+    return []
+
 # ====================================
-# 篩選與評分
+# 計算指標
+# ====================================
+def compute_trade_stats(trades):
+    """計算下注金額的中位數、變異係數
+    回傳：(median, cv, count)
+    """
+    sizes = []
+    for t in trades:
+        s = t.get("usdcSize", 0)
+        try:
+            s = float(s)
+            if s > 0:
+                sizes.append(s)
+        except (TypeError, ValueError):
+            continue
+    
+    if len(sizes) < 2:
+        return (0, 0, len(sizes))
+    
+    median = statistics.median(sizes)
+    mean = statistics.mean(sizes)
+    stdev = statistics.stdev(sizes) if len(sizes) > 1 else 0
+    cv = stdev / mean if mean > 0 else 999
+    return (median, cv, len(sizes))
+
+
+def compute_weighted_winrate(closed_positions):
+    """金額加權勝率
+    = 賺錢部位的總投入 / 所有部位的總投入
+    回傳 0-100
+    """
+    total_invested = 0
+    winning_invested = 0
+    for p in closed_positions:
+        try:
+            invested = float(p.get("initialValue", 0) or 0)
+            pnl = float(p.get("cashPnl", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if invested <= 0:
+            continue
+        total_invested += invested
+        if pnl > 0:
+            winning_invested += invested
+    
+    if total_invested <= 0:
+        return 0
+    return round(winning_invested / total_invested * 100, 1)
+
+# ====================================
+# 篩選
 # ====================================
 def merge_leaderboards(lb_30d, lb_7d):
     merged = {}
@@ -136,7 +250,6 @@ def merge_leaderboards(lb_30d, lb_7d):
         except (ValueError, TypeError):
             rank_7d_val = i
         pnl_7d = float(entry.get("pnl", 0) or 0)
-
         if wallet not in merged:
             merged[wallet] = {
                 "proxyWallet": wallet,
@@ -157,7 +270,9 @@ def merge_leaderboards(lb_30d, lb_7d):
 
 def hard_filter(wallets):
     print(f"\n🔍 開始硬性篩選（共 {len(wallets)} 個候選）...")
-    pre_filtered = []
+    
+    # 階段 1：用排行榜資料先篩（不需要 API call）
+    pre = []
     for w in wallets:
         if not w.get("proxyWallet"):
             continue
@@ -165,72 +280,131 @@ def hard_filter(wallets):
             continue
         if w.get("pnl_30d", 0) < MIN_PNL_30D:
             continue
-        pre_filtered.append(w)
-
-    print(f"   PnL & 排名預篩後剩 {len(pre_filtered)} 個，開始查持倉/交易...")
-
-    filtered = []
-    for i, w in enumerate(pre_filtered, 1):
-        wallet_addr = w["proxyWallet"]
-        if i % 10 == 0 or i == len(pre_filtered):
-            print(f"   進度 {i}/{len(pre_filtered)}...")
-
-        positions_count = fetch_positions(wallet_addr)
-        if positions_count < 0 or positions_count > MAX_POSITIONS:
+        if w.get("pnl_7d", 0) <= MIN_PNL_7D:  # 近 7 天 PnL 必須 > 0
             continue
-
+        pre.append(w)
+    print(f"   階段1 (PnL+排名): 剩 {len(pre)} 個")
+    
+    # 階段 2：抓觀看次數（最便宜的篩選，先做）
+    print(f"   階段2: 抓取觀看次數...")
+    pre2 = []
+    for i, w in enumerate(pre, 1):
+        if i % 10 == 0 or i == len(pre):
+            print(f"      進度 {i}/{len(pre)}...")
+        views = fetch_view_count(w["proxyWallet"])
+        if views < 0:
+            # 抓不到先當 0（給機會），但記錄
+            views = 0
+        if views > MAX_VIEWS:
+            continue
+        w["views"] = views
+        pre2.append(w)
+        time.sleep(0.4)
+    print(f"   階段2 (views ≤ {MAX_VIEWS}): 剩 {len(pre2)} 個")
+    
+    # 階段 3：抓持倉數
+    print(f"   階段3: 抓取持倉與交易資料...")
+    filtered = []
+    for i, w in enumerate(pre2, 1):
+        wallet_addr = w["proxyWallet"]
+        if i % 5 == 0 or i == len(pre2):
+            print(f"      進度 {i}/{len(pre2)}...")
+        
+        # 持倉
+        positions = fetch_positions(wallet_addr)
+        if positions is None:
+            continue
+        positions_count = len(positions)
+        if positions_count > MAX_POSITIONS:
+            continue
+        
+        # 近期交易
         recent = fetch_recent_trades(wallet_addr, days=7)
         if len(recent) < 1:
             continue
-
         avg_daily = len(recent) / 7
         if avg_daily < MIN_DAILY_TRADES or avg_daily > MAX_DAILY_TRADES:
             continue
-
+        
+        # 下注金額中位數 + 變異係數
+        median_size, cv, sample_count = compute_trade_stats(recent)
+        if sample_count < 5:  # 樣本太少不可信
+            continue
+        if median_size > MAX_MEDIAN_TRADE_SIZE:
+            continue
+        if cv > MAX_TRADE_CV:
+            continue
+        
+        # 金額加權勝率
+        closed = fetch_closed_positions(wallet_addr)
+        weighted_winrate = compute_weighted_winrate(closed) if closed else 0
+        
+        # 寫入指標
         w["current_positions"] = positions_count
         w["trades_last_7d"] = len(recent)
         w["avg_daily_trades"] = round(avg_daily, 1)
-
-        wins = sum(1 for t in recent if float(t.get("pnl", 0) or 0) > 0)
-        w["win_rate_estimate"] = round(wins / max(len(recent), 1) * 100, 1) if recent else 0
-
+        w["median_trade_size"] = round(median_size, 0)
+        w["trade_cv"] = round(cv, 2)
+        w["weighted_winrate"] = weighted_winrate
+        w["closed_positions_count"] = len(closed)
+        
+        # 獲利加速度
         pnl_7d = w.get("pnl_7d", 0)
         pnl_30d = w.get("pnl_30d", 0)
         expected_7d = pnl_30d / 4
         w["pnl_acceleration"] = round(pnl_7d / max(expected_7d, 1), 2) if expected_7d > 0 else 0
-
+        
+        # 7D ROI
         vol_30d = w.get("volume_30d", 1)
         w["roi_7d_estimate"] = round(pnl_7d / max(vol_30d / 4, 1) * 100, 2) if vol_30d > 0 else 0
-
+        
         filtered.append(w)
         time.sleep(0.3)
-
-    print(f"   ✓ 通過硬性篩選: {len(filtered)} 個")
+    
+    print(f"   ✓ 通過所有硬性篩選: {len(filtered)} 個")
     return filtered
 
 
 def compute_discreteness_score(wallet):
+    """低調分數 0-100"""
     score = 0
+    
+    # (a) 觀看次數 40 分（最強指標）
+    views = wallet.get("views", 0)
+    if views < 100:
+        score += 40
+    elif views < 300:
+        score += 30
+    elif views < 500:
+        score += 20
+    elif views < 700:
+        score += 10
+    
+    # (b) 排名 20 分
     rank = wallet.get("rank_30d", 999)
     if rank > 100:
-        score += 40
-    elif rank > 50:
         score += 20
-
+    elif rank > 50:
+        score += 10
+    
+    # (c) 社群曝光 20 分
     if not wallet.get("xUsername"):
-        score += 30
+        score += 20
     elif not wallet.get("verified"):
-        score += 15
-
+        score += 10
+    
+    # (d) 規模 20 分
     vol = wallet.get("volume_30d", 0)
     if vol < 100_000:
-        score += 30
+        score += 20
     elif vol < 500_000:
-        score += 15
+        score += 10
+    
     return score
 
 
 def compute_profit_score(wallet, all_wallets):
+    """獲利分數 0-100"""
     pnls_30d = [w.get("pnl_30d", 0) for w in all_wallets]
     pnls_7d = [w.get("pnl_7d", 0) for w in all_wallets]
     rois = [w.get("roi_7d_estimate", 0) for w in all_wallets]
@@ -242,8 +416,10 @@ def compute_profit_score(wallet, all_wallets):
     norm_30d = (wallet.get("pnl_30d", 0) / max_30d) * 100 if max_30d > 0 else 0
     norm_7d = (wallet.get("pnl_7d", 0) / max_7d) * 100 if max_7d > 0 else 0
     norm_roi = (wallet.get("roi_7d_estimate", 0) / max_roi) * 100 if max_roi > 0 else 0
-
-    win_rate = wallet.get("win_rate_estimate", 0)
+    
+    # 用「金額加權勝率」（更準確）
+    win_rate = wallet.get("weighted_winrate", 0)
+    
     accel = wallet.get("pnl_acceleration", 0)
     accel_score = 100 if accel >= 1.5 else (accel / 1.5) * 100 if accel > 0 else 0
 
@@ -254,29 +430,50 @@ def compute_profit_score(wallet, all_wallets):
 
 def generate_reasoning(wallet):
     reasons, warnings = [], []
-
+    
     accel = wallet.get("pnl_acceleration", 0)
     if accel >= 1.5:
         reasons.append(f"近 7 天獲利加速 {accel}x")
-    if wallet.get("rank_30d", 0) > 100:
-        reasons.append(f"排名第 {wallet.get('rank_30d')} 屬雷達下級別")
+    
+    views = wallet.get("views", 0)
+    if views < 100:
+        reasons.append(f"極低調（僅 {views} 次觀看）")
+    elif views < 300:
+        reasons.append(f"低調（{views} 次觀看）")
+    
     if not wallet.get("xUsername"):
         reasons.append("完全匿名無社群曝光")
-    win_rate = wallet.get("win_rate_estimate", 0)
-    if win_rate >= 65:
-        reasons.append(f"勝率 {win_rate}% 表現穩健")
-    if wallet.get("avg_daily_trades", 0) < 5:
-        reasons.append("低頻交易適合手動跟單")
-
+    
+    weighted_wr = wallet.get("weighted_winrate", 0)
+    if weighted_wr >= 70:
+        reasons.append(f"金額加權勝率 {weighted_wr}%（穩健）")
+    elif weighted_wr >= 60:
+        reasons.append(f"加權勝率 {weighted_wr}%")
+    
+    median_size = wallet.get("median_trade_size", 0)
+    if median_size < 100:
+        reasons.append(f"小額穩定下注（中位數 ${median_size:.0f}）")
+    
+    cv = wallet.get("trade_cv", 0)
+    if cv < 0.8:
+        reasons.append(f"下注金額穩定（CV={cv}）")
+    
+    # 警示
     if wallet.get("current_positions", 0) > 80:
         warnings.append(f"持倉達 {wallet.get('current_positions')} 個倉位過於分散")
     if wallet.get("avg_daily_trades", 0) > 20:
-        warnings.append(f"日均交易 {wallet.get('avg_daily_trades')} 次過於頻繁")
+        warnings.append(f"日均交易 {wallet.get('avg_daily_trades')} 次偏頻繁")
     if wallet.get("pnl_30d", 0) < 1500:
         warnings.append("PnL 剛過門檻需觀察持續性")
-    if 0 < accel < 1:
-        warnings.append("獲利動能放緩")
-
+    if median_size > 500:
+        warnings.append(f"單筆中位數 ${median_size:.0f} 對 $300 資金偏大")
+    if 1.5 < cv <= 2.0:
+        warnings.append(f"下注金額波動較大（CV={cv}）")
+    if weighted_wr < 50:
+        warnings.append(f"加權勝率僅 {weighted_wr}% 偏低")
+    if wallet.get("closed_positions_count", 0) < 10:
+        warnings.append("已平倉樣本少需觀察")
+    
     if not reasons:
         reasons.append("綜合指標通過篩選")
     if not warnings:
@@ -293,12 +490,15 @@ def get_tier(score):
         return "tier-yellow"
     return "tier-gray"
 
-
 def format_money(n):
     if n >= 0:
         return f"+${n:,.0f}"
     return f"-${abs(n):,.0f}"
 
+def format_views(n):
+    if n >= 1000:
+        return f"{n/1000:.1f}K"
+    return str(n)
 
 def generate_html(recommendations, run_date):
     green_count = sum(1 for w in recommendations if w["combined_score"] >= 80)
@@ -335,9 +535,12 @@ def generate_html(recommendations, run_date):
   <div class="metrics-grid">
     <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value {pnl_30d_class}">{format_money(w.get('pnl_30d', 0))}</div></div>
     <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value {pnl_7d_class}">{format_money(w.get('pnl_7d', 0))}</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">{format_views(w.get('views', 0))}</div></div>
     <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">{w.get('current_positions', 0)}</div></div>
     <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">{w.get('avg_daily_trades', 0)}</div></div>
-    <div class="metric"><div class="metric-label">勝率估算</div><div class="metric-value">{w.get('win_rate_estimate', 0)}%</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">${w.get('median_trade_size', 0):.0f}</div></div>
+    <div class="metric"><div class="metric-label">下注穩定度CV</div><div class="metric-value">{w.get('trade_cv', 0)}</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">{w.get('weighted_winrate', 0)}%</div></div>
     <div class="metric"><div class="metric-label">獲利加速度</div><div class="metric-value {accel_class}">{w.get('pnl_acceleration', 0)}x</div></div>
   </div>
   <div class="reason">💡 {w['recommendation_reason']}</div>
@@ -349,7 +552,7 @@ def generate_html(recommendations, run_date):
         cards_html = """
 <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid #f59e0b; padding: 24px; border-radius: 12px; text-align: center; color: #fbbf24;">
   <h3>今日無符合條件的錢包</h3>
-  <p style="margin-top: 8px;">所有候選錢包都未通過硬性篩選或低調度門檻。</p>
+  <p style="margin-top: 8px;">所有候選錢包都未通過嚴格的多重篩選。明天再試試！</p>
 </div>
 """
 
@@ -370,7 +573,7 @@ def generate_html(recommendations, run_date):
   .stat {{ background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 12px; padding: 16px; text-align: center; }}
   .stat-label {{ font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }}
   .stat-value {{ font-size: 22px; font-weight: 700; color: #06b6d4; }}
-  .wallet-card {{ background: rgba(30, 41, 59, 0.7); border: 2px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: transform 0.2s; }}
+  .wallet-card {{ background: rgba(30, 41, 59, 0.7); border: 2px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 20px; }}
   .wallet-card.tier-green {{ border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); }}
   .wallet-card.tier-yellow {{ border-color: #f59e0b; box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }}
   .wallet-card.tier-gray {{ border-color: #64748b; }}
@@ -386,7 +589,7 @@ def generate_html(recommendations, run_date):
   .score-value.combined {{ color: #8b5cf6; }}
   .score-value.profit {{ color: #10b981; }}
   .score-value.discreteness {{ color: #f59e0b; }}
-  .metrics-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-bottom: 16px; }}
+  .metrics-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 16px; }}
   .metric {{ background: rgba(15, 23, 42, 0.4); padding: 8px 12px; border-radius: 6px; font-size: 13px; }}
   .metric-label {{ color: #94a3b8; font-size: 11px; }}
   .metric-value {{ color: #e2e8f0; font-weight: 600; }}
@@ -400,8 +603,8 @@ def generate_html(recommendations, run_date):
 <body>
 <div class="container">
   <header>
-    <h1>🎯 Polymarket 跟單情報</h1>
-    <div class="subtitle">{run_date} · 每日精選低調高獲利錢包</div>
+    <h1>🎯 Polymarket 跟單情報 v1.3</h1>
+    <div class="subtitle">{run_date} · 七重篩選：低調 + 穩定 + 持續獲利</div>
   </header>
   <div class="summary-bar">
     <div class="stat"><div class="stat-label">推薦數量</div><div class="stat-value">{len(recommendations)}</div></div>
@@ -412,7 +615,7 @@ def generate_html(recommendations, run_date):
   {cards_html}
   <footer>
     <strong>⚠️ 免責聲明</strong><br>
-    本系統僅為情報參考工具，所有錢包資料來自 Polymarket 公開 API。<br>
+    本系統僅為情報參考工具，所有錢包資料來自 Polymarket 公開 API 與網站。<br>
     跟單交易具有高度風險，過去績效不代表未來表現。任何投資決策請自行評估，後果自負。<br>
     建議單筆跟單金額不超過總資金 10–20%，並設定停損點。
   </footer>
@@ -423,31 +626,22 @@ def generate_html(recommendations, run_date):
     return html
 
 # ====================================
-# Email 寄送（使用現代 EmailMessage，自動處理編碼）
+# Email 寄送
 # ====================================
 def send_email(html_content, run_date, recommendations_count):
     if not (GMAIL_USER and GMAIL_APP_PASSWORD and RECIPIENT_EMAIL):
         print("⚠️ Email 設定不完整，跳過寄送")
         return False
-
     print(f"📧 寄送 Email 給 {RECIPIENT_EMAIL}...")
-
     msg = EmailMessage()
-    # 主旨用英文避免任何編碼問題
     msg["Subject"] = f"Polymarket Daily Report - {run_date} ({recommendations_count} picks)"
     msg["From"] = GMAIL_USER
     msg["To"] = RECIPIENT_EMAIL
-
-    # 純文字 fallback
     msg.set_content(
-        f"Polymarket Daily Report\n"
-        f"Date: {run_date}\n"
-        f"Recommendations: {recommendations_count}\n\n"
+        f"Polymarket Daily Report\nDate: {run_date}\nRecommendations: {recommendations_count}\n\n"
         f"Please view this email in HTML format to see the full report."
     )
-    # HTML 版本（自動使用 UTF-8）
     msg.add_alternative(html_content, subtype="html")
-
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(GMAIL_USER, GMAIL_APP_PASSWORD)
@@ -463,47 +657,47 @@ def send_email(html_content, run_date, recommendations_count):
 # ====================================
 def main():
     print("=" * 60)
-    print("Polymarket 跟單情報系統 v1.2")
+    print("Polymarket 跟單情報系統 v1.3")
     print(f"執行時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
-
+    
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
+    
     lb_30d = fetch_leaderboard_paginated("MONTH")
     time.sleep(1)
     lb_7d = fetch_leaderboard_paginated("WEEK")
-
+    
     if not lb_30d and not lb_7d:
         print("❌ 無法取得排行榜資料")
         html = generate_html([], run_date)
         save_and_send(html, run_date, 0)
         sys.exit(1)
-
+    
     candidates = merge_leaderboards(lb_30d, lb_7d)
     print(f"\n合併後共 {len(candidates)} 個候選錢包")
-
+    
     passed = hard_filter(candidates)
-
+    
     if not passed:
         print("\n⚠️ 沒有錢包通過硬性篩選")
         html = generate_html([], run_date)
         save_and_send(html, run_date, 0)
         return
-
+    
     print(f"\n📊 計算評分...")
     for w in passed:
         w["discreteness_score"] = compute_discreteness_score(w)
         w["profit_score"] = compute_profit_score(w, passed)
         w["combined_score"] = round(w["profit_score"] * 0.7 + w["discreteness_score"] * 0.3, 1)
         w["recommendation_reason"], w["risk_warning"] = generate_reasoning(w)
-
+    
     passed.sort(key=lambda x: x["combined_score"], reverse=True)
     final = [w for w in passed if w["discreteness_score"] >= MIN_DISCRETENESS][:RECOMMENDATIONS_COUNT]
-    if len(final) < 5 and len(passed) >= 5:
-        final = passed[:5]
-
+    if len(final) < 3 and len(passed) >= 3:
+        final = passed[:min(5, len(passed))]
+    
     print(f"   ✓ 最終推薦: {len(final)} 個錢包")
-
+    
     html = generate_html(final, run_date)
     save_and_send(html, run_date, len(final))
 
@@ -514,12 +708,9 @@ def save_and_send(html, run_date, count):
     report_path = reports_dir / f"report_{run_date}.html"
     report_path.write_text(html, encoding="utf-8")
     print(f"\n💾 報告已存檔: {report_path}")
-
     latest_path = reports_dir / "latest.html"
     latest_path.write_text(html, encoding="utf-8")
-
     send_email(html, run_date, count)
-
     print("\n" + "=" * 60)
     print("✅ 執行完成")
     print("=" * 60)
