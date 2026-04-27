@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket 跟單情報 — 2026-04-27</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #e2e8f0; min-height: 100vh; padding: 24px 16px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #334155; }
+  h1 { font-size: 28px; font-weight: 700; background: linear-gradient(90deg, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+  .subtitle { color: #94a3b8; font-size: 14px; }
+  .summary-bar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 32px; }
+  .stat { background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 12px; padding: 12px; text-align: center; }
+  .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .stat-value { font-size: 20px; font-weight: 700; color: #06b6d4; }
+  .wallet-card { background: rgba(30, 41, 59, 0.7); border: 2px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 20px; }
+  .wallet-card.tier-green { border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); }
+  .wallet-card.tier-yellow { border-color: #f59e0b; box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+  .wallet-card.tier-gray { border-color: #64748b; }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 12px; }
+  .rank-badge { background: linear-gradient(135deg, #06b6d4, #8b5cf6); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .username { font-size: 18px; font-weight: 600; color: #f1f5f9; }
+  .wallet-addr { font-size: 12px; color: #94a3b8; font-family: monospace; word-break: break-all; margin-top: 2px; }
+  .pm-link { background: #06b6d4; color: #0f172a; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }
+  .tracking-line { font-size: 12px; color: #cbd5e1; padding: 8px 12px; background: rgba(15, 23, 42, 0.5); border-radius: 6px; margin-bottom: 12px; }
+  .scores { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+  .score-box { background: rgba(15, 23, 42, 0.6); border-radius: 8px; padding: 12px; text-align: center; }
+  .score-label { font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
+  .score-value { font-size: 20px; font-weight: 700; }
+  .score-value.combined { color: #8b5cf6; }
+  .score-value.profit { color: #10b981; }
+  .score-value.discreteness { color: #f59e0b; }
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-bottom: 16px; }
+  .metric { background: rgba(15, 23, 42, 0.4); padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+  .metric-label { color: #94a3b8; font-size: 11px; }
+  .metric-value { color: #e2e8f0; font-weight: 600; }
+  .metric-value.positive { color: #10b981; }
+  .reason { background: rgba(6, 182, 212, 0.1); border-left: 3px solid #06b6d4; padding: 10px 14px; border-radius: 4px; margin-bottom: 10px; font-weight: 600; color: #f1f5f9; }
+  .warning { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px 14px; border-radius: 4px; color: #fca5a5; font-size: 13px; }
+  footer { margin-top: 48px; padding: 24px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; text-align: center; font-size: 13px; color: #fca5a5; line-height: 1.6; }
+  .legend { background: rgba(30, 41, 59, 0.4); border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; font-size: 12px; color: #94a3b8; line-height: 1.7; }
+  .legend strong { color: #e2e8f0; }
+  @media (max-width: 800px) { .summary-bar { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 500px) { .summary-bar { grid-template-columns: repeat(2, 1fr); } .scores { grid-template-columns: 1fr; } h1 { font-size: 22px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🎯 Polymarket 跟單情報 v2.1</h1>
+    <div class="subtitle">2026-04-27 · 含追蹤 + 風險警示</div>
+  </header>
+  <div class="summary-bar">
+    <div class="stat"><div class="stat-label">推薦數</div><div class="stat-value">10</div></div>
+    <div class="stat"><div class="stat-label">最高分</div><div class="stat-value">62</div></div>
+    <div class="stat"><div class="stat-label">綠燈</div><div class="stat-value">0</div></div>
+    <div class="stat"><div class="stat-label">黃燈</div><div class="stat-value">1</div></div>
+    <div class="stat"><div class="stat-label">🏆 王牌</div><div class="stat-value">0</div></div>
+    <div class="stat"><div class="stat-label">🆕 新</div><div class="stat-value">10</div></div>
+    <div class="stat"><div class="stat-label">⚠️ 風險</div><div class="stat-value">9</div></div>
+  </div>
+  <div class="legend">
+    <strong>🏷️ 追蹤標籤：</strong> 🆕 新發現 ｜ 📈 崛起中 ｜ 🏆 王牌穩定（連 7+ 天） ｜ 🌟 常客（30 天上 ≥15 次） ｜ 🔥 重返 ｜ ⚠️ 曇花一現<br>
+    <strong>🚨 風險警示：</strong> 🎰 靠運氣（單筆 > 70% PnL） ｜ 📉 最近爆發（30D > 60% 全期） ｜ 🌅 過去輝煌（30D < 20% 全期） ｜ 🐳 鯨魚倉位（單倉 ≥ $300K）
+  </div>
+  
+<div class="wallet-card tier-yellow">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">1</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">beoakdd</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0xcd6482d6b4fd8f314384ad19f9e85ea0ce187445</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0xcd6482d6b4fd8f314384ad19f9e85ea0ce187445" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">62</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">54</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">80</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$291,542</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$291,542</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">25</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">0.1</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$16</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$1.0K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.0x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.0x、完全匿名、小額穩定（中位數 $16）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 1%（過去較強，最近表現一般）、首次上榜，需觀察持續性、交易頻率低（日均 0.1）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">2</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">SecondWindCapital</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span></div>
+        </div>
+        <div class="wallet-addr">0x8c80d213c0cbad777d06ee3f58f6ca4bc03102c3</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0x8c80d213c0cbad777d06ee3f58f6ca4bc03102c3" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">58</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">65</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">40</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$745,382</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$746,342</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$1,831,244</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">39</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">2.0</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$12</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$274.4K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.01x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">40%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.01x、完全匿名、小額穩定（中位數 $12）</div>
+  <div class="warning">⚠️ 首次上榜，需觀察持續性、下注金額波動大（CV=3.59）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">3</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">0x8a3aB8120807bD64a3De48695110e390fa2ceB9a-1771005965025</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0x8a3ab8120807bd64a3de48695110e390fa2ceb9a</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0x8a3ab8120807bd64a3de48695110e390fa2ceb9a" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">52</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">53</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$557,180</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$577,476</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">71</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">32.0</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$5</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$61.4K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.15x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">2%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.15x、完全匿名、小額穩定（中位數 $5）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、首次上榜，需觀察持續性、日均交易 32.0 次偏頻繁、下注金額波動大（CV=6.28）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">4</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">uncleJohnny</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0x61efd00829dbf08e4e80578aab589cb41bf05a75</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0x61efd00829dbf08e4e80578aab589cb41bf05a75" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">49</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">48</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$491,242</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$491,242</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">3</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">22.1</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$9</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$0.0K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.0x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">2%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.0x、完全匿名、小額穩定（中位數 $9）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、首次上榜，需觀察持續性、日均交易 22.1 次偏頻繁、下注金額波動大（CV=3.42）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">5</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">geniusMC</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span><span class="tag" style="background:#dc262622; color:#dc2626; border:1px solid #dc2626">🐳 鯨魚倉($372K)</span></div>
+        </div>
+        <div class="wallet-addr">0x0b9cae2b0dfe7a71c413e0604eaac1c352f87e44</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0x0b9cae2b0dfe7a71c413e0604eaac1c352f87e44" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">46</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">40</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">60</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$367,183</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$365,944</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$2,377,030</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">10</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">3.9</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$296</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$371.8K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">3.99x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">15%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 3.99x、完全匿名</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 15%（過去較強，最近表現一般）、⚠️ 持有 $372K 鯨魚倉位（你 $300 跟不起）、首次上榜，需觀察持續性、下注金額波動大（CV=2.12）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">6</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">ethanaz</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0xf28e42d20e4826f2b10a24bc952001697947cab2</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0xf28e42d20e4826f2b10a24bc952001697947cab2" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">44</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">42</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$383,945</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$410,477</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">200</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">38.1</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$25</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$76.3K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.28x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.28x、完全匿名、小額穩定（中位數 $25）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、首次上榜，需觀察持續性、持倉 200 個過於分散、日均交易 38.1 次偏頻繁、下注金額波動大（CV=3.72）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">7</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">stingo43</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0x0006af12cd4dacc450836a0e1ec6ce47365d8c63</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0x0006af12cd4dacc450836a0e1ec6ce47365d8c63" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">44</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">41</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$387,965</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$387,965</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">200</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">44.1</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$3</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$0.0K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.0x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.0x、完全匿名、小額穩定（中位數 $3）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、首次上榜，需觀察持續性、持倉 200 個過於分散、日均交易 44.1 次偏頻繁、下注金額波動大（CV=2.24）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">8</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">Jargs</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0xf1649daae29c44bdb406a4dbb7f1748eac398fa4</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0xf1649daae29c44bdb406a4dbb7f1748eac398fa4" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">44</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">37</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">60</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$299,815</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$343,563</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">1</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">28.4</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$18</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$9.9K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.58x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.58x、完全匿名、小額穩定（中位數 $18）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 1%（過去較強，最近表現一般）、首次上榜，需觀察持續性、日均交易 28.4 次偏頻繁、下注金額波動大（CV=3.02）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">9</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">superbeter007</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span></div>
+        </div>
+        <div class="wallet-addr">0xef27152015c5313daf457804e7319e869ed3381b</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0xef27152015c5313daf457804e7319e869ed3381b" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">43</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">40</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$380,038</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$380,038</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">2</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">45.4</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$3</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$3.2K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">4.0x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 4.0x、完全匿名、小額穩定（中位數 $3）</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、首次上榜，需觀察持續性、日均交易 45.4 次偏頻繁、下注金額波動大（CV=2.73）</div>
+</div>
+
+<div class="wallet-card tier-gray">
+  <div class="card-header">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <div class="rank-badge">10</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div class="username">Erasmus.</div>
+          <div class="tags"><span class="tag" style="background:#3b82f622; color:#3b82f6; border:1px solid #3b82f6">🆕 新發現</span><span class="tag" style="background:#a1620722; color:#a16207; border:1px solid #a16207">🌅 過去輝煌</span><span class="tag" style="background:#dc262622; color:#dc2626; border:1px solid #dc2626">🐳 鯨魚倉($693K)</span></div>
+        </div>
+        <div class="wallet-addr">0xc6587b11a2209e46dfe3928b31c5514a8e33b784</div>
+      </div>
+    </div>
+    <a class="pm-link" href="https://polymarket.com/profile/0xc6587b11a2209e46dfe3928b31c5514a8e33b784" target="_blank">前往 Polymarket →</a>
+  </div>
+  <div class="tracking-line"><span style="color:#3b82f6">🆕 首次上榜</span></div>
+  <div class="scores">
+    <div class="score-box"><div class="score-label">綜合評分</div><div class="score-value combined">43</div></div>
+    <div class="score-box"><div class="score-label">獲利分數</div><div class="score-value profit">40</div></div>
+    <div class="score-box"><div class="score-label">低調分數</div><div class="score-value discreteness">50</div></div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value positive">+$392,525</div></div>
+    <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value positive">+$360,131</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">+$22,053,934</div></div>
+    <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">未知</div></div>
+    <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">50</div></div>
+    <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">13.3</div></div>
+    <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">$1758</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">$692.7K</div></div>
+    <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value positive">3.67x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">0%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">1%</div></div>
+  </div>
+  <div class="reason">💡 獲利加速 3.67x、完全匿名</div>
+  <div class="warning">⚠️ ⚠️ 30D PnL 僅占全期 2%（過去較強，最近表現一般）、⚠️ 持有 $693K 鯨魚倉位（你 $300 跟不起）、首次上榜，需觀察持續性、單筆中位數 $1758 對 $300 偏大</div>
+</div>
+
+  <footer>
+    <strong>⚠️ 免責聲明</strong><br>
+    本系統僅為情報參考工具。跟單交易具有高度風險，過去績效不代表未來表現。<br>
+    建議單筆跟單金額不超過總資金 10–20%，並設定停損點。
+  </footer>
+</div>
+</body>
+</html>
