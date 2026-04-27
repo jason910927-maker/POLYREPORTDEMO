@@ -1,10 +1,11 @@
 """
-Polymarket 跟單情報系統 - v3.0 雙掃描版
-新增：雙掃描架構
-- Scan A (Leaderboard): 按 PnL 排名抓 500 名 → 找穩定獲利者
-- Scan B (Analytics): 按 Volume 排名抓 500 名 → 找活躍崛起者
-- 兩個 Scan 各篩各的，合併後再去重，產出 Top 10 名單
-保留 v2.2 所有功能（小資穩定篩選、追蹤、標籤、風險警示）
+Polymarket 跟單情報系統 - v3.1 智慧分流版
+變更（基於 v3.0）：
+- 日均交易上限: 50 → 100（容納活躍交易者）
+- 30D PnL 上限: $20,000 → $50,000（容納中堅玩家）
+- 新增「智慧分流」標籤：
+  * 👤 手動友善（日均 < 20 次）
+  * 🤖 觀察組（日均 20-100 次，建議只看不跟）
 """
 
 import os
@@ -25,19 +26,23 @@ import time
 DATA_API_BASE = "https://data-api.polymarket.com"
 POLYMARKET_PROFILE_URL = "https://polymarket.com/profile/{wallet}"
 
-# === 硬性篩選 (v2.2 小資穩定) ===
-MIN_PNL_30D = 500                # 30天最低獲利
-MAX_PNL_30D = 20000              # 30天最高獲利（避開鯨魚）⭐ NEW
+# === 硬性篩選 (v3.1) ===
+MIN_PNL_30D = 500
+MAX_PNL_30D = 50000               # ⬆️ v3.1：從 20000 → 50000
 MIN_PNL_7D = -500
 MAX_POSITIONS = 300
-MAX_DAILY_TRADES = 50
+MAX_DAILY_TRADES = 100             # ⬆️ v3.1：從 50 → 100
 MIN_DAILY_TRADES = 0.1
 MAX_VIEWS = 2000
 MAX_MEDIAN_TRADE_SIZE = 10000
 MIN_SAMPLE_COUNT = 1
-MAX_SINGLE_POSITION = 30000      # 最大單倉上限 ⭐ NEW
-MIN_WEIGHTED_WINRATE = 60        # 最低加權勝率 ⭐ NEW
-MAX_LUCKY_RATIO = 0.60           # 最大單筆占比（靠運氣門檻）⭐ NEW
+MAX_SINGLE_POSITION = 30000
+MIN_WEIGHTED_WINRATE = 60
+MAX_LUCKY_RATIO = 0.60
+
+# === v3.1 智慧分流門檻 ===
+MANUAL_FRIENDLY_MAX_DAILY = 20    # 日均 < 20 次 → 👤 手動友善
+# 日均 20-100 次 → 🤖 觀察組
 
 MIN_DISCRETENESS = 40
 TOP_RANK_EXCLUDE = 30
@@ -188,8 +193,23 @@ def assign_tags(stats):
 
 
 def assign_risk_tags(wallet):
-    """v2.1 新增：3 個風險警示標籤"""
+    """v2.1：3 個風險警示標籤 + v3.1 智慧分流"""
     risk_tags = []
+    
+    # === v3.1 智慧分流標籤（最先放，最重要）===
+    avg_daily = wallet.get("avg_daily_trades", 0)
+    if avg_daily < MANUAL_FRIENDLY_MAX_DAILY:
+        risk_tags.append({
+            "emoji": "👤",
+            "label": "手動友善",
+            "color": "#10b981"  # 綠色 = 推薦跟單
+        })
+    else:
+        risk_tags.append({
+            "emoji": "🤖",
+            "label": f"觀察組({avg_daily:.0f}次/天)",
+            "color": "#a855f7"  # 紫色 = 建議觀察
+        })
     
     # 🎰 靠運氣
     lucky_ratio = wallet.get("_lucky_ratio", 0)
@@ -808,8 +828,10 @@ def generate_html(recommendations, run_date):
     top_score = max((w["combined_score"] for w in recommendations), default=0)
     veteran_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("consecutive_days", 0) >= 7)
     new_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("is_new", False))
-    risk_count = sum(1 for w in recommendations if w.get("_risk_tags"))
+    risk_count = sum(1 for w in recommendations if any(t.get("emoji") in ["🎰", "📉", "🌅", "🐳"] for t in w.get("_risk_tags", [])))
     both_count = sum(1 for w in recommendations if w.get("_scan_source") == "both")
+    manual_count = sum(1 for w in recommendations if w.get("avg_daily_trades", 0) < MANUAL_FRIENDLY_MAX_DAILY)
+    observe_count = len(recommendations) - manual_count
     
     cards_html = ""
     for i, w in enumerate(recommendations, 1):
@@ -966,21 +988,22 @@ def generate_html(recommendations, run_date):
 <body>
 <div class="container">
   <header>
-    <h1>🎯 Polymarket 跟單情報 v3.0</h1>
-    <div class="subtitle">{run_date} · 雙掃描 · 小資穩定篩選</div>
+    <h1>🎯 Polymarket 跟單情報 v3.1</h1>
+    <div class="subtitle">{run_date} · 雙掃描 · 智慧分流</div>
   </header>
   <div class="summary-bar">
     <div class="stat"><div class="stat-label">推薦數</div><div class="stat-value">{len(recommendations)}</div></div>
-    <div class="stat"><div class="stat-label">最高分</div><div class="stat-value">{top_score:.0f}</div></div>
+    <div class="stat"><div class="stat-label">👤 手動跟</div><div class="stat-value" style="color:#10b981">{manual_count}</div></div>
+    <div class="stat"><div class="stat-label">🤖 觀察組</div><div class="stat-value" style="color:#a855f7">{observe_count}</div></div>
     <div class="stat"><div class="stat-label">⭐ 雙榜</div><div class="stat-value">{both_count}</div></div>
-    <div class="stat"><div class="stat-label">綠燈</div><div class="stat-value">{green}</div></div>
     <div class="stat"><div class="stat-label">🏆 王牌</div><div class="stat-value">{veteran_count}</div></div>
     <div class="stat"><div class="stat-label">🆕 新</div><div class="stat-value">{new_count}</div></div>
     <div class="stat"><div class="stat-label">⚠️ 風險</div><div class="stat-value">{risk_count}</div></div>
   </div>
   <div class="legend">
-    <strong>🔍 雙掃描來源：</strong> ⭐ 雙榜（PnL 榜+Volume 榜都上 = 最可靠+5分） ｜ 📈 PnL榜（穩定獲利者） ｜ 📊 Vol榜（活躍崛起者）<br>
-    <strong>📋 v3.0 篩選條件：</strong> 30D PnL ${MIN_PNL_30D}-${MAX_PNL_30D} ｜ 最大單倉 < ${MAX_SINGLE_POSITION:,} ｜ 加權勝率 ≥ {MIN_WEIGHTED_WINRATE}% ｜ 單筆占比 < {int(MAX_LUCKY_RATIO*100)}%<br>
+    <strong>👥 智慧分流：</strong> 👤 手動友善（日均 < {MANUAL_FRIENDLY_MAX_DAILY} 次，推薦跟單） ｜ 🤖 觀察組（日均 ≥ {MANUAL_FRIENDLY_MAX_DAILY} 次，僅供觀察方向）<br>
+    <strong>🔍 雙掃描來源：</strong> ⭐ 雙榜（PnL+Volume 都上=最可靠+5分） ｜ 📈 PnL榜 ｜ 📊 Vol榜<br>
+    <strong>📋 v3.1 篩選條件：</strong> 30D PnL ${MIN_PNL_30D}-${MAX_PNL_30D} ｜ 最大單倉 < ${MAX_SINGLE_POSITION:,} ｜ 加權勝率 ≥ {MIN_WEIGHTED_WINRATE}% ｜ 單筆占比 < {int(MAX_LUCKY_RATIO*100)}% ｜ 日均交易 0.1-{MAX_DAILY_TRADES} 次<br>
     <strong>🏷️ 追蹤標籤：</strong> 🆕 新發現 ｜ 📈 崛起中 ｜ 🏆 王牌穩定 ｜ 🌟 常客 ｜ 🔥 重返 ｜ ⚠️ 曇花一現<br>
     <strong>🚨 風險警示：</strong> 🎰 靠運氣 ｜ 📉 最近爆發 ｜ 🌅 過去輝煌 ｜ 🐳 鯨魚倉位
   </div>
@@ -1021,7 +1044,7 @@ def send_email(html_content, run_date, count):
 
 def main():
     print("=" * 60)
-    print("Polymarket 跟單情報系統 v3.0 (雙掃描)")
+    print("Polymarket 跟單情報系統 v3.1 (雙掃描+智慧分流)")
     print(f"執行時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
     
@@ -1127,6 +1150,11 @@ def main():
     final_lb = sum(1 for w in final if w.get("_scan_source") == "leaderboard")
     final_an = sum(1 for w in final if w.get("_scan_source") == "analytics")
     print(f"   📊 來源分布: ⭐雙重 {final_both} | 僅PnL榜 {final_lb} | 僅Vol榜 {final_an}")
+    
+    # v3.1 智慧分流統計
+    final_manual = sum(1 for w in final if w.get("avg_daily_trades", 0) < MANUAL_FRIENDLY_MAX_DAILY)
+    final_observe = len(final) - final_manual
+    print(f"   👥 智慧分流: 👤手動友善 {final_manual} | 🤖觀察組 {final_observe}")
     
     tracking = update_tracking(tracking, final, run_date)
     
