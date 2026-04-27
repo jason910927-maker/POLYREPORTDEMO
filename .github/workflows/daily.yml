@@ -2,14 +2,24 @@ name: Polymarket Daily Report
 
 on:
   schedule:
-    # 每天 UTC 00:00 執行 = 台灣時間 早上 8:00
+    # 多個時間點觸發，提高準時率（GitHub cron 常延遲）
+    # UTC 23:30 = 台灣 07:30
+    - cron: '30 23 * * *'
+    # UTC 00:00 = 台灣 08:00（主要時間）
     - cron: '0 0 * * *'
   workflow_dispatch:  # 允許手動觸發測試
+
+# 防止同時執行（避免重複跑）
+concurrency:
+  group: polymarket-daily
+  cancel-in-progress: false
 
 jobs:
   run-bot:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: write  # 允許 commit tracking.json 與 reports
     
     steps:
       - name: Checkout code
@@ -32,11 +42,11 @@ jobs:
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: python main.py
       
-      - name: Commit reports
+      - name: Commit reports and tracking
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add reports/
-          git diff --staged --quiet || git commit -m "📊 Daily report $(date -u +%Y-%m-%d)"
+          git add reports/ tracking.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Daily report $(date -u +%Y-%m-%d)"
           git push
         continue-on-error: true
