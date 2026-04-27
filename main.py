@@ -1,8 +1,11 @@
 """
-Polymarket 跟單情報系統 - v2.0 完整版
+Polymarket 跟單情報系統 - v2.1 風險警示版
 整合：
-- v1.5.2 階段3全面修復（持倉300、日均0.1-50、樣本≥1、改用/activity）
-- v1.6 追蹤標籤系統（連續天數、90天紀錄、6種智能標籤）
+- v2.0 所有功能（追蹤 + 標籤 + 階段3修復）
+- 新增 3 個風險指標（標記但不過濾）：
+  * 🎰 靠運氣：單筆獲利占 30D PnL > 70%
+  * 📉 最近爆發 / 🌅 過去輝煌：30D PnL 占 All-Time 的比例異常
+  * 🐳 鯨魚倉位：單一持倉 ≥ $300,000
 """
 
 import os
@@ -51,6 +54,12 @@ TAG_RISING_DAYS = 3
 TAG_RETURN_GAP_DAYS = 7
 TAG_FLASH_MAX_DAYS = 2
 
+# === v2.1 新增風險警示門檻 ===
+RISK_LUCKY_RATIO = 0.70           # 單筆獲利 / 30D PnL > 70% 算「靠運氣」
+RISK_RECENT_BURST_RATIO = 0.60    # 30D PnL / All-Time PnL > 60% 算「最近爆發」
+RISK_PAST_GLORY_RATIO = 0.20      # 30D PnL / All-Time PnL < 20% 算「過去輝煌」
+RISK_WHALE_POSITION = 300_000     # 單一倉位 ≥ $300K 算「鯨魚」
+
 BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -63,7 +72,7 @@ GMAIL_APP_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD", "")
 RECIPIENT_EMAIL = os.environ.get("RECIPIENT_EMAIL", "")
 
 # ====================================
-# 追蹤系統
+# 追蹤系統（與 v2.0 相同）
 # ====================================
 def load_tracking():
     p = Path(TRACKING_FILE)
@@ -95,7 +104,6 @@ def update_tracking(tracking, today_wallets, run_date):
         tracking[wallet]["last_seen"] = run_date
         if username and username not in tracking[wallet]["username_history"]:
             tracking[wallet]["username_history"].append(username)
-    
     cutoff = (datetime.strptime(run_date, "%Y-%m-%d") -
               timedelta(days=TRACKING_HISTORY_DAYS)).strftime("%Y-%m-%d")
     cleaned = {}
@@ -118,7 +126,6 @@ def save_tracking(tracking):
 
 
 def compute_tracking_stats(wallet_addr, tracking, run_date):
-    """計算追蹤統計"""
     if wallet_addr not in tracking:
         return {
             "consecutive_days": 1, "total_30d_count": 1, "total_appearances": 1,
@@ -159,7 +166,6 @@ def compute_tracking_stats(wallet_addr, tracking, run_date):
 
 
 def assign_tags(stats):
-    """6 種標籤分配"""
     tags = []
     if stats["is_new"]:
         tags.append({"emoji": "🆕", "label": "新發現", "color": "#3b82f6"})
@@ -176,6 +182,46 @@ def assign_tags(stats):
             and stats["consecutive_days"] == 1 and not stats["is_new"]):
         tags.append({"emoji": "⚠️", "label": "曇花一現", "color": "#ef4444"})
     return tags
+
+
+def assign_risk_tags(wallet):
+    """v2.1 新增：3 個風險警示標籤"""
+    risk_tags = []
+    
+    # 🎰 靠運氣
+    lucky_ratio = wallet.get("_lucky_ratio", 0)
+    if lucky_ratio > RISK_LUCKY_RATIO:
+        risk_tags.append({
+            "emoji": "🎰",
+            "label": f"靠運氣({lucky_ratio*100:.0f}%)",
+            "color": "#dc2626"
+        })
+    
+    # 📉 最近爆發 / 🌅 過去輝煌
+    recent_ratio = wallet.get("_recent_ratio", -1)
+    if recent_ratio > RISK_RECENT_BURST_RATIO:
+        risk_tags.append({
+            "emoji": "📉",
+            "label": "最近爆發",
+            "color": "#dc2626"
+        })
+    elif 0 < recent_ratio < RISK_PAST_GLORY_RATIO:
+        risk_tags.append({
+            "emoji": "🌅",
+            "label": "過去輝煌",
+            "color": "#a16207"
+        })
+    
+    # 🐳 鯨魚倉位
+    if wallet.get("_has_whale_position", False):
+        max_pos = wallet.get("_max_position_value", 0)
+        risk_tags.append({
+            "emoji": "🐳",
+            "label": f"鯨魚倉(${max_pos/1000:.0f}K)",
+            "color": "#dc2626"
+        })
+    
+    return risk_tags
 
 # ====================================
 # 資料抓取
@@ -208,7 +254,24 @@ def fetch_leaderboard_paginated(time_period="MONTH"):
     return all_results
 
 
-def fetch_positions(wallet):
+def fetch_alltime_pnl(wallet):
+    """抓取錢包的全期總獲利（用於計算「最近爆發比例」）"""
+    url = f"{DATA_API_BASE}/v1/leaderboard"
+    params = {"category": "OVERALL", "timePeriod": "ALL", "orderBy": "PNL",
+              "limit": 1, "address": wallet}
+    try:
+        r = requests.get(url, params=params, timeout=15)
+        if r.status_code == 200:
+            data = r.json()
+            if isinstance(data, list) and data:
+                return float(data[0].get("pnl", 0) or 0)
+    except Exception:
+        pass
+    return None
+
+
+def fetch_positions_full(wallet):
+    """抓持倉，回傳完整資料（包含 currentValue 用於判斷鯨魚倉）"""
     url = f"{DATA_API_BASE}/positions"
     params = {"user": wallet, "limit": 200, "sizeThreshold": 0.01}
     try:
@@ -222,7 +285,6 @@ def fetch_positions(wallet):
 
 
 def fetch_recent_activity(wallet, days=7):
-    """改用 /activity 端點，資料更完整"""
     url = f"{DATA_API_BASE}/activity"
     params = {"user": wallet, "limit": 500}
     try:
@@ -318,6 +380,42 @@ def compute_weighted_winrate(closed_positions):
         return 0
     return round(win / total * 100, 1)
 
+
+def compute_lucky_ratio(closed_positions, pnl_30d):
+    """v2.1: 計算「靠運氣比例」= 單筆最大獲利 / 30D PnL"""
+    if pnl_30d <= 0:
+        return 0
+    
+    max_single_pnl = 0
+    for p in closed_positions:
+        try:
+            pnl = float(p.get("cashPnl", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if pnl > max_single_pnl:
+            max_single_pnl = pnl
+    
+    if max_single_pnl <= 0:
+        return 0
+    return round(max_single_pnl / pnl_30d, 3)
+
+
+def compute_whale_position(positions):
+    """v2.1: 檢查是否有單一倉位 ≥ $300K
+    回傳：(is_whale, max_value)
+    """
+    if not positions:
+        return (False, 0)
+    max_value = 0
+    for p in positions:
+        try:
+            cv = float(p.get("currentValue", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        if cv > max_value:
+            max_value = cv
+    return (max_value >= RISK_WHALE_POSITION, max_value)
+
 # ====================================
 # 篩選
 # ====================================
@@ -369,8 +467,9 @@ def merge_leaderboards(lb_30d, lb_7d):
     return list(merged.values())
 
 
-def hard_filter(wallets):
+def hard_filter(wallets, alltime_pnls=None):
     print(f"\n🔍 開始硬性篩選（共 {len(wallets)} 個候選）...")
+    alltime_pnls = alltime_pnls or {}
     
     pre = []
     for w in wallets:
@@ -402,7 +501,7 @@ def hard_filter(wallets):
     pre2 = [w for w in pre if not w.get("_filter_out_views", False)]
     print(f"   階段2 (views ≤ {MAX_VIEWS}): 抓到 {views_got}/{len(pre)}，剩 {len(pre2)} 個")
     
-    print(f"   階段3: 抓取持倉/交易/勝率...")
+    print(f"   階段3: 抓取持倉/交易/勝率/風險指標...")
     filtered = []
     rej = {
         "positions_fail": 0,
@@ -416,7 +515,7 @@ def hard_filter(wallets):
         if i % 5 == 0 or i == len(pre2):
             print(f"      進度 {i}/{len(pre2)}...")
         
-        positions = fetch_positions(addr)
+        positions = fetch_positions_full(addr)
         if positions is None:
             rej["positions_fail"] += 1
             continue
@@ -443,6 +542,7 @@ def hard_filter(wallets):
             rej["median_too_high"] += 1
             continue
         
+        # 計算基本指標
         closed = fetch_closed_positions(addr)
         wwr = compute_weighted_winrate(closed) if closed else 0
         
@@ -460,6 +560,26 @@ def hard_filter(wallets):
         w["pnl_acceleration"] = round(pnl_7d / max(exp_7d, 1), 2) if exp_7d > 0 else 0
         vol_30d = w.get("volume_30d", 1)
         w["roi_7d_estimate"] = round(pnl_7d / max(vol_30d / 4, 1) * 100, 2) if vol_30d > 0 else 0
+        
+        # === v2.1 新增風險指標計算 ===
+        # 1. 靠運氣比例
+        w["_lucky_ratio"] = compute_lucky_ratio(closed, pnl_30d)
+        
+        # 2. 最近爆發 / 過去輝煌
+        alltime_pnl = alltime_pnls.get(addr)
+        if alltime_pnl is None:
+            alltime_pnl = fetch_alltime_pnl(addr)
+            time.sleep(0.2)
+        w["_alltime_pnl"] = alltime_pnl
+        if alltime_pnl and alltime_pnl > 0:
+            w["_recent_ratio"] = round(pnl_30d / alltime_pnl, 3)
+        else:
+            w["_recent_ratio"] = -1  # 無法計算
+        
+        # 3. 鯨魚倉位
+        is_whale, max_pos = compute_whale_position(positions)
+        w["_has_whale_position"] = is_whale
+        w["_max_position_value"] = max_pos
         
         filtered.append(w)
         time.sleep(0.3)
@@ -480,19 +600,15 @@ def print_diagnostic_stats(wallets):
     print("=" * 60)
     metrics = {
         "30D PnL ($)": [w.get("pnl_30d", 0) for w in wallets],
-        "7D PnL ($)": [w.get("pnl_7d", 0) for w in wallets],
-        "30D Volume ($)": [w.get("volume_30d", 0) for w in wallets],
-        "排名": [w.get("rank_30d", 0) for w in wallets],
-        "當前持倉數": [w.get("current_positions", 0) for w in wallets],
-        "日均交易次數": [w.get("avg_daily_trades", 0) for w in wallets],
+        "All-Time PnL ($)": [w.get("_alltime_pnl") or 0 for w in wallets],
+        "靠運氣比例 (%)": [w.get("_lucky_ratio", 0) * 100 for w in wallets],
+        "最近爆發比例 (%)": [w.get("_recent_ratio", 0) * 100 for w in wallets if w.get("_recent_ratio", -1) >= 0],
+        "最大單一倉位 ($)": [w.get("_max_position_value", 0) for w in wallets],
         "下注中位數 ($)": [w.get("median_trade_size", 0) for w in wallets],
         "下注 CV": [w.get("trade_cv", 0) for w in wallets],
         "金額加權勝率 (%)": [w.get("weighted_winrate", 0) for w in wallets],
-        "已平倉部位數": [w.get("closed_positions_count", 0) for w in wallets],
         "獲利加速度 (x)": [w.get("pnl_acceleration", 0) for w in wallets],
     }
-    views_data = [w.get("views", -1) for w in wallets]
-    valid_views = [v for v in views_data if v >= 0]
     for name, vals in metrics.items():
         if not vals:
             continue
@@ -501,14 +617,17 @@ def print_diagnostic_stats(wallets):
         print(f"\n  {name}:")
         print(f"    最低: {min(sv):.1f}  | 25%: {sv[n//4]:.1f}  | 中位: {sv[n//2]:.1f}")
         print(f"    75%: {sv[3*n//4]:.1f}  | 90%: {sv[min(int(0.9*n), n-1)]:.1f}  | 最高: {max(sv):.1f}")
-    print(f"\n  觀看次數:")
-    if valid_views:
-        n = len(valid_views)
-        sv = sorted(valid_views)
-        print(f"    成功抓到: {n}/{len(views_data)} 個")
-        print(f"    最低: {min(sv)}  | 中位: {sv[n//2]}  | 最高: {max(sv)}")
-    else:
-        print(f"    全部抓不到")
+    
+    # 風險警示統計
+    lucky_count = sum(1 for w in wallets if w.get("_lucky_ratio", 0) > RISK_LUCKY_RATIO)
+    burst_count = sum(1 for w in wallets if w.get("_recent_ratio", -1) > RISK_RECENT_BURST_RATIO)
+    glory_count = sum(1 for w in wallets if 0 < w.get("_recent_ratio", -1) < RISK_PAST_GLORY_RATIO)
+    whale_count = sum(1 for w in wallets if w.get("_has_whale_position", False))
+    print(f"\n  🚨 風險警示統計（共 {len(wallets)} 個錢包）:")
+    print(f"    🎰 靠運氣（單筆 > {RISK_LUCKY_RATIO*100:.0f}% PnL）: {lucky_count} 個")
+    print(f"    📉 最近爆發（30D > {RISK_RECENT_BURST_RATIO*100:.0f}% All-Time）: {burst_count} 個")
+    print(f"    🌅 過去輝煌（30D < {RISK_PAST_GLORY_RATIO*100:.0f}% All-Time）: {glory_count} 個")
+    print(f"    🐳 鯨魚倉位（單倉 ≥ ${RISK_WHALE_POSITION:,}）: {whale_count} 個")
     print("=" * 60)
 
 
@@ -563,46 +682,53 @@ def compute_profit_score(wallet, all_wallets):
 def generate_reasoning(wallet, tracking_stats):
     reasons, warnings = [], []
     
-    # 追蹤相關理由
+    # 追蹤相關
     if tracking_stats["consecutive_days"] >= 7:
         reasons.append(f"連續上榜 {tracking_stats['consecutive_days']} 天（王牌級）")
     elif tracking_stats["consecutive_days"] >= 3:
         reasons.append(f"連續上榜 {tracking_stats['consecutive_days']} 天")
-    
     if tracking_stats["total_30d_count"] >= 15:
         reasons.append(f"30 天內上榜 {tracking_stats['total_30d_count']} 次（穩定常客）")
-    
     if tracking_stats["is_returning"]:
         reasons.append(f"消失 {tracking_stats['days_since_last']} 天後重返")
     
     accel = wallet.get("pnl_acceleration", 0)
     if accel >= 1.5:
         reasons.append(f"獲利加速 {accel}x")
-    
     v = wallet.get("views", -1)
-    if v == -1:
-        pass
-    elif v < 100:
+    if v >= 0 and v < 100:
         reasons.append(f"極低調（{v} 次觀看）")
-    elif v < 700:
+    elif v >= 0 and v < 700:
         reasons.append(f"低調（{v} 次觀看）")
-    
     if not wallet.get("xUsername"):
         reasons.append("完全匿名")
-    
     wwr = wallet.get("weighted_winrate", 0)
     if wwr >= 70:
         reasons.append(f"加權勝率 {wwr}%")
-    
     med = wallet.get("median_trade_size", 0)
     if med < 100:
         reasons.append(f"小額穩定（中位數 ${med:.0f}）")
     
-    # 警示
+    # === v2.1 新增風險警示 ===
+    lucky = wallet.get("_lucky_ratio", 0)
+    if lucky > RISK_LUCKY_RATIO:
+        warnings.append(f"⚠️ 單筆最大獲利占 {lucky*100:.0f}% 30D PnL（疑似靠運氣）")
+    
+    recent = wallet.get("_recent_ratio", -1)
+    if recent > RISK_RECENT_BURST_RATIO:
+        warnings.append(f"⚠️ 30D PnL 占全期 {recent*100:.0f}%（最近才爆發，需觀察持續性）")
+    elif 0 < recent < RISK_PAST_GLORY_RATIO:
+        warnings.append(f"⚠️ 30D PnL 僅占全期 {recent*100:.0f}%（過去較強，最近表現一般）")
+    
+    if wallet.get("_has_whale_position", False):
+        max_pos = wallet.get("_max_position_value", 0)
+        warnings.append(f"⚠️ 持有 ${max_pos/1000:.0f}K 鯨魚倉位（你 $300 跟不起）")
+    
+    # 其他警示
     if tracking_stats["is_new"]:
         warnings.append("首次上榜，需觀察持續性")
     if tracking_stats["total_appearances"] <= 2 and not tracking_stats["is_new"]:
-        warnings.append("過去出現次數少，可能曇花一現")
+        warnings.append("過去出現次數少")
     if wallet.get("current_positions", 0) > 80:
         warnings.append(f"持倉 {wallet.get('current_positions')} 個過於分散")
     if wallet.get("avg_daily_trades", 0) > 20:
@@ -610,11 +736,11 @@ def generate_reasoning(wallet, tracking_stats):
     if wallet.get("avg_daily_trades", 0) < 1:
         warnings.append(f"交易頻率低（日均 {wallet.get('avg_daily_trades')}）")
     if med > 500:
-        warnings.append(f"單筆中位數 ${med:.0f} 對 $300 資金偏大")
+        warnings.append(f"單筆中位數 ${med:.0f} 對 $300 偏大")
     if wallet.get("trade_cv", 0) > 2:
         warnings.append(f"下注金額波動大（CV={wallet.get('trade_cv')}）")
     if 0 < wwr < 50:
-        warnings.append(f"加權勝率僅 {wwr}% 偏低")
+        warnings.append(f"加權勝率僅 {wwr}%")
     if wallet.get("closed_positions_count", 0) < 10:
         warnings.append("已平倉樣本少")
     if v >= 700 and v < 2000:
@@ -637,6 +763,8 @@ def get_tier(score):
     return "tier-gray"
 
 def format_money(n):
+    if n is None:
+        return "未知"
     if n >= 0:
         return f"+${n:,.0f}"
     return f"-${abs(n):,.0f}"
@@ -649,14 +777,13 @@ def format_views(n):
     return str(n)
 
 
-def generate_html(recommendations, run_date, summary_extras=None):
-    summary_extras = summary_extras or {}
+def generate_html(recommendations, run_date):
     green = sum(1 for w in recommendations if w["combined_score"] >= 80)
     yellow = sum(1 for w in recommendations if 60 <= w["combined_score"] < 80)
     top_score = max((w["combined_score"] for w in recommendations), default=0)
-    
     veteran_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("consecutive_days", 0) >= 7)
     new_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("is_new", False))
+    risk_count = sum(1 for w in recommendations if w.get("_risk_tags"))
     
     cards_html = ""
     for i, w in enumerate(recommendations, 1):
@@ -668,13 +795,14 @@ def generate_html(recommendations, run_date, summary_extras=None):
         p7c = "positive" if w.get("pnl_7d", 0) > 0 else ""
         ac = "positive" if w.get("pnl_acceleration", 0) >= 1.2 else ""
         
-        # 標籤 HTML
+        # 標籤（追蹤 + 風險）
         tags = w.get("_tags", [])
+        risk_tags = w.get("_risk_tags", [])
+        all_tags = tags + risk_tags
         tags_html = ""
-        for t in tags:
+        for t in all_tags:
             tags_html += f'<span class="tag" style="background:{t["color"]}22; color:{t["color"]}; border:1px solid {t["color"]}">{t["emoji"]} {t["label"]}</span>'
         
-        # 追蹤天數顯示
         ts = w.get("_tracking", {})
         consecutive = ts.get("consecutive_days", 1)
         total_30d = ts.get("total_30d_count", 1)
@@ -688,6 +816,12 @@ def generate_html(recommendations, run_date, summary_extras=None):
                 f'過去 30 天 <strong>{total_30d}</strong> 次 · '
                 f'累積 <strong>{total_all}</strong> 次</span>'
             )
+        
+        # 風險指標額外顯示
+        lucky = w.get("_lucky_ratio", 0)
+        recent = w.get("_recent_ratio", -1)
+        max_pos = w.get("_max_position_value", 0)
+        alltime = w.get("_alltime_pnl")
         
         cards_html += f"""
 <div class="wallet-card {tier}">
@@ -713,13 +847,16 @@ def generate_html(recommendations, run_date, summary_extras=None):
   <div class="metrics-grid">
     <div class="metric"><div class="metric-label">30D PnL</div><div class="metric-value {p30c}">{format_money(w.get('pnl_30d', 0))}</div></div>
     <div class="metric"><div class="metric-label">7D PnL</div><div class="metric-value {p7c}">{format_money(w.get('pnl_7d', 0))}</div></div>
+    <div class="metric"><div class="metric-label">All-Time</div><div class="metric-value">{format_money(alltime)}</div></div>
     <div class="metric"><div class="metric-label">觀看次數</div><div class="metric-value">{format_views(w.get('views', -1))}</div></div>
     <div class="metric"><div class="metric-label">當前持倉</div><div class="metric-value">{w.get('current_positions', 0)}</div></div>
     <div class="metric"><div class="metric-label">日均交易</div><div class="metric-value">{w.get('avg_daily_trades', 0)}</div></div>
     <div class="metric"><div class="metric-label">下注中位數</div><div class="metric-value">${w.get('median_trade_size', 0):.0f}</div></div>
-    <div class="metric"><div class="metric-label">下注 CV</div><div class="metric-value">{w.get('trade_cv', 0)}</div></div>
+    <div class="metric"><div class="metric-label">最大單倉</div><div class="metric-value">${max_pos/1000:.1f}K</div></div>
     <div class="metric"><div class="metric-label">加權勝率</div><div class="metric-value">{w.get('weighted_winrate', 0)}%</div></div>
-    <div class="metric"><div class="metric-label">獲利加速度</div><div class="metric-value {ac}">{w.get('pnl_acceleration', 0)}x</div></div>
+    <div class="metric"><div class="metric-label">獲利加速</div><div class="metric-value {ac}">{w.get('pnl_acceleration', 0)}x</div></div>
+    <div class="metric"><div class="metric-label">單筆占比</div><div class="metric-value">{lucky*100:.0f}%</div></div>
+    <div class="metric"><div class="metric-label">30D/全期</div><div class="metric-value">{(str(int(recent*100)) + "%") if recent >= 0 else "未知"}</div></div>
   </div>
   <div class="reason">💡 {w['recommendation_reason']}</div>
   <div class="warning">⚠️ {w['risk_warning']}</div>
@@ -747,10 +884,10 @@ def generate_html(recommendations, run_date, summary_extras=None):
   header {{ text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #334155; }}
   h1 {{ font-size: 28px; font-weight: 700; background: linear-gradient(90deg, #06b6d4, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }}
   .subtitle {{ color: #94a3b8; font-size: 14px; }}
-  .summary-bar {{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 32px; }}
-  .stat {{ background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 12px; padding: 16px; text-align: center; }}
-  .stat-label {{ font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }}
-  .stat-value {{ font-size: 22px; font-weight: 700; color: #06b6d4; }}
+  .summary-bar {{ display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 32px; }}
+  .stat {{ background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; border-radius: 12px; padding: 12px; text-align: center; }}
+  .stat-label {{ font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }}
+  .stat-value {{ font-size: 20px; font-weight: 700; color: #06b6d4; }}
   .wallet-card {{ background: rgba(30, 41, 59, 0.7); border: 2px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 20px; }}
   .wallet-card.tier-green {{ border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.15); }}
   .wallet-card.tier-yellow {{ border-color: #f59e0b; box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }}
@@ -770,7 +907,7 @@ def generate_html(recommendations, run_date, summary_extras=None):
   .score-value.combined {{ color: #8b5cf6; }}
   .score-value.profit {{ color: #10b981; }}
   .score-value.discreteness {{ color: #f59e0b; }}
-  .metrics-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-bottom: 16px; }}
+  .metrics-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-bottom: 16px; }}
   .metric {{ background: rgba(15, 23, 42, 0.4); padding: 8px 12px; border-radius: 6px; font-size: 13px; }}
   .metric-label {{ color: #94a3b8; font-size: 11px; }}
   .metric-value {{ color: #e2e8f0; font-weight: 600; }}
@@ -778,28 +915,30 @@ def generate_html(recommendations, run_date, summary_extras=None):
   .reason {{ background: rgba(6, 182, 212, 0.1); border-left: 3px solid #06b6d4; padding: 10px 14px; border-radius: 4px; margin-bottom: 10px; font-weight: 600; color: #f1f5f9; }}
   .warning {{ background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 10px 14px; border-radius: 4px; color: #fca5a5; font-size: 13px; }}
   footer {{ margin-top: 48px; padding: 24px; background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; text-align: center; font-size: 13px; color: #fca5a5; line-height: 1.6; }}
-  .legend {{ background: rgba(30, 41, 59, 0.4); border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; font-size: 12px; color: #94a3b8; }}
+  .legend {{ background: rgba(30, 41, 59, 0.4); border: 1px solid #334155; border-radius: 8px; padding: 12px 16px; margin-bottom: 24px; font-size: 12px; color: #94a3b8; line-height: 1.7; }}
   .legend strong {{ color: #e2e8f0; }}
-  @media (max-width: 700px) {{ .summary-bar {{ grid-template-columns: repeat(3, 1fr); }} }}
+  @media (max-width: 800px) {{ .summary-bar {{ grid-template-columns: repeat(4, 1fr); }} }}
   @media (max-width: 500px) {{ .summary-bar {{ grid-template-columns: repeat(2, 1fr); }} .scores {{ grid-template-columns: 1fr; }} h1 {{ font-size: 22px; }} }}
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>🎯 Polymarket 跟單情報 v2.0</h1>
-    <div class="subtitle">{run_date} · 含追蹤標籤系統</div>
+    <h1>🎯 Polymarket 跟單情報 v2.1</h1>
+    <div class="subtitle">{run_date} · 含追蹤 + 風險警示</div>
   </header>
   <div class="summary-bar">
     <div class="stat"><div class="stat-label">推薦數</div><div class="stat-value">{len(recommendations)}</div></div>
     <div class="stat"><div class="stat-label">最高分</div><div class="stat-value">{top_score:.0f}</div></div>
-    <div class="stat"><div class="stat-label">綠燈級</div><div class="stat-value">{green}</div></div>
-    <div class="stat"><div class="stat-label">黃燈級</div><div class="stat-value">{yellow}</div></div>
+    <div class="stat"><div class="stat-label">綠燈</div><div class="stat-value">{green}</div></div>
+    <div class="stat"><div class="stat-label">黃燈</div><div class="stat-value">{yellow}</div></div>
     <div class="stat"><div class="stat-label">🏆 王牌</div><div class="stat-value">{veteran_count}</div></div>
-    <div class="stat"><div class="stat-label">🆕 新發現</div><div class="stat-value">{new_count}</div></div>
+    <div class="stat"><div class="stat-label">🆕 新</div><div class="stat-value">{new_count}</div></div>
+    <div class="stat"><div class="stat-label">⚠️ 風險</div><div class="stat-value">{risk_count}</div></div>
   </div>
   <div class="legend">
-    <strong>標籤說明：</strong> 🆕 新發現（首次上榜）｜📈 崛起中（連 3-6 天）｜🏆 王牌穩定（連 7+ 天）｜🌟 常客（30 天上榜 ≥15 次）｜🔥 重返（消失 7+ 天又回來）｜⚠️ 曇花一現（總共只上 1-2 次）
+    <strong>🏷️ 追蹤標籤：</strong> 🆕 新發現 ｜ 📈 崛起中 ｜ 🏆 王牌穩定（連 7+ 天） ｜ 🌟 常客（30 天上 ≥15 次） ｜ 🔥 重返 ｜ ⚠️ 曇花一現<br>
+    <strong>🚨 風險警示：</strong> 🎰 靠運氣（單筆 > 70% PnL） ｜ 📉 最近爆發（30D > 60% 全期） ｜ 🌅 過去輝煌（30D < 20% 全期） ｜ 🐳 鯨魚倉位（單倉 ≥ $300K）
   </div>
   {cards_html}
   <footer>
@@ -838,16 +977,13 @@ def send_email(html_content, run_date, count):
 
 def main():
     print("=" * 60)
-    print("Polymarket 跟單情報系統 v2.0")
+    print("Polymarket 跟單情報系統 v2.1 (含風險警示)")
     print(f"執行時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
     
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    
-    # 載入歷史追蹤
     tracking = load_tracking()
     
-    # 抓資料
     lb_30d = fetch_leaderboard_paginated("MONTH")
     time.sleep(1)
     lb_7d = fetch_leaderboard_paginated("WEEK")
@@ -858,10 +994,16 @@ def main():
         save_and_send(html, run_date, 0)
         sys.exit(1)
     
+    # 也抓全期排行榜（用於計算「最近爆發比例」）
+    print(f"\n📥 抓取全期排行榜（用於風險指標）...")
+    lb_alltime = fetch_leaderboard_paginated("ALL")
+    alltime_pnls = {e.get("proxyWallet"): float(e.get("pnl", 0) or 0)
+                    for e in lb_alltime if e.get("proxyWallet")}
+    
     candidates = merge_leaderboards(lb_30d, lb_7d)
     print(f"\n合併後共 {len(candidates)} 個候選")
     
-    passed = hard_filter(candidates)
+    passed = hard_filter(candidates, alltime_pnls)
     
     if DIAGNOSTIC_MODE:
         print_diagnostic_stats(passed)
@@ -885,20 +1027,17 @@ def main():
     
     print(f"   ✓ 最終推薦: {len(final)} 個錢包")
     
-    # 更新追蹤紀錄（用 final 名單）
     tracking = update_tracking(tracking, final, run_date)
     
-    # 為每個 final 錢包加上追蹤統計、標籤、推薦理由
-    print(f"\n🏷️  套用標籤與追蹤統計...")
+    print(f"\n🏷️  套用追蹤標籤 + 風險警示...")
     for w in final:
         ts = compute_tracking_stats(w["proxyWallet"], tracking, run_date)
         w["_tracking"] = ts
         w["_tags"] = assign_tags(ts)
+        w["_risk_tags"] = assign_risk_tags(w)  # v2.1 新增
         w["recommendation_reason"], w["risk_warning"] = generate_reasoning(w, ts)
     
-    # 儲存追蹤紀錄
     save_tracking(tracking)
-    
     html = generate_html(final, run_date)
     save_and_send(html, run_date, len(final))
 
