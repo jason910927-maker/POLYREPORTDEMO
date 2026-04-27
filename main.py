@@ -1,11 +1,10 @@
 """
-Polymarket 跟單情報系統 - v2.1 風險警示版
-整合：
-- v2.0 所有功能（追蹤 + 標籤 + 階段3修復）
-- 新增 3 個風險指標（標記但不過濾）：
-  * 🎰 靠運氣：單筆獲利占 30D PnL > 70%
-  * 📉 最近爆發 / 🌅 過去輝煌：30D PnL 占 All-Time 的比例異常
-  * 🐳 鯨魚倉位：單一持倉 ≥ $300,000
+Polymarket 跟單情報系統 - v3.0 雙掃描版
+新增：雙掃描架構
+- Scan A (Leaderboard): 按 PnL 排名抓 500 名 → 找穩定獲利者
+- Scan B (Analytics): 按 Volume 排名抓 500 名 → 找活躍崛起者
+- 兩個 Scan 各篩各的，合併後再去重，產出 Top 10 名單
+保留 v2.2 所有功能（小資穩定篩選、追蹤、標籤、風險警示）
 """
 
 import os
@@ -26,8 +25,9 @@ import time
 DATA_API_BASE = "https://data-api.polymarket.com"
 POLYMARKET_PROFILE_URL = "https://polymarket.com/profile/{wallet}"
 
-# === 硬性篩選 ===
-MIN_PNL_30D = 500
+# === 硬性篩選 (v2.2 小資穩定) ===
+MIN_PNL_30D = 500                # 30天最低獲利
+MAX_PNL_30D = 20000              # 30天最高獲利（避開鯨魚）⭐ NEW
 MIN_PNL_7D = -500
 MAX_POSITIONS = 300
 MAX_DAILY_TRADES = 50
@@ -35,11 +35,14 @@ MIN_DAILY_TRADES = 0.1
 MAX_VIEWS = 2000
 MAX_MEDIAN_TRADE_SIZE = 10000
 MIN_SAMPLE_COUNT = 1
+MAX_SINGLE_POSITION = 30000      # 最大單倉上限 ⭐ NEW
+MIN_WEIGHTED_WINRATE = 60        # 最低加權勝率 ⭐ NEW
+MAX_LUCKY_RATIO = 0.60           # 最大單筆占比（靠運氣門檻）⭐ NEW
 
 MIN_DISCRETENESS = 40
 TOP_RANK_EXCLUDE = 30
 
-TOTAL_CANDIDATES = 200
+TOTAL_CANDIDATES = 500           # 每個 scan 抓 500 名（v3.0 雙掃描）
 RECOMMENDATIONS_COUNT = 10
 DIAGNOSTIC_MODE = True
 
@@ -226,15 +229,18 @@ def assign_risk_tags(wallet):
 # ====================================
 # 資料抓取
 # ====================================
-def fetch_leaderboard_paginated(time_period="MONTH"):
-    print(f"📥 抓取 {time_period} 排行榜...")
+def fetch_leaderboard_paginated(time_period="MONTH", order_by="PNL"):
+    """分頁抓取排行榜
+    order_by: 'PNL' (按獲利) 或 'VOLUME' (按交易量)
+    """
+    print(f"📥 抓取 {time_period} 排行榜（按 {order_by} 排序）...")
     all_results = []
     offset = 0
     batch = 50
     while offset < TOTAL_CANDIDATES:
         url = f"{DATA_API_BASE}/v1/leaderboard"
         params = {"category": "OVERALL", "timePeriod": time_period,
-                  "orderBy": "PNL", "limit": batch, "offset": offset}
+                  "orderBy": order_by, "limit": batch, "offset": offset}
         try:
             r = requests.get(url, params=params, timeout=30)
             r.raise_for_status()
@@ -479,10 +485,12 @@ def hard_filter(wallets, alltime_pnls=None):
             continue
         if w.get("pnl_30d", 0) < MIN_PNL_30D:
             continue
+        if w.get("pnl_30d", 0) > MAX_PNL_30D:  # ⭐ v2.2 新增上限
+            continue
         if w.get("pnl_7d", 0) <= MIN_PNL_7D:
             continue
         pre.append(w)
-    print(f"   階段1 (PnL+排名): 剩 {len(pre)} 個")
+    print(f"   階段1 (PnL ${MIN_PNL_30D}-${MAX_PNL_30D}+排名): 剩 {len(pre)} 個")
     
     print(f"   階段2: 嘗試抓取觀看次數...")
     views_got = 0
@@ -509,6 +517,9 @@ def hard_filter(wallets, alltime_pnls=None):
         "daily_trades_out_of_range": 0,
         "sample_too_small": 0,
         "median_too_high": 0,
+        "max_position_too_big": 0,    # ⭐ v2.2 新增
+        "winrate_too_low": 0,         # ⭐ v2.2 新增
+        "too_lucky": 0,               # ⭐ v2.2 新增
     }
     for i, w in enumerate(pre2, 1):
         addr = w["proxyWallet"]
@@ -580,6 +591,20 @@ def hard_filter(wallets, alltime_pnls=None):
         is_whale, max_pos = compute_whale_position(positions)
         w["_has_whale_position"] = is_whale
         w["_max_position_value"] = max_pos
+        
+        # ⭐ v2.2 新增三個硬性篩選 ⭐
+        # (a) 最大單倉 < $30K
+        if max_pos > MAX_SINGLE_POSITION:
+            rej["max_position_too_big"] += 1
+            continue
+        # (b) 加權勝率 ≥ 60%（已平倉樣本太少時不篩，避免誤殺新人）
+        if len(closed) >= 5 and wwr < MIN_WEIGHTED_WINRATE:
+            rej["winrate_too_low"] += 1
+            continue
+        # (c) 單筆占比 < 60%（避免靠運氣型）
+        if w["_lucky_ratio"] > MAX_LUCKY_RATIO:
+            rej["too_lucky"] += 1
+            continue
         
         filtered.append(w)
         time.sleep(0.3)
@@ -784,6 +809,7 @@ def generate_html(recommendations, run_date):
     veteran_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("consecutive_days", 0) >= 7)
     new_count = sum(1 for w in recommendations if w.get("_tracking", {}).get("is_new", False))
     risk_count = sum(1 for w in recommendations if w.get("_risk_tags"))
+    both_count = sum(1 for w in recommendations if w.get("_scan_source") == "both")
     
     cards_html = ""
     for i, w in enumerate(recommendations, 1):
@@ -794,6 +820,17 @@ def generate_html(recommendations, run_date):
         p30c = "positive" if w.get("pnl_30d", 0) > 0 else ""
         p7c = "positive" if w.get("pnl_7d", 0) > 0 else ""
         ac = "positive" if w.get("pnl_acceleration", 0) >= 1.2 else ""
+        
+        # v3.0：scan 來源標記
+        source = w.get("_scan_source", "leaderboard")
+        if source == "both":
+            source_badge = '<span class="source-badge both">⭐ 雙榜</span>'
+        elif source == "leaderboard":
+            source_badge = '<span class="source-badge lb">📈 PnL榜</span>'
+        elif source == "analytics":
+            source_badge = '<span class="source-badge an">📊 Vol榜</span>'
+        else:
+            source_badge = ''
         
         # 標籤（追蹤 + 風險）
         tags = w.get("_tags", [])
@@ -831,6 +868,7 @@ def generate_html(recommendations, run_date):
       <div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <div class="username">{username}</div>
+          {source_badge}
           <div class="tags">{tags_html}</div>
         </div>
         <div class="wallet-addr">{addr}</div>
@@ -899,6 +937,10 @@ def generate_html(recommendations, run_date):
   .pm-link {{ background: #06b6d4; color: #0f172a; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; white-space: nowrap; }}
   .tags {{ display: flex; flex-wrap: wrap; gap: 4px; }}
   .tag {{ font-size: 11px; padding: 3px 8px; border-radius: 12px; font-weight: 600; }}
+  .source-badge {{ font-size: 11px; padding: 3px 10px; border-radius: 12px; font-weight: 700; }}
+  .source-badge.both {{ background: linear-gradient(90deg, #fbbf24, #f97316); color: #fff; }}
+  .source-badge.lb {{ background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }}
+  .source-badge.an {{ background: rgba(139, 92, 246, 0.2); color: #8b5cf6; border: 1px solid #8b5cf6; }}
   .tracking-line {{ font-size: 12px; color: #cbd5e1; padding: 8px 12px; background: rgba(15, 23, 42, 0.5); border-radius: 6px; margin-bottom: 12px; }}
   .scores {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }}
   .score-box {{ background: rgba(15, 23, 42, 0.6); border-radius: 8px; padding: 12px; text-align: center; }}
@@ -924,21 +966,23 @@ def generate_html(recommendations, run_date):
 <body>
 <div class="container">
   <header>
-    <h1>🎯 Polymarket 跟單情報 v2.1</h1>
-    <div class="subtitle">{run_date} · 含追蹤 + 風險警示</div>
+    <h1>🎯 Polymarket 跟單情報 v3.0</h1>
+    <div class="subtitle">{run_date} · 雙掃描 · 小資穩定篩選</div>
   </header>
   <div class="summary-bar">
     <div class="stat"><div class="stat-label">推薦數</div><div class="stat-value">{len(recommendations)}</div></div>
     <div class="stat"><div class="stat-label">最高分</div><div class="stat-value">{top_score:.0f}</div></div>
+    <div class="stat"><div class="stat-label">⭐ 雙榜</div><div class="stat-value">{both_count}</div></div>
     <div class="stat"><div class="stat-label">綠燈</div><div class="stat-value">{green}</div></div>
-    <div class="stat"><div class="stat-label">黃燈</div><div class="stat-value">{yellow}</div></div>
     <div class="stat"><div class="stat-label">🏆 王牌</div><div class="stat-value">{veteran_count}</div></div>
     <div class="stat"><div class="stat-label">🆕 新</div><div class="stat-value">{new_count}</div></div>
     <div class="stat"><div class="stat-label">⚠️ 風險</div><div class="stat-value">{risk_count}</div></div>
   </div>
   <div class="legend">
-    <strong>🏷️ 追蹤標籤：</strong> 🆕 新發現 ｜ 📈 崛起中 ｜ 🏆 王牌穩定（連 7+ 天） ｜ 🌟 常客（30 天上 ≥15 次） ｜ 🔥 重返 ｜ ⚠️ 曇花一現<br>
-    <strong>🚨 風險警示：</strong> 🎰 靠運氣（單筆 > 70% PnL） ｜ 📉 最近爆發（30D > 60% 全期） ｜ 🌅 過去輝煌（30D < 20% 全期） ｜ 🐳 鯨魚倉位（單倉 ≥ $300K）
+    <strong>🔍 雙掃描來源：</strong> ⭐ 雙榜（PnL 榜+Volume 榜都上 = 最可靠+5分） ｜ 📈 PnL榜（穩定獲利者） ｜ 📊 Vol榜（活躍崛起者）<br>
+    <strong>📋 v3.0 篩選條件：</strong> 30D PnL ${MIN_PNL_30D}-${MAX_PNL_30D} ｜ 最大單倉 < ${MAX_SINGLE_POSITION:,} ｜ 加權勝率 ≥ {MIN_WEIGHTED_WINRATE}% ｜ 單筆占比 < {int(MAX_LUCKY_RATIO*100)}%<br>
+    <strong>🏷️ 追蹤標籤：</strong> 🆕 新發現 ｜ 📈 崛起中 ｜ 🏆 王牌穩定 ｜ 🌟 常客 ｜ 🔥 重返 ｜ ⚠️ 曇花一現<br>
+    <strong>🚨 風險警示：</strong> 🎰 靠運氣 ｜ 📉 最近爆發 ｜ 🌅 過去輝煌 ｜ 🐳 鯨魚倉位
   </div>
   {cards_html}
   <footer>
@@ -977,31 +1021,81 @@ def send_email(html_content, run_date, count):
 
 def main():
     print("=" * 60)
-    print("Polymarket 跟單情報系統 v2.1 (含風險警示)")
+    print("Polymarket 跟單情報系統 v3.0 (雙掃描)")
     print(f"執行時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
     print("=" * 60)
     
     run_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     tracking = load_tracking()
     
-    lb_30d = fetch_leaderboard_paginated("MONTH")
+    # ==========================================
+    # 🔍 SCAN A: Leaderboard Scan（按 PnL 排序）
+    # ==========================================
+    print("\n" + "=" * 60)
+    print("🔍 SCAN A: Leaderboard Scan (按 PnL，找穩定獲利者)")
+    print("=" * 60)
+    lb_30d_pnl = fetch_leaderboard_paginated("MONTH", "PNL")
     time.sleep(1)
-    lb_7d = fetch_leaderboard_paginated("WEEK")
+    lb_7d_pnl = fetch_leaderboard_paginated("WEEK", "PNL")
     
-    if not lb_30d and not lb_7d:
-        print("❌ 無法取得排行榜資料")
+    # ==========================================
+    # 🔍 SCAN B: Analytics Scan（按 Volume 排序）
+    # ==========================================
+    print("\n" + "=" * 60)
+    print("🔍 SCAN B: Analytics Scan (按 Volume，找活躍崛起者)")
+    print("=" * 60)
+    time.sleep(1)
+    lb_30d_vol = fetch_leaderboard_paginated("MONTH", "VOLUME")
+    time.sleep(1)
+    lb_7d_vol = fetch_leaderboard_paginated("WEEK", "VOLUME")
+    
+    # 抓全期 PnL（用於風險指標）
+    print(f"\n📥 抓取全期排行榜（用於風險指標）...")
+    lb_alltime = fetch_leaderboard_paginated("ALL", "PNL")
+    alltime_pnls = {e.get("proxyWallet"): float(e.get("pnl", 0) or 0)
+                    for e in lb_alltime if e.get("proxyWallet")}
+    
+    if not (lb_30d_pnl or lb_7d_pnl or lb_30d_vol or lb_7d_vol):
+        print("❌ 無法取得任何排行榜資料")
         html = generate_html([], run_date)
         save_and_send(html, run_date, 0)
         sys.exit(1)
     
-    # 也抓全期排行榜（用於計算「最近爆發比例」）
-    print(f"\n📥 抓取全期排行榜（用於風險指標）...")
-    lb_alltime = fetch_leaderboard_paginated("ALL")
-    alltime_pnls = {e.get("proxyWallet"): float(e.get("pnl", 0) or 0)
-                    for e in lb_alltime if e.get("proxyWallet")}
+    # ==========================================
+    # 合併兩個 Scan 的所有資料
+    # ==========================================
+    print("\n" + "=" * 60)
+    print("🔄 合併兩個 Scan 的候選錢包")
+    print("=" * 60)
     
-    candidates = merge_leaderboards(lb_30d, lb_7d)
-    print(f"\n合併後共 {len(candidates)} 個候選")
+    candidates_a = merge_leaderboards(lb_30d_pnl, lb_7d_pnl)
+    candidates_b = merge_leaderboards(lb_30d_vol, lb_7d_vol)
+    
+    for w in candidates_a:
+        w["_scan_source"] = "leaderboard"
+    for w in candidates_b:
+        w["_scan_source"] = "analytics"
+    
+    # 合併去重，重複出現的標記為 "both"
+    merged_dict = {}
+    for w in candidates_a + candidates_b:
+        addr = w.get("proxyWallet")
+        if not addr:
+            continue
+        if addr in merged_dict:
+            merged_dict[addr]["_scan_source"] = "both"
+        else:
+            merged_dict[addr] = w
+    
+    candidates = list(merged_dict.values())
+    
+    leaderboard_only = sum(1 for w in candidates if w.get("_scan_source") == "leaderboard")
+    analytics_only = sum(1 for w in candidates if w.get("_scan_source") == "analytics")
+    both = sum(1 for w in candidates if w.get("_scan_source") == "both")
+    print(f"   Scan A 獨有 (僅 PnL 榜): {leaderboard_only} 個")
+    print(f"   Scan B 獨有 (僅 Volume 榜): {analytics_only} 個")
+    print(f"   ⭐ 雙重來源 (兩榜都上): {both} 個")
+    print(f"   合併去重後共 {len(candidates)} 個候選")
     
     passed = hard_filter(candidates, alltime_pnls)
     
@@ -1018,7 +1112,9 @@ def main():
     for w in passed:
         w["discreteness_score"] = compute_discreteness_score(w)
         w["profit_score"] = compute_profit_score(w, passed)
-        w["combined_score"] = round(w["profit_score"] * 0.7 + w["discreteness_score"] * 0.3, 1)
+        # 「雙重來源」的錢包加 5 分（兩個 scan 都上榜代表更可靠）
+        bonus = 5 if w.get("_scan_source") == "both" else 0
+        w["combined_score"] = round(w["profit_score"] * 0.7 + w["discreteness_score"] * 0.3 + bonus, 1)
     
     passed.sort(key=lambda x: x["combined_score"], reverse=True)
     final = [w for w in passed if w["discreteness_score"] >= MIN_DISCRETENESS][:RECOMMENDATIONS_COUNT]
@@ -1027,6 +1123,11 @@ def main():
     
     print(f"   ✓ 最終推薦: {len(final)} 個錢包")
     
+    final_both = sum(1 for w in final if w.get("_scan_source") == "both")
+    final_lb = sum(1 for w in final if w.get("_scan_source") == "leaderboard")
+    final_an = sum(1 for w in final if w.get("_scan_source") == "analytics")
+    print(f"   📊 來源分布: ⭐雙重 {final_both} | 僅PnL榜 {final_lb} | 僅Vol榜 {final_an}")
+    
     tracking = update_tracking(tracking, final, run_date)
     
     print(f"\n🏷️  套用追蹤標籤 + 風險警示...")
@@ -1034,7 +1135,7 @@ def main():
         ts = compute_tracking_stats(w["proxyWallet"], tracking, run_date)
         w["_tracking"] = ts
         w["_tags"] = assign_tags(ts)
-        w["_risk_tags"] = assign_risk_tags(w)  # v2.1 新增
+        w["_risk_tags"] = assign_risk_tags(w)
         w["recommendation_reason"], w["risk_warning"] = generate_reasoning(w, ts)
     
     save_tracking(tracking)
