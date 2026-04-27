@@ -231,7 +231,7 @@ def assign_risk_tags(wallet):
 # ====================================
 def fetch_leaderboard_paginated(time_period="MONTH", order_by="PNL"):
     """分頁抓取排行榜
-    order_by: 'PNL' (按獲利) 或 'VOLUME' (按交易量)
+    order_by: 'PNL' (按獲利) 或 'VOL' (按交易量)
     """
     print(f"📥 抓取 {time_period} 排行榜（按 {order_by} 排序）...")
     all_results = []
@@ -1045,9 +1045,9 @@ def main():
     print("🔍 SCAN B: Analytics Scan (按 Volume，找活躍崛起者)")
     print("=" * 60)
     time.sleep(1)
-    lb_30d_vol = fetch_leaderboard_paginated("MONTH", "VOLUME")
+    lb_30d_vol = fetch_leaderboard_paginated("MONTH", "VOL")
     time.sleep(1)
-    lb_7d_vol = fetch_leaderboard_paginated("WEEK", "VOLUME")
+    lb_7d_vol = fetch_leaderboard_paginated("WEEK", "VOL")
     
     # 抓全期 PnL（用於風險指標）
     print(f"\n📥 抓取全期排行榜（用於風險指標）...")
