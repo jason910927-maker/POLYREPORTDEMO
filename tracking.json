@@ -224,9 +224,10 @@
   },
   "0xa2cd4ccda9a1f95949df7a3355c4c2daa0642ba0": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
+    "last_seen": "2026-05-02",
     "appearance_dates": [
-      "2026-05-01"
+      "2026-05-01",
+      "2026-05-02"
     ],
     "username_history": [
       "0xA2cd4CcdA9A1f95949DF7A3355C4c2DAa0642Ba0-1729178570395"
@@ -234,9 +235,10 @@
   },
   "0x34de894e6485c9a49564a0ee5c10dcd70436bd88": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
+    "last_seen": "2026-05-02",
     "appearance_dates": [
-      "2026-05-01"
+      "2026-05-01",
+      "2026-05-02"
     ],
     "username_history": [
       "Dentron"
@@ -244,9 +246,10 @@
   },
   "0xab8cd32a8dba6aafad2c3560dad510cddd0b85fb": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
+    "last_seen": "2026-05-02",
     "appearance_dates": [
-      "2026-05-01"
+      "2026-05-01",
+      "2026-05-02"
     ],
     "username_history": [
       "0xab8cD32A8dba6aAfad2c3560dAd510cddD0B85fb-1777422994655"
@@ -300,6 +303,46 @@
     ],
     "username_history": [
       "sf8998"
+    ]
+  },
+  "0xa113d92c8bdd65c4f7e47a086a24ae3b125c284e": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "appearance_dates": [
+      "2026-05-02"
+    ],
+    "username_history": [
+      "0xa113d92C8BdD65c4F7e47A086A24AE3B125C284e-1777666559294"
+    ]
+  },
+  "0x56c395a2281c867b709e1a89dbc6bd0a2693d0cd": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "appearance_dates": [
+      "2026-05-02"
+    ],
+    "username_history": [
+      "ladylady"
+    ]
+  },
+  "0xc258160e3bbddbc6cdce69cca3b722e7df59bbe6": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "appearance_dates": [
+      "2026-05-02"
+    ],
+    "username_history": [
+      "3.G"
+    ]
+  },
+  "0xb260e94a0f5796d94141420eca9cc4d020b2bf05": {
+    "first_seen": "2026-05-02",
+    "last_seen": "2026-05-02",
+    "appearance_dates": [
+      "2026-05-02"
+    ],
+    "username_history": [
+      "0xb260e94a0f5796d94141420eca9cc4d020b2bf05"
     ]
   }
 }
