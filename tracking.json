@@ -224,10 +224,11 @@
   },
   "0xa2cd4ccda9a1f95949df7a3355c4c2daa0642ba0": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-02",
+    "last_seen": "2026-05-03",
     "appearance_dates": [
       "2026-05-01",
-      "2026-05-02"
+      "2026-05-02",
+      "2026-05-03"
     ],
     "username_history": [
       "0xA2cd4CcdA9A1f95949DF7A3355C4c2DAa0642Ba0-1729178570395"
@@ -235,10 +236,11 @@
   },
   "0x34de894e6485c9a49564a0ee5c10dcd70436bd88": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-02",
+    "last_seen": "2026-05-03",
     "appearance_dates": [
       "2026-05-01",
-      "2026-05-02"
+      "2026-05-02",
+      "2026-05-03"
     ],
     "username_history": [
       "Dentron"
@@ -267,9 +269,10 @@
   },
   "0x72c2e530751dba372f107a559c501aa1cde27390": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
+    "last_seen": "2026-05-03",
     "appearance_dates": [
-      "2026-05-01"
+      "2026-05-01",
+      "2026-05-03"
     ],
     "username_history": [
       "sasioverlxrd"
@@ -343,6 +346,66 @@
     ],
     "username_history": [
       "0xb260e94a0f5796d94141420eca9cc4d020b2bf05"
+    ]
+  },
+  "0x3a91c82039e65f3f21634b20beed51185d5c41a7": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "fffsasda988"
+    ]
+  },
+  "0x9e291b379ab9779afcfcc9b0ee75b57d9ae75777": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "3bb5"
+    ]
+  },
+  "0xca892505dc948e5180eb9dd3294ec02b4ab07bc4": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "qqi6699"
+    ]
+  },
+  "0x966cd85371117d811aab6e6f2b98377433659b1a": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "balldontlieee"
+    ]
+  },
+  "0xd1a985783e81fd679a509dfebd2ec46cc2ef4090": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "0xd1a985783E81Fd679A509dFEbd2ec46CC2EF4090-1764302810576"
+    ]
+  },
+  "0xa7a8c1fd4bfff08ea30214efa7efaf75d7c6580c": {
+    "first_seen": "2026-05-03",
+    "last_seen": "2026-05-03",
+    "appearance_dates": [
+      "2026-05-03"
+    ],
+    "username_history": [
+      "asjabaasj"
     ]
   }
 }
