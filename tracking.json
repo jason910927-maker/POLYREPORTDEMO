@@ -224,11 +224,12 @@
   },
   "0xa2cd4ccda9a1f95949df7a3355c4c2daa0642ba0": {
     "first_seen": "2026-05-01",
-    "last_seen": "2026-05-03",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
       "2026-05-01",
       "2026-05-02",
-      "2026-05-03"
+      "2026-05-03",
+      "2026-05-05"
     ],
     "username_history": [
       "0xA2cd4CcdA9A1f95949DF7A3355C4c2DAa0642Ba0-1729178570395"
@@ -350,9 +351,10 @@
   },
   "0x3a91c82039e65f3f21634b20beed51185d5c41a7": {
     "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-03"
+      "2026-05-03",
+      "2026-05-05"
     ],
     "username_history": [
       "fffsasda988"
@@ -410,9 +412,10 @@
   },
   "0x3748e88f10d7fe708a247daed43ea9453fec885e": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "0x3748e88f10D7fE708a247DAED43eA9453FEC885E-1723384559622"
@@ -420,9 +423,10 @@
   },
   "0x50a9189e137043b01924b13ce5a5ae86465a7964": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "BobBiswas"
@@ -430,9 +434,10 @@
   },
   "0x60aeb5ecf3cdc08767792135cda51aa0d3a01399": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "0x60AEB5eCf3CDc08767792135CdA51aa0d3a01399-1777197077106"
@@ -450,9 +455,10 @@
   },
   "0x9dcc1d3cc172231d72a9de842dfa8460079de816": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "0x9dcc1d3CC172231d72A9dE842dFA8460079dE816-1777643956860"
@@ -480,9 +486,10 @@
   },
   "0xb5bffb64192b9e41fafa9dd2dcb493d3408223ec": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "foxyshark"
@@ -510,12 +517,33 @@
   },
   "0x9236b31fe717c7cda64ad753a3ad3eb4e304e368": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
+    "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04"
+      "2026-05-04",
+      "2026-05-05"
     ],
     "username_history": [
       "LelouchViIndia"
+    ]
+  },
+  "0xcd1fff9d5825a22e1dd726ea6f80266bae5f3f0f": {
+    "first_seen": "2026-05-05",
+    "last_seen": "2026-05-05",
+    "appearance_dates": [
+      "2026-05-05"
+    ],
+    "username_history": [
+      "Mryadav03"
+    ]
+  },
+  "0x3d9141e6836b8e847d84966deb5bb72bb26fa5fd": {
+    "first_seen": "2026-05-05",
+    "last_seen": "2026-05-05",
+    "appearance_dates": [
+      "2026-05-05"
+    ],
+    "username_history": [
+      "111sf"
     ]
   }
 }
