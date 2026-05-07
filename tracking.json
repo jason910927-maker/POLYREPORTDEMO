@@ -351,10 +351,11 @@
   },
   "0x3a91c82039e65f3f21634b20beed51185d5c41a7": {
     "first_seen": "2026-05-03",
-    "last_seen": "2026-05-05",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
       "2026-05-03",
-      "2026-05-05"
+      "2026-05-05",
+      "2026-05-07"
     ],
     "username_history": [
       "fffsasda988"
@@ -402,9 +403,10 @@
   },
   "0xa7a8c1fd4bfff08ea30214efa7efaf75d7c6580c": {
     "first_seen": "2026-05-03",
-    "last_seen": "2026-05-03",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
-      "2026-05-03"
+      "2026-05-03",
+      "2026-05-07"
     ],
     "username_history": [
       "asjabaasj"
@@ -423,10 +425,11 @@
   },
   "0x50a9189e137043b01924b13ce5a5ae86465a7964": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-05",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
       "2026-05-04",
-      "2026-05-05"
+      "2026-05-05",
+      "2026-05-07"
     ],
     "username_history": [
       "BobBiswas"
@@ -434,10 +437,11 @@
   },
   "0x60aeb5ecf3cdc08767792135cda51aa0d3a01399": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-05",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
       "2026-05-04",
-      "2026-05-05"
+      "2026-05-05",
+      "2026-05-07"
     ],
     "username_history": [
       "0x60AEB5eCf3CDc08767792135CdA51aa0d3a01399-1777197077106"
@@ -517,10 +521,11 @@
   },
   "0x9236b31fe717c7cda64ad753a3ad3eb4e304e368": {
     "first_seen": "2026-05-04",
-    "last_seen": "2026-05-05",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
       "2026-05-04",
-      "2026-05-05"
+      "2026-05-05",
+      "2026-05-07"
     ],
     "username_history": [
       "LelouchViIndia"
@@ -538,12 +543,33 @@
   },
   "0x3d9141e6836b8e847d84966deb5bb72bb26fa5fd": {
     "first_seen": "2026-05-05",
-    "last_seen": "2026-05-05",
+    "last_seen": "2026-05-07",
     "appearance_dates": [
-      "2026-05-05"
+      "2026-05-05",
+      "2026-05-07"
     ],
     "username_history": [
       "111sf"
+    ]
+  },
+  "0x5fd86de46798abe62b3b1a45911477a6bd6cce32": {
+    "first_seen": "2026-05-07",
+    "last_seen": "2026-05-07",
+    "appearance_dates": [
+      "2026-05-07"
+    ],
+    "username_history": [
+      "MaciBetting23"
+    ]
+  },
+  "0x03772299118d609d4c52c17543a480db30f812d7": {
+    "first_seen": "2026-05-07",
+    "last_seen": "2026-05-07",
+    "appearance_dates": [
+      "2026-05-07"
+    ],
+    "username_history": [
+      "0x03772299118D609d4c52C17543a480dB30f812d7-1777947276534"
     ]
   }
 }
