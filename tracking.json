@@ -919,10 +919,11 @@
   },
   "0xe32f0d8b087faa6cce0f6fdacb3264dece06ce26": {
     "first_seen": "2026-06-02",
-    "last_seen": "2026-06-03",
+    "last_seen": "2026-06-04",
     "appearance_dates": [
       "2026-06-02",
-      "2026-06-03"
+      "2026-06-03",
+      "2026-06-04"
     ],
     "username_history": [
       "0xE32F0D8B087FAa6cCe0f6FDacB3264dECE06cE26-1778504157215"
@@ -1088,5 +1089,95 @@
       "2026-06-03"
     ],
     "username_history": []
+  },
+  "0x4099db7f2d394449ccf89c8d42260ecaf1d79fb8": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "richersob"
+    ]
+  },
+  "0x7bb3c7931b6c1bfb9a1b38096bdd3e906febef60": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "Bittybootybam"
+    ]
+  },
+  "0x3029039cbeb17bdfe366020dcf086e4feb200805": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "0x3029039cBEb17BdFE366020dCf086e4fEB200805-1779026857494"
+    ]
+  },
+  "0x6ba31e0627b6bb015ef1c8533e33f25a43c017bf": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "moookaaa"
+    ]
+  },
+  "0x80354d0ae1abafab20437e1d2271f97df1e70f4b": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "letsgobranden"
+    ]
+  },
+  "0xf861182b703002ff081612a0e6635b4ddabbaa20": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "ericzeon"
+    ]
+  },
+  "0xd4c48929bb894ba8ec83f65f37935e20abc46ef9": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "caiodwd"
+    ]
+  },
+  "0x3644050e43f4350fa0af361e88bd0cbed3abdd79": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "Mmgp"
+    ]
+  },
+  "0xb3c61ed6819c43e029ca4188f3ca0f59f331cd43": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "0xb3C61eD6819c43E029cA4188f3Ca0f59F331cD43-1780234873514"
+    ]
   }
 }
