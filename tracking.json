@@ -1179,5 +1179,23 @@
     "username_history": [
       "0xb3C61eD6819c43E029cA4188f3Ca0f59F331cD43-1780234873514"
     ]
+  },
+  "0x64317ba62240d4493dbf5edb64d88c58d716fc85": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": [
+      "Greatmaverick"
+    ]
+  },
+  "0xe4df6f8df7ea953d63fb28272b792ebe41a939d9": {
+    "first_seen": "2026-06-04",
+    "last_seen": "2026-06-04",
+    "appearance_dates": [
+      "2026-06-04"
+    ],
+    "username_history": []
   }
 }
