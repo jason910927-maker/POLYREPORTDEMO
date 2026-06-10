@@ -1095,13 +1095,14 @@
   },
   "0x4099db7f2d394449ccf89c8d42260ecaf1d79fb8": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "richersob"
@@ -1123,13 +1124,14 @@
   },
   "0x3029039cbeb17bdfe366020dcf086e4feb200805": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "0x3029039cBEb17BdFE366020dCf086e4fEB200805-1779026857494"
@@ -1137,13 +1139,14 @@
   },
   "0x6ba31e0627b6bb015ef1c8533e33f25a43c017bf": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "moookaaa"
@@ -1171,13 +1174,14 @@
   },
   "0xd4c48929bb894ba8ec83f65f37935e20abc46ef9": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "caiodwd"
@@ -1185,13 +1189,14 @@
   },
   "0x3644050e43f4350fa0af361e88bd0cbed3abdd79": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "Mmgp"
@@ -1199,10 +1204,11 @@
   },
   "0xb3c61ed6819c43e029ca4188f3ca0f59f331cd43": {
     "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-04",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "0xb3C61eD6819c43E029cA4188f3Ca0f59F331cD43-1780234873514"
@@ -1232,12 +1238,13 @@
   },
   "0x132f78734e5fecba945c24d5c49cd84d8c0f453b": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-08",
+    "last_seen": "2026-06-10",
     "appearance_dates": [
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
-      "2026-06-08"
+      "2026-06-08",
+      "2026-06-10"
     ],
     "username_history": [
       "0x132f78734E5fECBA945c24D5C49cd84D8C0f453b-1780468180142"
@@ -1264,6 +1271,36 @@
     ],
     "username_history": [
       "zezj"
+    ]
+  },
+  "0x3d50d49babadb8fb3e44485fa05c2604c90e713d": {
+    "first_seen": "2026-06-10",
+    "last_seen": "2026-06-10",
+    "appearance_dates": [
+      "2026-06-10"
+    ],
+    "username_history": [
+      "hkimcont"
+    ]
+  },
+  "0x6d641a49299d416ae3f62916e21ced42c5ca8dd6": {
+    "first_seen": "2026-06-10",
+    "last_seen": "2026-06-10",
+    "appearance_dates": [
+      "2026-06-10"
+    ],
+    "username_history": [
+      "0x6d641a49299d416ae3F62916E21CED42C5CA8dd6-1781009983244"
+    ]
+  },
+  "0x9f8f189cdf3d1c4e7cede39946aa8fabe7019813": {
+    "first_seen": "2026-06-10",
+    "last_seen": "2026-06-10",
+    "appearance_dates": [
+      "2026-06-10"
+    ],
+    "username_history": [
+      "OneTwoUp"
     ]
   }
 }
