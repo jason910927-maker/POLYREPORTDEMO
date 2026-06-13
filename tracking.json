@@ -1326,9 +1326,10 @@
   },
   "0x3169b66ed90372454519dc7a833ec39a807fac5a": {
     "first_seen": "2026-06-12",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "FirstStep"
@@ -1353,6 +1354,36 @@
     ],
     "username_history": [
       "sinayevskaya"
+    ]
+  },
+  "0x8dcbcb3112444d06455005b0b6533e8e12956d5b": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "appearance_dates": [
+      "2026-06-13"
+    ],
+    "username_history": [
+      "0x8DcBCB3112444d06455005B0B6533E8E12956D5b-1781209075274"
+    ]
+  },
+  "0xc430e5b17128df7ce78d69fa28bc7de038641ebf": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "appearance_dates": [
+      "2026-06-13"
+    ],
+    "username_history": [
+      "Gourmet1"
+    ]
+  },
+  "0xbba84878f74ad26893c1828e07e25684a707b4f8": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "appearance_dates": [
+      "2026-06-13"
+    ],
+    "username_history": [
+      "cryptolova"
     ]
   }
 }
