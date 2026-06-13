@@ -1238,14 +1238,15 @@
   },
   "0x132f78734e5fecba945c24d5c49cd84d8c0f453b": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
       "2026-06-05",
       "2026-06-06",
       "2026-06-07",
       "2026-06-08",
       "2026-06-10",
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "0x132f78734E5fECBA945c24D5C49cd84D8C0f453b-1780468180142"
@@ -1253,12 +1254,13 @@
   },
   "0xa938bd6071fed6384654b06ffa3e67d7a8d4bad0": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
       "2026-06-05",
       "2026-06-06",
       "2026-06-08",
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "asdgwezcasdq"
@@ -1266,11 +1268,12 @@
   },
   "0x85bbb00a84f100a74ec6a479ce6f8f45b04c9ada": {
     "first_seen": "2026-06-07",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
       "2026-06-07",
       "2026-06-08",
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "zezj"
@@ -1278,10 +1281,11 @@
   },
   "0x3d50d49babadb8fb3e44485fa05c2604c90e713d": {
     "first_seen": "2026-06-10",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
       "2026-06-10",
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "hkimcont"
@@ -1299,10 +1303,11 @@
   },
   "0x9f8f189cdf3d1c4e7cede39946aa8fabe7019813": {
     "first_seen": "2026-06-10",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
       "2026-06-10",
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "OneTwoUp"
@@ -1310,9 +1315,10 @@
   },
   "0x2dc214c37a2723c045a74e53d872e574e021fcad": {
     "first_seen": "2026-06-12",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "0x679d686CD424Fc07539ae7919F9A2f4223fcB575-1770759395291"
@@ -1330,12 +1336,23 @@
   },
   "0x16581ee7c20cc69496517692a192636485a2d10e": {
     "first_seen": "2026-06-12",
-    "last_seen": "2026-06-12",
+    "last_seen": "2026-06-13",
     "appearance_dates": [
-      "2026-06-12"
+      "2026-06-12",
+      "2026-06-13"
     ],
     "username_history": [
       "bigstones"
+    ]
+  },
+  "0xc53643ed8499c8326921d4c07961164d9665f086": {
+    "first_seen": "2026-06-13",
+    "last_seen": "2026-06-13",
+    "appearance_dates": [
+      "2026-06-13"
+    ],
+    "username_history": [
+      "sinayevskaya"
     ]
   }
 }
