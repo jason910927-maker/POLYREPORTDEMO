@@ -1238,7 +1238,7 @@
   },
   "0x132f78734e5fecba945c24d5c49cd84d8c0f453b": {
     "first_seen": "2026-06-05",
-    "last_seen": "2026-06-16",
+    "last_seen": "2026-06-17",
     "appearance_dates": [
       "2026-06-05",
       "2026-06-06",
@@ -1249,7 +1249,8 @@
       "2026-06-13",
       "2026-06-14",
       "2026-06-15",
-      "2026-06-16"
+      "2026-06-16",
+      "2026-06-17"
     ],
     "username_history": [
       "0x132f78734E5fECBA945c24D5C49cd84D8C0f453b-1780468180142",
@@ -1346,13 +1347,14 @@
   },
   "0x16581ee7c20cc69496517692a192636485a2d10e": {
     "first_seen": "2026-06-12",
-    "last_seen": "2026-06-16",
+    "last_seen": "2026-06-17",
     "appearance_dates": [
       "2026-06-12",
       "2026-06-13",
       "2026-06-14",
       "2026-06-15",
-      "2026-06-16"
+      "2026-06-16",
+      "2026-06-17"
     ],
     "username_history": [
       "bigstones"
@@ -1393,12 +1395,13 @@
   },
   "0xbba84878f74ad26893c1828e07e25684a707b4f8": {
     "first_seen": "2026-06-13",
-    "last_seen": "2026-06-16",
+    "last_seen": "2026-06-17",
     "appearance_dates": [
       "2026-06-13",
       "2026-06-14",
       "2026-06-15",
-      "2026-06-16"
+      "2026-06-16",
+      "2026-06-17"
     ],
     "username_history": [
       "cryptolova"
@@ -1426,11 +1429,12 @@
   },
   "0xa7229f3cd642fa8edab1edbca9a11b3523c9c09b": {
     "first_seen": "2026-06-14",
-    "last_seen": "2026-06-16",
+    "last_seen": "2026-06-17",
     "appearance_dates": [
       "2026-06-14",
       "2026-06-15",
-      "2026-06-16"
+      "2026-06-16",
+      "2026-06-17"
     ],
     "username_history": [
       "fdsafdsafdsaf"
@@ -1459,9 +1463,10 @@
   },
   "0x3e174c76214b402716a7f4272cb929dc5060d3d8": {
     "first_seen": "2026-06-16",
-    "last_seen": "2026-06-16",
+    "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-16"
+      "2026-06-16",
+      "2026-06-17"
     ],
     "username_history": [
       "tttrtrtrtrtr"
@@ -1475,6 +1480,36 @@
     ],
     "username_history": [
       "SKIWQ"
+    ]
+  },
+  "0xa107735282e20d07ad4e6019856e4e357404b7bd": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "appearance_dates": [
+      "2026-06-17"
+    ],
+    "username_history": [
+      "e7f52"
+    ]
+  },
+  "0x681b3e42aaafc3357ea43522774833b94f192f73": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "appearance_dates": [
+      "2026-06-17"
+    ],
+    "username_history": [
+      "atle28"
+    ]
+  },
+  "0x7edb68a7ee588fc58621911e12f80039d678cb2e": {
+    "first_seen": "2026-06-17",
+    "last_seen": "2026-06-17",
+    "appearance_dates": [
+      "2026-06-17"
+    ],
+    "username_history": [
+      "formidabu11"
     ]
   }
 }
