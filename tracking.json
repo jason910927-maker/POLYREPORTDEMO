@@ -1395,13 +1395,14 @@
   },
   "0xbba84878f74ad26893c1828e07e25684a707b4f8": {
     "first_seen": "2026-06-13",
-    "last_seen": "2026-06-17",
+    "last_seen": "2026-06-18",
     "appearance_dates": [
       "2026-06-13",
       "2026-06-14",
       "2026-06-15",
       "2026-06-16",
-      "2026-06-17"
+      "2026-06-17",
+      "2026-06-18"
     ],
     "username_history": [
       "cryptolova"
@@ -1429,12 +1430,13 @@
   },
   "0xa7229f3cd642fa8edab1edbca9a11b3523c9c09b": {
     "first_seen": "2026-06-14",
-    "last_seen": "2026-06-17",
+    "last_seen": "2026-06-18",
     "appearance_dates": [
       "2026-06-14",
       "2026-06-15",
       "2026-06-16",
-      "2026-06-17"
+      "2026-06-17",
+      "2026-06-18"
     ],
     "username_history": [
       "fdsafdsafdsaf"
@@ -1514,12 +1516,23 @@
   },
   "0x02e2799f96d5a3a97934fb7e413ecb65c3bccd40": {
     "first_seen": "2026-06-17",
-    "last_seen": "2026-06-17",
+    "last_seen": "2026-06-18",
     "appearance_dates": [
-      "2026-06-17"
+      "2026-06-17",
+      "2026-06-18"
     ],
     "username_history": [
       "Facaixiaoshou"
+    ]
+  },
+  "0xde294a409a8870b3029b935e451a696e13ef89b1": {
+    "first_seen": "2026-06-18",
+    "last_seen": "2026-06-18",
+    "appearance_dates": [
+      "2026-06-18"
+    ],
+    "username_history": [
+      "boobaz"
     ]
   }
 }
