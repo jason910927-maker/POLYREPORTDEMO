@@ -1431,7 +1431,7 @@
   },
   "0xa7229f3cd642fa8edab1edbca9a11b3523c9c09b": {
     "first_seen": "2026-06-14",
-    "last_seen": "2026-06-21",
+    "last_seen": "2026-06-22",
     "appearance_dates": [
       "2026-06-14",
       "2026-06-15",
@@ -1440,7 +1440,8 @@
       "2026-06-18",
       "2026-06-19",
       "2026-06-20",
-      "2026-06-21"
+      "2026-06-21",
+      "2026-06-22"
     ],
     "username_history": [
       "fdsafdsafdsaf"
@@ -1521,13 +1522,14 @@
   },
   "0x02e2799f96d5a3a97934fb7e413ecb65c3bccd40": {
     "first_seen": "2026-06-17",
-    "last_seen": "2026-06-21",
+    "last_seen": "2026-06-22",
     "appearance_dates": [
       "2026-06-17",
       "2026-06-18",
       "2026-06-19",
       "2026-06-20",
-      "2026-06-21"
+      "2026-06-21",
+      "2026-06-22"
     ],
     "username_history": [
       "Facaixiaoshou"
@@ -1562,5 +1564,13 @@
     "username_history": [
       "0x37ee3BCEb4fBf028fb90D1463A4a5354Da02f86F-1781205947489"
     ]
+  },
+  "0xb4bad13f1ff0f70cc4a68230d3bf6f81b8bbdaba": {
+    "first_seen": "2026-06-22",
+    "last_seen": "2026-06-22",
+    "appearance_dates": [
+      "2026-06-22"
+    ],
+    "username_history": []
   }
 }
