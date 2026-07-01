@@ -1694,5 +1694,71 @@
     "username_history": [
       "W1se30"
     ]
+  },
+  "0xdd8e1c1d99d7f6994816ee554943837782f64fd2": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": []
+  },
+  "0x157847c1bc6b5f2ae761a298fa991b7141065ad0": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": []
+  },
+  "0xa61f3bd609d7aebed85dd4053a043c5fe21d2500": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "0xA61F3bd609d7Aebed85Dd4053A043C5FE21d2500-1782503608183"
+    ]
+  },
+  "0xb715c817c60cb3eb58d5bab4cfee6a405fcdc3bb": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "0xB715c817c60CB3eB58d5baB4cfeE6A405fCDc3BB-1782743795448"
+    ]
+  },
+  "0x471d4fa9c4f0e3f2e6f31dcc109998cd954d2fa7": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "0x471D4fa9c4f0E3f2e6F31dCc109998Cd954d2Fa7-1782833500772"
+    ]
+  },
+  "0x1842f349bbaeea8bd3f9acf88a70696fdba616ea": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "0xpercevil"
+    ]
+  },
+  "0x3a060494a72f282619d2881a2750ca62ba18d694": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "0x3a060494a72F282619d2881a2750CA62ba18D694-1782842593825"
+    ]
   }
 }
