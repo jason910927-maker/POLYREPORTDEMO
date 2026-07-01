@@ -1564,9 +1564,10 @@
   },
   "0x37ee3bceb4fbf028fb90d1463a4a5354da02f86f": {
     "first_seen": "2026-06-19",
-    "last_seen": "2026-06-19",
+    "last_seen": "2026-07-01",
     "appearance_dates": [
-      "2026-06-19"
+      "2026-06-19",
+      "2026-07-01"
     ],
     "username_history": [
       "0x37ee3BCEb4fBf028fb90D1463A4a5354Da02f86F-1781205947489"
@@ -1619,5 +1620,79 @@
       "2026-06-30"
     ],
     "username_history": []
+  },
+  "0x335f4ee26177522f88a6bcd8427b08dabfce444f": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "codyqb"
+    ]
+  },
+  "0x2589876f7934d8b9ed551e911e1b50dabbcc6868": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "aussietoken"
+    ]
+  },
+  "0x45e6f90cd5293b89c642526f6de521990df165e5": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": []
+  },
+  "0x45c460e11e782471c3c2420cc0b8bb8eff794d38": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": []
+  },
+  "0x60ab628a82cdf7b9274ff1587f1b30211b763206": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "FB92"
+    ]
+  },
+  "0xa2a07a7d25cdfdd6e519f18497bf1f4675e7b16b": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "chinamax"
+    ]
+  },
+  "0xde329545e4580eeb57634dbac9e4838fbbf0190c": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": []
+  },
+  "0x453f50e3c0460c7ff9ed6908219111a40cba87db": {
+    "first_seen": "2026-07-01",
+    "last_seen": "2026-07-01",
+    "appearance_dates": [
+      "2026-07-01"
+    ],
+    "username_history": [
+      "W1se30"
+    ]
   }
 }
