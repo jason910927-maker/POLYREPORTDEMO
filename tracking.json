@@ -1643,9 +1643,10 @@
   },
   "0x45e6f90cd5293b89c642526f6de521990df165e5": {
     "first_seen": "2026-07-01",
-    "last_seen": "2026-07-01",
+    "last_seen": "2026-07-02",
     "appearance_dates": [
-      "2026-07-01"
+      "2026-07-01",
+      "2026-07-02"
     ],
     "username_history": []
   },
@@ -1669,9 +1670,10 @@
   },
   "0xa2a07a7d25cdfdd6e519f18497bf1f4675e7b16b": {
     "first_seen": "2026-07-01",
-    "last_seen": "2026-07-01",
+    "last_seen": "2026-07-02",
     "appearance_dates": [
-      "2026-07-01"
+      "2026-07-01",
+      "2026-07-02"
     ],
     "username_history": [
       "chinamax"
@@ -1713,9 +1715,10 @@
   },
   "0xa61f3bd609d7aebed85dd4053a043c5fe21d2500": {
     "first_seen": "2026-07-01",
-    "last_seen": "2026-07-01",
+    "last_seen": "2026-07-02",
     "appearance_dates": [
-      "2026-07-01"
+      "2026-07-01",
+      "2026-07-02"
     ],
     "username_history": [
       "0xA61F3bd609d7Aebed85Dd4053A043C5FE21d2500-1782503608183"
@@ -1759,6 +1762,76 @@
     ],
     "username_history": [
       "0x3a060494a72F282619d2881a2750CA62ba18D694-1782842593825"
+    ]
+  },
+  "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "cbbbbb"
+    ]
+  },
+  "0x254e913a4465cde1a6eeebf6792346048601e722": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "0x254E913A4465cDE1A6eeEbF6792346048601e722-1782665699380"
+    ]
+  },
+  "0x20b80ebb96e2051540e1d475e4ce122fc282aa04": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "tes21sa"
+    ]
+  },
+  "0x66392da57052f9383255c778147b1d3f578c0e59": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "JRC2"
+    ]
+  },
+  "0x811d7f8cf22db03145ba6db7c9eb29fca4cc7ef5": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "vvv6667"
+    ]
+  },
+  "0xb5f610da3e3563ab86679086b70922f014f0aba9": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "zacnogamble"
+    ]
+  },
+  "0xab6a7da501eb0f53ab56f758e7c399f9249a2978": {
+    "first_seen": "2026-07-02",
+    "last_seen": "2026-07-02",
+    "appearance_dates": [
+      "2026-07-02"
+    ],
+    "username_history": [
+      "prostozero"
     ]
   }
 }
