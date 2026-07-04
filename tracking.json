@@ -1643,11 +1643,12 @@
   },
   "0x45e6f90cd5293b89c642526f6de521990df165e5": {
     "first_seen": "2026-07-01",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
       "2026-07-01",
       "2026-07-02",
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": []
   },
@@ -1768,9 +1769,10 @@
   },
   "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-02",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
-      "2026-07-02"
+      "2026-07-02",
+      "2026-07-04"
     ],
     "username_history": [
       "cbbbbb"
@@ -1788,10 +1790,11 @@
   },
   "0x20b80ebb96e2051540e1d475e4ce122fc282aa04": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
       "2026-07-02",
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": [
       "tes21sa"
@@ -1809,10 +1812,11 @@
   },
   "0x811d7f8cf22db03145ba6db7c9eb29fca4cc7ef5": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
       "2026-07-02",
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": [
       "vvv6667"
@@ -1820,10 +1824,11 @@
   },
   "0xb5f610da3e3563ab86679086b70922f014f0aba9": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
       "2026-07-02",
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": [
       "zacnogamble"
@@ -1851,9 +1856,10 @@
   },
   "0x28d3d125b46549687c799cd0f3819a7e9e42c27c": {
     "first_seen": "2026-07-03",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": [
       "0x8642857E31C4ffF173040f847f2503f58D572F16-1772442841175"
@@ -1871,9 +1877,10 @@
   },
   "0xb5b60d821300cef591b7c2a7647fd38e5ecaca29": {
     "first_seen": "2026-07-03",
-    "last_seen": "2026-07-03",
+    "last_seen": "2026-07-04",
     "appearance_dates": [
-      "2026-07-03"
+      "2026-07-03",
+      "2026-07-04"
     ],
     "username_history": [
       "hgawx"
@@ -1887,6 +1894,36 @@
     ],
     "username_history": [
       "juliannagelsmann"
+    ]
+  },
+  "0x77bcd040dfa67f8a1de094b05442b99c0f6fb29e": {
+    "first_seen": "2026-07-04",
+    "last_seen": "2026-07-04",
+    "appearance_dates": [
+      "2026-07-04"
+    ],
+    "username_history": [
+      "ma1lone"
+    ]
+  },
+  "0x81d660b27a86a406f453505ac2a6575e2fbcbe2c": {
+    "first_seen": "2026-07-04",
+    "last_seen": "2026-07-04",
+    "appearance_dates": [
+      "2026-07-04"
+    ],
+    "username_history": [
+      "luckery"
+    ]
+  },
+  "0xe2eec74eb1e21b87e08a7c195f91966425899024": {
+    "first_seen": "2026-07-04",
+    "last_seen": "2026-07-04",
+    "appearance_dates": [
+      "2026-07-04"
+    ],
+    "username_history": [
+      "Halda179"
     ]
   }
 }
