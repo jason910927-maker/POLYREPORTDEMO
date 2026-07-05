@@ -1769,10 +1769,11 @@
   },
   "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-04",
+    "last_seen": "2026-07-05",
     "appearance_dates": [
       "2026-07-02",
-      "2026-07-04"
+      "2026-07-04",
+      "2026-07-05"
     ],
     "username_history": [
       "cbbbbb"
@@ -1790,11 +1791,12 @@
   },
   "0x20b80ebb96e2051540e1d475e4ce122fc282aa04": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-04",
+    "last_seen": "2026-07-05",
     "appearance_dates": [
       "2026-07-02",
       "2026-07-03",
-      "2026-07-04"
+      "2026-07-04",
+      "2026-07-05"
     ],
     "username_history": [
       "tes21sa"
@@ -1812,11 +1814,12 @@
   },
   "0x811d7f8cf22db03145ba6db7c9eb29fca4cc7ef5": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-04",
+    "last_seen": "2026-07-05",
     "appearance_dates": [
       "2026-07-02",
       "2026-07-03",
-      "2026-07-04"
+      "2026-07-04",
+      "2026-07-05"
     ],
     "username_history": [
       "vvv6667"
@@ -1934,6 +1937,26 @@
     ],
     "username_history": [
       "worldcpu"
+    ]
+  },
+  "0x1c3f8f2f4b3cb507d9d952a40e47a839868fe87c": {
+    "first_seen": "2026-07-05",
+    "last_seen": "2026-07-05",
+    "appearance_dates": [
+      "2026-07-05"
+    ],
+    "username_history": [
+      "nachito77"
+    ]
+  },
+  "0x324a8d6ddbbe80eb1065207aafed2dc4a214f1a1": {
+    "first_seen": "2026-07-05",
+    "last_seen": "2026-07-05",
+    "appearance_dates": [
+      "2026-07-05"
+    ],
+    "username_history": [
+      "0x324a8D6ddbbE80Eb1065207AAFED2Dc4a214F1A1-1783177808221"
     ]
   }
 }
