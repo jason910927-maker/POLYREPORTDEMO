@@ -1769,11 +1769,12 @@
   },
   "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-05",
+    "last_seen": "2026-07-06",
     "appearance_dates": [
       "2026-07-02",
       "2026-07-04",
-      "2026-07-05"
+      "2026-07-05",
+      "2026-07-06"
     ],
     "username_history": [
       "cbbbbb"
@@ -1814,12 +1815,13 @@
   },
   "0x811d7f8cf22db03145ba6db7c9eb29fca4cc7ef5": {
     "first_seen": "2026-07-02",
-    "last_seen": "2026-07-05",
+    "last_seen": "2026-07-06",
     "appearance_dates": [
       "2026-07-02",
       "2026-07-03",
       "2026-07-04",
-      "2026-07-05"
+      "2026-07-05",
+      "2026-07-06"
     ],
     "username_history": [
       "vvv6667"
@@ -1967,6 +1969,26 @@
     ],
     "username_history": [
       "trueblueaussie"
+    ]
+  },
+  "0x107895cfb17a3b527ccf46eb612a2cd250c13385": {
+    "first_seen": "2026-07-06",
+    "last_seen": "2026-07-06",
+    "appearance_dates": [
+      "2026-07-06"
+    ],
+    "username_history": [
+      "Jackbudd15"
+    ]
+  },
+  "0x0393f631c8f4c5d909e00e6d75d2e1406b916202": {
+    "first_seen": "2026-07-06",
+    "last_seen": "2026-07-06",
+    "appearance_dates": [
+      "2026-07-06"
+    ],
+    "username_history": [
+      "vikingmonkey"
     ]
   }
 }
