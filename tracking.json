@@ -1973,9 +1973,10 @@
   },
   "0x107895cfb17a3b527ccf46eb612a2cd250c13385": {
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-06",
+    "last_seen": "2026-07-07",
     "appearance_dates": [
-      "2026-07-06"
+      "2026-07-06",
+      "2026-07-07"
     ],
     "username_history": [
       "Jackbudd15"
@@ -1993,12 +1994,33 @@
   },
   "0x0bf4e337efc7c954cd7ae2c150df3b1fd3c7c5f6": {
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-06",
+    "last_seen": "2026-07-07",
     "appearance_dates": [
-      "2026-07-06"
+      "2026-07-06",
+      "2026-07-07"
     ],
     "username_history": [
       "-.-x"
+    ]
+  },
+  "0x59a2f70ef0fdf6e5d0f393e25c2c9523914d5014": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "appearance_dates": [
+      "2026-07-07"
+    ],
+    "username_history": [
+      "NeverGaveUp"
+    ]
+  },
+  "0x66b58093676354bc03bf3a9ead97c230635b5bd9": {
+    "first_seen": "2026-07-07",
+    "last_seen": "2026-07-07",
+    "appearance_dates": [
+      "2026-07-07"
+    ],
+    "username_history": [
+      "1369aa"
     ]
   }
 }
