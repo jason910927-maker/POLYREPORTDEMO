@@ -1973,11 +1973,12 @@
   },
   "0x107895cfb17a3b527ccf46eb612a2cd250c13385": {
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-08",
+    "last_seen": "2026-07-09",
     "appearance_dates": [
       "2026-07-06",
       "2026-07-07",
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "username_history": [
       "Jackbudd15"
@@ -1995,11 +1996,12 @@
   },
   "0x0bf4e337efc7c954cd7ae2c150df3b1fd3c7c5f6": {
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-08",
+    "last_seen": "2026-07-09",
     "appearance_dates": [
       "2026-07-06",
       "2026-07-07",
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "username_history": [
       "-.-x"
@@ -2017,10 +2019,11 @@
   },
   "0x66b58093676354bc03bf3a9ead97c230635b5bd9": {
     "first_seen": "2026-07-07",
-    "last_seen": "2026-07-08",
+    "last_seen": "2026-07-09",
     "appearance_dates": [
       "2026-07-07",
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "username_history": [
       "1369aa"
@@ -2028,9 +2031,10 @@
   },
   "0x9636b638a9b942b5945b0a54e86acd4120ddd08b": {
     "first_seen": "2026-07-08",
-    "last_seen": "2026-07-08",
+    "last_seen": "2026-07-09",
     "appearance_dates": [
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "username_history": [
       "agromonkey"
@@ -2038,9 +2042,10 @@
   },
   "0xbf6755d00d146b95374e6b950b274bd81d7bfe3d": {
     "first_seen": "2026-07-08",
-    "last_seen": "2026-07-08",
+    "last_seen": "2026-07-09",
     "appearance_dates": [
-      "2026-07-08"
+      "2026-07-08",
+      "2026-07-09"
     ],
     "username_history": [
       "kaharvaka"
@@ -2054,6 +2059,16 @@
     ],
     "username_history": [
       "xx44c"
+    ]
+  },
+  "0xe0af5cbfb9d6a56579a03f8c07e5bd98a3d5a098": {
+    "first_seen": "2026-07-09",
+    "last_seen": "2026-07-09",
+    "appearance_dates": [
+      "2026-07-09"
+    ],
+    "username_history": [
+      "LaMaquinaX"
     ]
   }
 }
