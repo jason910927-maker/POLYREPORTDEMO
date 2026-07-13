@@ -1997,7 +1997,7 @@
   },
   "0x0bf4e337efc7c954cd7ae2c150df3b1fd3c7c5f6": {
     "first_seen": "2026-07-06",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
       "2026-07-06",
       "2026-07-07",
@@ -2005,7 +2005,8 @@
       "2026-07-09",
       "2026-07-10",
       "2026-07-11",
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "-.-x"
@@ -2036,13 +2037,14 @@
   },
   "0x9636b638a9b942b5945b0a54e86acd4120ddd08b": {
     "first_seen": "2026-07-08",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
       "2026-07-08",
       "2026-07-09",
       "2026-07-10",
       "2026-07-11",
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "agromonkey"
@@ -2072,12 +2074,13 @@
   },
   "0xe0af5cbfb9d6a56579a03f8c07e5bd98a3d5a098": {
     "first_seen": "2026-07-09",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
       "2026-07-09",
       "2026-07-10",
       "2026-07-11",
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "LaMaquinaX"
@@ -2085,11 +2088,12 @@
   },
   "0x26165df18c4dae74bfc20b8f266f0887fedbc6aa": {
     "first_seen": "2026-07-10",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
       "2026-07-10",
       "2026-07-11",
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "ivantoney"
@@ -2120,11 +2124,12 @@
   },
   "0xfd7c64f694ceeaaf7dbdc6337c80b457f028dc40": {
     "first_seen": "2026-07-10",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
       "2026-07-10",
       "2026-07-11",
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "Esptein"
@@ -2183,12 +2188,23 @@
   },
   "0x3ea2cd9da75e99c7e6ef07206c341aad247de8e5": {
     "first_seen": "2026-07-12",
-    "last_seen": "2026-07-12",
+    "last_seen": "2026-07-13",
     "appearance_dates": [
-      "2026-07-12"
+      "2026-07-12",
+      "2026-07-13"
     ],
     "username_history": [
       "akasa"
+    ]
+  },
+  "0xc0c426cfdbace70bb89d371aa80d3b1cac1cf745": {
+    "first_seen": "2026-07-13",
+    "last_seen": "2026-07-13",
+    "appearance_dates": [
+      "2026-07-13"
+    ],
+    "username_history": [
+      "kedaya8888"
     ]
   }
 }
