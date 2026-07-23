@@ -2079,14 +2079,15 @@
   },
   "0xe0af5cbfb9d6a56579a03f8c07e5bd98a3d5a098": {
     "first_seen": "2026-07-09",
-    "last_seen": "2026-07-22",
+    "last_seen": "2026-07-23",
     "appearance_dates": [
       "2026-07-09",
       "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13",
-      "2026-07-22"
+      "2026-07-22",
+      "2026-07-23"
     ],
     "username_history": [
       "LaMaquinaX",
@@ -2265,6 +2266,16 @@
     ],
     "username_history": [
       "anykey"
+    ]
+  },
+  "0x7542fa229f63a7bd8a9ca4584638004a39317a20": {
+    "first_seen": "2026-07-23",
+    "last_seen": "2026-07-23",
+    "appearance_dates": [
+      "2026-07-23"
+    ],
+    "username_history": [
+      "highpal"
     ]
   }
 }
