@@ -2291,9 +2291,10 @@
   },
   "0xec981ed70ae69c5cbcac08c1ba063e734f6bafcd": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
+    "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24"
+      "2026-07-24",
+      "2026-07-25"
     ],
     "username_history": [
       "0xheavy888"
@@ -2331,9 +2332,10 @@
   },
   "0x1f9e15f39bbd5d163b0eacf0fbef647ced9e4f1a": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
+    "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24"
+      "2026-07-24",
+      "2026-07-25"
     ],
     "username_history": [
       "3ubela-Cp6uja"
@@ -2341,9 +2343,10 @@
   },
   "0xc1b4bfdc36eaa5c09e7231c61e5e44c5463f624f": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
+    "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24"
+      "2026-07-24",
+      "2026-07-25"
     ],
     "username_history": [
       "sir-upalot"
@@ -2361,9 +2364,10 @@
   },
   "0x161a7f666ca49d592848cf415b42f49a84714103": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
+    "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24"
+      "2026-07-24",
+      "2026-07-25"
     ],
     "username_history": [
       "torta.tech"
@@ -2371,12 +2375,63 @@
   },
   "0xa2a020a382c90b292331ef36e62a2680e3df7e90": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
+    "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24"
+      "2026-07-24",
+      "2026-07-25"
     ],
     "username_history": [
       "Ermelo"
+    ]
+  },
+  "0xa05ec37f1039fab381d8f353354d00cd8c594394": {
+    "first_seen": "2026-07-25",
+    "last_seen": "2026-07-25",
+    "appearance_dates": [
+      "2026-07-25"
+    ],
+    "username_history": [
+      "Xhhh-060"
+    ]
+  },
+  "0xf00698742d193fa8e88c86de98c15973c2a1bb6c": {
+    "first_seen": "2026-07-25",
+    "last_seen": "2026-07-25",
+    "appearance_dates": [
+      "2026-07-25"
+    ],
+    "username_history": [
+      "TimSheHe"
+    ]
+  },
+  "0xba8c5fbcc5f58b0e4ae0c1413e0413f8c803e77d": {
+    "first_seen": "2026-07-25",
+    "last_seen": "2026-07-25",
+    "appearance_dates": [
+      "2026-07-25"
+    ],
+    "username_history": [
+      "Rock.San"
+    ]
+  },
+  "0x3da89a55cdd4b5c69f80e5cd3ef1782a3e0480c3": {
+    "first_seen": "2026-07-25",
+    "last_seen": "2026-07-25",
+    "appearance_dates": [
+      "2026-07-25"
+    ],
+    "username_history": [
+      "0x3DA89a55CdD4b5c69F80E5Cd3ef1782a3E0480c3-1777119032461"
+    ]
+  },
+  "0x2d6ac4f70307102ac46e9e6ded67f3838ddf8add": {
+    "first_seen": "2026-07-25",
+    "last_seen": "2026-07-25",
+    "appearance_dates": [
+      "2026-07-25"
+    ],
+    "username_history": [
+      "GC-P"
     ]
   }
 }
