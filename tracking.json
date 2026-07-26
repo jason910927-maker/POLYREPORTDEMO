@@ -2291,10 +2291,11 @@
   },
   "0xec981ed70ae69c5cbcac08c1ba063e734f6bafcd": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-26",
     "appearance_dates": [
       "2026-07-24",
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26"
     ],
     "username_history": [
       "0xheavy888"
@@ -2515,6 +2516,46 @@
     ],
     "username_history": [
       "Sharky6999"
+    ]
+  },
+  "0xf7f0b0b1e9c0fe02ccad926916ee31aef74b912c": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "wapol"
+    ]
+  },
+  "0xb0f85baa97990910a3e8ac2b4a58a322f01ecef5": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "pspspsps5"
+    ]
+  },
+  "0x04677c0cd4b904b50f0f829586824b773feefb2e": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "shxbyron1"
+    ]
+  },
+  "0xf8371076fb3df0fcfcdb4d9f16bbe98bb241bd42": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "mlin1010"
     ]
   }
 }
