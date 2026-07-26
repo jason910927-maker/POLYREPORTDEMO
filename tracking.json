@@ -2332,13 +2332,15 @@
   },
   "0x1f9e15f39bbd5d163b0eacf0fbef647ced9e4f1a": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-26",
     "appearance_dates": [
       "2026-07-24",
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26"
     ],
     "username_history": [
-      "3ubela-Cp6uja"
+      "3ubela-Cp6uja",
+      "djfrrjiosnsoj"
     ]
   },
   "0xc1b4bfdc36eaa5c09e7231c61e5e44c5463f624f": {
@@ -2375,10 +2377,11 @@
   },
   "0xa2a020a382c90b292331ef36e62a2680e3df7e90": {
     "first_seen": "2026-07-24",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-26",
     "appearance_dates": [
       "2026-07-24",
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26"
     ],
     "username_history": [
       "Ermelo"
@@ -2406,9 +2409,10 @@
   },
   "0xba8c5fbcc5f58b0e4ae0c1413e0413f8c803e77d": {
     "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26"
     ],
     "username_history": [
       "Rock.San"
@@ -2436,9 +2440,10 @@
   },
   "0xfcdc071df7080c214196bb0b3b751e5417f9d8e3": {
     "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-26"
     ],
     "username_history": [
       "neversmiling"
@@ -2452,6 +2457,64 @@
     ],
     "username_history": [
       "RandomGameBet"
+    ]
+  },
+  "0xa0e72d5575095199ae08ce0dce447f21b7249461": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "uninformedfloww"
+    ]
+  },
+  "0x8931aa50226eea3e626c961ccffcf176dcf3a90c": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": []
+  },
+  "0x98db8cca55c32b24cfb414b5b43d273f4e1fdd17": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "Eulhunter"
+    ]
+  },
+  "0x590ed3d1a14ba08cad23f5c513bad6301772e43d": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "smalltimezzz"
+    ]
+  },
+  "0x9d57c42e847173d06841703825d3fe2299e456ea": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "Polkadot-Frog"
+    ]
+  },
+  "0x751a2b86cab503496efd325c8344e10159349ea1": {
+    "first_seen": "2026-07-26",
+    "last_seen": "2026-07-26",
+    "appearance_dates": [
+      "2026-07-26"
+    ],
+    "username_history": [
+      "Sharky6999"
     ]
   }
 }
