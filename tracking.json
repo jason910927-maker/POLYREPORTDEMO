@@ -1,109 +1,8 @@
 {
-  "0xcd6482d6b4fd8f314384ad19f9e85ea0ce187445": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "beoakdd"
-    ]
-  },
-  "0x8c80d213c0cbad777d06ee3f58f6ca4bc03102c3": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "SecondWindCapital"
-    ]
-  },
-  "0x8a3ab8120807bd64a3de48695110e390fa2ceb9a": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "0x8a3aB8120807bD64a3De48695110e390fa2ceB9a-1771005965025"
-    ]
-  },
-  "0x61efd00829dbf08e4e80578aab589cb41bf05a75": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "uncleJohnny"
-    ]
-  },
-  "0x0b9cae2b0dfe7a71c413e0604eaac1c352f87e44": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "geniusMC"
-    ]
-  },
-  "0xf28e42d20e4826f2b10a24bc952001697947cab2": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "ethanaz"
-    ]
-  },
-  "0x0006af12cd4dacc450836a0e1ec6ce47365d8c63": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "stingo43"
-    ]
-  },
-  "0xf1649daae29c44bdb406a4dbb7f1748eac398fa4": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "Jargs"
-    ]
-  },
-  "0xef27152015c5313daf457804e7319e869ed3381b": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "superbeter007"
-    ]
-  },
-  "0xc6587b11a2209e46dfe3928b31c5514a8e33b784": {
-    "first_seen": "2026-04-27",
-    "last_seen": "2026-04-27",
-    "appearance_dates": [
-      "2026-04-27"
-    ],
-    "username_history": [
-      "Erasmus."
-    ]
-  },
   "0x558ee6a05f51e7e8d89fc07b154e78a865202ee7": {
     "first_seen": "2026-04-27",
     "last_seen": "2026-04-29",
     "appearance_dates": [
-      "2026-04-27",
       "2026-04-28",
       "2026-04-29"
     ],
@@ -2452,9 +2351,10 @@
   },
   "0x904ed7c7820a434ea9b11e7333ed69190d850bec": {
     "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
+    "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-25"
+      "2026-07-25",
+      "2026-07-27"
     ],
     "username_history": [
       "RandomGameBet"
@@ -2462,9 +2362,10 @@
   },
   "0xa0e72d5575095199ae08ce0dce447f21b7249461": {
     "first_seen": "2026-07-26",
-    "last_seen": "2026-07-26",
+    "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-26"
+      "2026-07-26",
+      "2026-07-27"
     ],
     "username_history": [
       "uninformedfloww"
@@ -2490,9 +2391,10 @@
   },
   "0x590ed3d1a14ba08cad23f5c513bad6301772e43d": {
     "first_seen": "2026-07-26",
-    "last_seen": "2026-07-26",
+    "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-26"
+      "2026-07-26",
+      "2026-07-27"
     ],
     "username_history": [
       "smalltimezzz"
@@ -2500,9 +2402,10 @@
   },
   "0x9d57c42e847173d06841703825d3fe2299e456ea": {
     "first_seen": "2026-07-26",
-    "last_seen": "2026-07-26",
+    "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-26"
+      "2026-07-26",
+      "2026-07-27"
     ],
     "username_history": [
       "Polkadot-Frog"
@@ -2556,6 +2459,66 @@
     ],
     "username_history": [
       "mlin1010"
+    ]
+  },
+  "0x2e78d7a77df765928de65f17196671fa83f2067e": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "Kidfp"
+    ]
+  },
+  "0x82c857cb4d18e919c1b7d3c6865be4debe50da77": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "wolf9478"
+    ]
+  },
+  "0x6916cc00aa1c3e75ecf4081df7cae7d2f3592fd4": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "x6916Cc00AA1c3e75ECf4081DF7caE7D2f3592fd4"
+    ]
+  },
+  "0x39d3c773be30fcc73161fc6768f46d563a779ef0": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "matanovik"
+    ]
+  },
+  "0x1cba5593c7f29eca329a4749e447a81b4ec1b694": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "0x1cBa5593C7f29ecA329a4749E447a81b4eC1b694-1774831122337"
+    ]
+  },
+  "0x160bf4f27cdaaaed1408ccd1558ab30c210d4296": {
+    "first_seen": "2026-07-27",
+    "last_seen": "2026-07-27",
+    "appearance_dates": [
+      "2026-07-27"
+    ],
+    "username_history": [
+      "mortewfenloin"
     ]
   }
 }
