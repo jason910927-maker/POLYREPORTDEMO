@@ -1,29 +1,8 @@
 {
-  "0xc5b4c83887f4b93da022c093879fcb31a0f361f9": {
-    "first_seen": "2026-04-30",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "RealVasya"
-    ]
-  },
-  "0xa87d59e16744acfd5c4d16613d16ea34234ce4bf": {
-    "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "ccn023390"
-    ]
-  },
   "0xa2cd4ccda9a1f95949df7a3355c4c2daa0642ba0": {
     "first_seen": "2026-05-01",
     "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-01",
       "2026-05-02",
       "2026-05-03",
       "2026-05-05"
@@ -36,7 +15,6 @@
     "first_seen": "2026-05-01",
     "last_seen": "2026-05-03",
     "appearance_dates": [
-      "2026-05-01",
       "2026-05-02",
       "2026-05-03"
     ],
@@ -48,62 +26,20 @@
     "first_seen": "2026-05-01",
     "last_seen": "2026-05-02",
     "appearance_dates": [
-      "2026-05-01",
       "2026-05-02"
     ],
     "username_history": [
       "0xab8cD32A8dba6aAfad2c3560dAd510cddD0B85fb-1777422994655"
     ]
   },
-  "0x442c68872f2f05bfcfcd4114fe4b50dcdea49120": {
-    "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "4346576642232"
-    ]
-  },
   "0x72c2e530751dba372f107a559c501aa1cde27390": {
     "first_seen": "2026-05-01",
     "last_seen": "2026-05-03",
     "appearance_dates": [
-      "2026-05-01",
       "2026-05-03"
     ],
     "username_history": [
       "sasioverlxrd"
-    ]
-  },
-  "0x5714c81b7ca04b9cba63cbf44e7c0aaaeb47ae10": {
-    "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "Pauly676767"
-    ]
-  },
-  "0x257869e5b018c54a08cf14c76b60f85648edb2a6": {
-    "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "0x257869e5b018c54a08cf14c76b60f85648edb2a6"
-    ]
-  },
-  "0x1dfb3a8d93028d17b96bd3c44240086cff900b3d": {
-    "first_seen": "2026-05-01",
-    "last_seen": "2026-05-01",
-    "appearance_dates": [
-      "2026-05-01"
-    ],
-    "username_history": [
-      "sf8998"
     ]
   },
   "0xa113d92c8bdd65c4f7e47a086a24ae3b125c284e": {
@@ -2484,9 +2420,10 @@
   },
   "0xad6524acf884fb3c8f76d6c9908a75d7c09d970b": {
     "first_seen": "2026-07-30",
-    "last_seen": "2026-07-30",
+    "last_seen": "2026-07-31",
     "appearance_dates": [
-      "2026-07-30"
+      "2026-07-30",
+      "2026-07-31"
     ],
     "username_history": [
       "Worlf"
