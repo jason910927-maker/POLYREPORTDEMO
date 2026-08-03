@@ -41,7 +41,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05"
     ],
     "username_history": [
@@ -52,7 +51,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-10",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05",
       "2026-05-07",
       "2026-05-08",
@@ -67,7 +65,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-12",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05",
       "2026-05-07",
       "2026-05-08",
@@ -80,83 +77,30 @@
       "0x60AEB5eCf3CDc08767792135CdA51aa0d3a01399-1777197077106"
     ]
   },
-  "0xf9331b7193509df4bbc8550d913b8e64c19d4069": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "appearance_dates": [
-      "2026-05-04"
-    ],
-    "username_history": [
-      "0xf9331b7193509df4BBc8550d913b8e64C19D4069-1776341491898"
-    ]
-  },
   "0x9dcc1d3cc172231d72a9de842dfa8460079de816": {
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05"
     ],
     "username_history": [
       "0x9dcc1d3CC172231d72A9dE842dFA8460079dE816-1777643956860"
     ]
   },
-  "0x07cd94cb31f8cc40e8ddef5e287e63ba7830c4fe": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "appearance_dates": [
-      "2026-05-04"
-    ],
-    "username_history": [
-      "0x07cd94cb31f8cc40e8ddef5e287e63ba7830c4fe"
-    ]
-  },
-  "0x8d573444daf3ea0249dc5c07aad0f3973cc7bc80": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "appearance_dates": [
-      "2026-05-04"
-    ],
-    "username_history": [
-      "sharpooor"
-    ]
-  },
   "0xb5bffb64192b9e41fafa9dd2dcb493d3408223ec": {
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-05",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05"
     ],
     "username_history": [
       "foxyshark"
     ]
   },
-  "0x1b13dfb14b9bb30bbc495bf508ea6f3b03625367": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "appearance_dates": [
-      "2026-05-04"
-    ],
-    "username_history": [
-      "crazybabua"
-    ]
-  },
-  "0x2a673c66eb2eed46e377e85301dd3adc7de9d370": {
-    "first_seen": "2026-05-04",
-    "last_seen": "2026-05-04",
-    "appearance_dates": [
-      "2026-05-04"
-    ],
-    "username_history": [
-      "0x2a673c66eb2eed46e377e85301dd3adc7de9d370"
-    ]
-  },
   "0x9236b31fe717c7cda64ad753a3ad3eb4e304e368": {
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-10",
     "appearance_dates": [
-      "2026-05-04",
       "2026-05-05",
       "2026-05-07",
       "2026-05-08",
@@ -2389,9 +2333,10 @@
   },
   "0x43cab54b56aba79c29c1ba14b889e7de5532c219": {
     "first_seen": "2026-08-02",
-    "last_seen": "2026-08-02",
+    "last_seen": "2026-08-03",
     "appearance_dates": [
-      "2026-08-02"
+      "2026-08-02",
+      "2026-08-03"
     ],
     "username_history": [
       "Bulls94"
@@ -2405,6 +2350,56 @@
     ],
     "username_history": [
       "eternaI22"
+    ]
+  },
+  "0x7ecc7c5c99582a78e9cc00a5304406a2bad68f07": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "appearance_dates": [
+      "2026-08-03"
+    ],
+    "username_history": [
+      "LeatherPants"
+    ]
+  },
+  "0x7fe8a45a9d059e12eae2804f15401ac8e11106c9": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "appearance_dates": [
+      "2026-08-03"
+    ],
+    "username_history": [
+      "0x7FE8A45a9D059e12EAe2804F15401AC8E11106c9-1781452450343"
+    ]
+  },
+  "0x7b48523f03e22dcdb8dd80a8c4b07d860ae621b2": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "appearance_dates": [
+      "2026-08-03"
+    ],
+    "username_history": [
+      "satoshi2006"
+    ]
+  },
+  "0x8bf8c8f211d58767caabe42c389eec3ccb268e52": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "appearance_dates": [
+      "2026-08-03"
+    ],
+    "username_history": [
+      "CosmicArcher"
+    ]
+  },
+  "0x038566a76a51ebab67c04628157730ffad15acaf": {
+    "first_seen": "2026-08-03",
+    "last_seen": "2026-08-03",
+    "appearance_dates": [
+      "2026-08-03"
+    ],
+    "username_history": [
+      "8489kjr34"
     ]
   }
 }
