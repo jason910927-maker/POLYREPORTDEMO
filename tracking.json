@@ -1,19 +1,8 @@
 {
-  "0x3a91c82039e65f3f21634b20beed51185d5c41a7": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-07",
-    "appearance_dates": [
-      "2026-05-07"
-    ],
-    "username_history": [
-      "fffsasda988"
-    ]
-  },
   "0xa7a8c1fd4bfff08ea30214efa7efaf75d7c6580c": {
     "first_seen": "2026-05-03",
     "last_seen": "2026-05-14",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10",
@@ -30,7 +19,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-10",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10"
@@ -43,7 +31,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-12",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10",
@@ -58,7 +45,6 @@
     "first_seen": "2026-05-04",
     "last_seen": "2026-05-10",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10"
@@ -67,21 +53,10 @@
       "LelouchViIndia"
     ]
   },
-  "0x3d9141e6836b8e847d84966deb5bb72bb26fa5fd": {
-    "first_seen": "2026-05-05",
-    "last_seen": "2026-05-07",
-    "appearance_dates": [
-      "2026-05-07"
-    ],
-    "username_history": [
-      "111sf"
-    ]
-  },
   "0x5fd86de46798abe62b3b1a45911477a6bd6cce32": {
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-14",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10",
@@ -98,7 +73,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08",
       "2026-05-09",
       "2026-05-10",
@@ -121,7 +95,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-08",
     "appearance_dates": [
-      "2026-05-07",
       "2026-05-08"
     ],
     "username_history": [
@@ -2299,10 +2272,11 @@
   },
   "0x7ecc7c5c99582a78e9cc00a5304406a2bad68f07": {
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-05",
+    "last_seen": "2026-08-06",
     "appearance_dates": [
       "2026-08-03",
-      "2026-08-05"
+      "2026-08-05",
+      "2026-08-06"
     ],
     "username_history": [
       "LeatherPants"
@@ -2330,10 +2304,11 @@
   },
   "0x8bf8c8f211d58767caabe42c389eec3ccb268e52": {
     "first_seen": "2026-08-03",
-    "last_seen": "2026-08-05",
+    "last_seen": "2026-08-06",
     "appearance_dates": [
       "2026-08-03",
-      "2026-08-05"
+      "2026-08-05",
+      "2026-08-06"
     ],
     "username_history": [
       "CosmicArcher"
@@ -2351,9 +2326,10 @@
   },
   "0x1ab3580b6d258e31ca0a3efdb93173d081dd64af": {
     "first_seen": "2026-08-05",
-    "last_seen": "2026-08-05",
+    "last_seen": "2026-08-06",
     "appearance_dates": [
-      "2026-08-05"
+      "2026-08-05",
+      "2026-08-06"
     ],
     "username_history": [
       "Satisfied"
@@ -2391,9 +2367,10 @@
   },
   "0x28b67d41c3eb1819f707dd6192cff35dae58c9a8": {
     "first_seen": "2026-08-05",
-    "last_seen": "2026-08-05",
+    "last_seen": "2026-08-06",
     "appearance_dates": [
-      "2026-08-05"
+      "2026-08-05",
+      "2026-08-06"
     ],
     "username_history": [
       "fr0staken"
@@ -2401,12 +2378,33 @@
   },
   "0xc64f34987ed4f537fd86b4735284702fc81de677": {
     "first_seen": "2026-08-05",
-    "last_seen": "2026-08-05",
+    "last_seen": "2026-08-06",
     "appearance_dates": [
-      "2026-08-05"
+      "2026-08-05",
+      "2026-08-06"
     ],
     "username_history": [
       "happywater"
+    ]
+  },
+  "0xa9b9e87721237d29f0778ee3e663bdbfa127dd41": {
+    "first_seen": "2026-08-06",
+    "last_seen": "2026-08-06",
+    "appearance_dates": [
+      "2026-08-06"
+    ],
+    "username_history": [
+      "kldjsh"
+    ]
+  },
+  "0x33d409077f4533e988bf54a5270a712207d72833": {
+    "first_seen": "2026-08-06",
+    "last_seen": "2026-08-06",
+    "appearance_dates": [
+      "2026-08-06"
+    ],
+    "username_history": [
+      "lllllllllllIlll"
     ]
   }
 }
