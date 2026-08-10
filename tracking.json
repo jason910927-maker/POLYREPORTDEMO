@@ -2363,9 +2363,10 @@
   },
   "0x859b4303ce5ae7d6fd43bc118d807a01b37f31b8": {
     "first_seen": "2026-08-07",
-    "last_seen": "2026-08-07",
+    "last_seen": "2026-08-09",
     "appearance_dates": [
-      "2026-08-07"
+      "2026-08-07",
+      "2026-08-09"
     ],
     "username_history": [
       "ColdSoap2"
@@ -2391,6 +2392,26 @@
     ],
     "username_history": [
       "oo1100"
+    ]
+  },
+  "0xdfb31adfba9837744868ba76d164204f6e89f330": {
+    "first_seen": "2026-08-09",
+    "last_seen": "2026-08-09",
+    "appearance_dates": [
+      "2026-08-09"
+    ],
+    "username_history": [
+      "Unfit"
+    ]
+  },
+  "0xf48597e74fa832880a954461860b939d2fad03ae": {
+    "first_seen": "2026-08-09",
+    "last_seen": "2026-08-09",
+    "appearance_dates": [
+      "2026-08-09"
+    ],
+    "username_history": [
+      "urobang"
     ]
   }
 }
