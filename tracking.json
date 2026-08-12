@@ -3,7 +3,6 @@
     "first_seen": "2026-05-03",
     "last_seen": "2026-05-14",
     "appearance_dates": [
-      "2026-05-13",
       "2026-05-14"
     ],
     "username_history": [
@@ -14,7 +13,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-14",
     "appearance_dates": [
-      "2026-05-13",
       "2026-05-14"
     ],
     "username_history": [
@@ -25,7 +23,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-13",
       "2026-05-14",
       "2026-05-15",
       "2026-05-16",
@@ -38,21 +35,10 @@
       "0x03772299118D609d4c52C17543a480dB30f812d7-1777947276534"
     ]
   },
-  "0xa36fcb6947c4ac1f09ee894aa1fd0756b90e180b": {
-    "first_seen": "2026-05-10",
-    "last_seen": "2026-05-13",
-    "appearance_dates": [
-      "2026-05-13"
-    ],
-    "username_history": [
-      "Shori888"
-    ]
-  },
   "0x2446cf071a74f788065ecb020b1f015a1d62261b": {
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-13",
       "2026-05-14",
       "2026-05-15",
       "2026-05-16",
@@ -2336,12 +2322,13 @@
   },
   "0xadea4d74858347c437e4d18b72115d535091b96d": {
     "first_seen": "2026-08-08",
-    "last_seen": "2026-08-11",
+    "last_seen": "2026-08-12",
     "appearance_dates": [
       "2026-08-08",
       "2026-08-09",
       "2026-08-10",
-      "2026-08-11"
+      "2026-08-11",
+      "2026-08-12"
     ],
     "username_history": [
       "cane11"
@@ -2373,14 +2360,25 @@
   },
   "0xf48597e74fa832880a954461860b939d2fad03ae": {
     "first_seen": "2026-08-09",
-    "last_seen": "2026-08-11",
+    "last_seen": "2026-08-12",
     "appearance_dates": [
       "2026-08-09",
       "2026-08-10",
-      "2026-08-11"
+      "2026-08-11",
+      "2026-08-12"
     ],
     "username_history": [
       "urobang"
+    ]
+  },
+  "0x8f3aa92cdc696fda0efcedc8de59dcffcf335ad0": {
+    "first_seen": "2026-08-12",
+    "last_seen": "2026-08-12",
+    "appearance_dates": [
+      "2026-08-12"
+    ],
+    "username_history": [
+      "0x2112"
     ]
   }
 }
