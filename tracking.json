@@ -1,29 +1,8 @@
 {
-  "0xa7a8c1fd4bfff08ea30214efa7efaf75d7c6580c": {
-    "first_seen": "2026-05-03",
-    "last_seen": "2026-05-14",
-    "appearance_dates": [
-      "2026-05-14"
-    ],
-    "username_history": [
-      "asjabaasj"
-    ]
-  },
-  "0x5fd86de46798abe62b3b1a45911477a6bd6cce32": {
-    "first_seen": "2026-05-07",
-    "last_seen": "2026-05-14",
-    "appearance_dates": [
-      "2026-05-14"
-    ],
-    "username_history": [
-      "MaciBetting23"
-    ]
-  },
   "0x03772299118d609d4c52c17543a480db30f812d7": {
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-14",
       "2026-05-15",
       "2026-05-16",
       "2026-05-17",
@@ -39,7 +18,6 @@
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-14",
       "2026-05-15",
       "2026-05-16",
       "2026-05-17",
@@ -2373,9 +2351,10 @@
   },
   "0x8f3aa92cdc696fda0efcedc8de59dcffcf335ad0": {
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-12",
+    "last_seen": "2026-08-13",
     "appearance_dates": [
-      "2026-08-12"
+      "2026-08-12",
+      "2026-08-13"
     ],
     "username_history": [
       "0x2112"
