@@ -3,7 +3,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-15",
       "2026-05-16",
       "2026-05-17",
       "2026-05-18",
@@ -18,7 +17,6 @@
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-15",
       "2026-05-16",
       "2026-05-17",
       "2026-05-18",
@@ -27,16 +25,6 @@
     ],
     "username_history": [
       "0x2446cf071A74F788065EcB020b1F015a1d62261B-1778347364389"
-    ]
-  },
-  "0xd25029e1df7956383c70ac257d2c481a13b98e3b": {
-    "first_seen": "2026-05-15",
-    "last_seen": "2026-05-15",
-    "appearance_dates": [
-      "2026-05-15"
-    ],
-    "username_history": [
-      "hawssssb"
     ]
   },
   "0x07557e7e543c7e5d808a1ba8d7ecb8188318117b": {
@@ -2351,13 +2339,24 @@
   },
   "0x8f3aa92cdc696fda0efcedc8de59dcffcf335ad0": {
     "first_seen": "2026-08-12",
-    "last_seen": "2026-08-13",
+    "last_seen": "2026-08-14",
     "appearance_dates": [
       "2026-08-12",
-      "2026-08-13"
+      "2026-08-13",
+      "2026-08-14"
     ],
     "username_history": [
       "0x2112"
+    ]
+  },
+  "0xa1035e02c546b5aa7c5b28937f1ef03660d21c14": {
+    "first_seen": "2026-08-14",
+    "last_seen": "2026-08-14",
+    "appearance_dates": [
+      "2026-08-14"
+    ],
+    "username_history": [
+      "sofa88888"
     ]
   }
 }
