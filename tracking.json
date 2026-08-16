@@ -3,7 +3,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-16",
       "2026-05-17",
       "2026-05-18",
       "2026-05-19",
@@ -17,7 +16,6 @@
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-16",
       "2026-05-17",
       "2026-05-18",
       "2026-05-19",
@@ -2377,6 +2375,26 @@
     ],
     "username_history": [
       "LonnieHawkins"
+    ]
+  },
+  "0x72f039e9bbf2ccf22ef7683729d9867fa09d6be8": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "appearance_dates": [
+      "2026-08-15"
+    ],
+    "username_history": [
+      "coupedegrace"
+    ]
+  },
+  "0x9afda7ae5c6afadcb500ce0274312e0fe7ba574b": {
+    "first_seen": "2026-08-15",
+    "last_seen": "2026-08-15",
+    "appearance_dates": [
+      "2026-08-15"
+    ],
+    "username_history": [
+      "SituationalFairness"
     ]
   }
 }
