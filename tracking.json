@@ -3,7 +3,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-18",
       "2026-05-19",
       "2026-05-20"
     ],
@@ -15,7 +14,6 @@
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-18",
       "2026-05-19",
       "2026-05-20"
     ],
@@ -27,7 +25,6 @@
     "first_seen": "2026-05-17",
     "last_seen": "2026-05-19",
     "appearance_dates": [
-      "2026-05-18",
       "2026-05-19"
     ],
     "username_history": [
@@ -2377,10 +2374,11 @@
   },
   "0x9afda7ae5c6afadcb500ce0274312e0fe7ba574b": {
     "first_seen": "2026-08-15",
-    "last_seen": "2026-08-16",
+    "last_seen": "2026-08-17",
     "appearance_dates": [
       "2026-08-15",
-      "2026-08-16"
+      "2026-08-16",
+      "2026-08-17"
     ],
     "username_history": [
       "SituationalFairness"
