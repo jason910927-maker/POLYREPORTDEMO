@@ -3,7 +3,6 @@
     "first_seen": "2026-05-07",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-19",
       "2026-05-20"
     ],
     "username_history": [
@@ -14,21 +13,10 @@
     "first_seen": "2026-05-11",
     "last_seen": "2026-05-20",
     "appearance_dates": [
-      "2026-05-19",
       "2026-05-20"
     ],
     "username_history": [
       "0x2446cf071A74F788065EcB020b1F015a1d62261B-1778347364389"
-    ]
-  },
-  "0xed8f053a6a1455bd3f22614d10f30ddc93d4a623": {
-    "first_seen": "2026-05-17",
-    "last_seen": "2026-05-19",
-    "appearance_dates": [
-      "2026-05-19"
-    ],
-    "username_history": [
-      "0xeD8f053a6a1455Bd3f22614D10f30dDC93d4A623-1778686085453"
     ]
   },
   "0x04f76bb4faa6df8fd18f6c57b1e2c40ee6e292f8": {
@@ -2374,11 +2362,12 @@
   },
   "0x9afda7ae5c6afadcb500ce0274312e0fe7ba574b": {
     "first_seen": "2026-08-15",
-    "last_seen": "2026-08-17",
+    "last_seen": "2026-08-18",
     "appearance_dates": [
       "2026-08-15",
       "2026-08-16",
-      "2026-08-17"
+      "2026-08-17",
+      "2026-08-18"
     ],
     "username_history": [
       "SituationalFairness",
@@ -2403,6 +2392,16 @@
     ],
     "username_history": [
       "superbowl2026"
+    ]
+  },
+  "0x085fd7e4886bd3c491d979ea5c8052b0d3d34d1c": {
+    "first_seen": "2026-08-18",
+    "last_seen": "2026-08-18",
+    "appearance_dates": [
+      "2026-08-18"
+    ],
+    "username_history": [
+      "Penisya"
     ]
   }
 }
