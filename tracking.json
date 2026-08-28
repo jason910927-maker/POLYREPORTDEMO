@@ -3,7 +3,6 @@
     "first_seen": "2026-05-24",
     "last_seen": "2026-05-30",
     "appearance_dates": [
-      "2026-05-29",
       "2026-05-30"
     ],
     "username_history": [
@@ -14,21 +13,10 @@
     "first_seen": "2026-05-24",
     "last_seen": "2026-05-30",
     "appearance_dates": [
-      "2026-05-29",
       "2026-05-30"
     ],
     "username_history": [
       "zachm329"
-    ]
-  },
-  "0x792f8e8bae0323abf8927c6820863fbe8a98328a": {
-    "first_seen": "2026-05-29",
-    "last_seen": "2026-05-29",
-    "appearance_dates": [
-      "2026-05-29"
-    ],
-    "username_history": [
-      "owenliang666"
     ]
   },
   "0xc2332a2f5aea968747caf4e9abc88ff6e4a20561": {
@@ -2396,7 +2384,7 @@
   },
   "0x850553410a96a51ff2470fa6d7c787133fb312aa": {
     "first_seen": "2026-08-21",
-    "last_seen": "2026-08-27",
+    "last_seen": "2026-08-28",
     "appearance_dates": [
       "2026-08-21",
       "2026-08-22",
@@ -2404,7 +2392,8 @@
       "2026-08-24",
       "2026-08-25",
       "2026-08-26",
-      "2026-08-27"
+      "2026-08-27",
+      "2026-08-28"
     ],
     "username_history": [
       "meta1343"
@@ -2418,6 +2407,16 @@
     ],
     "username_history": [
       "spork30"
+    ]
+  },
+  "0xd9dde44ddeababae222bf7aec96c85cbdab6b525": {
+    "first_seen": "2026-08-28",
+    "last_seen": "2026-08-28",
+    "appearance_dates": [
+      "2026-08-28"
+    ],
+    "username_history": [
+      "88M"
     ]
   }
 }
