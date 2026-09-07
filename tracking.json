@@ -3,28 +3,16 @@
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
       "richersob"
     ]
   },
-  "0x7bb3c7931b6c1bfb9a1b38096bdd3e906febef60": {
-    "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
-    "appearance_dates": [
-      "2026-06-08"
-    ],
-    "username_history": [
-      "Bittybootybam"
-    ]
-  },
   "0x3029039cbeb17bdfe366020dcf086e4feb200805": {
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
@@ -35,7 +23,6 @@
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
@@ -46,7 +33,6 @@
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
@@ -57,7 +43,6 @@
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
@@ -68,28 +53,16 @@
     "first_seen": "2026-06-04",
     "last_seen": "2026-06-10",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10"
     ],
     "username_history": [
       "0xb3C61eD6819c43E029cA4188f3Ca0f59F331cD43-1780234873514"
     ]
   },
-  "0x64317ba62240d4493dbf5edb64d88c58d716fc85": {
-    "first_seen": "2026-06-04",
-    "last_seen": "2026-06-08",
-    "appearance_dates": [
-      "2026-06-08"
-    ],
-    "username_history": [
-      "Greatmaverick"
-    ]
-  },
   "0x132f78734e5fecba945c24d5c49cd84d8c0f453b": {
     "first_seen": "2026-06-05",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-10",
       "2026-06-12",
       "2026-06-13",
@@ -107,7 +80,6 @@
     "first_seen": "2026-06-05",
     "last_seen": "2026-06-13",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-12",
       "2026-06-13"
     ],
@@ -119,7 +91,6 @@
     "first_seen": "2026-06-07",
     "last_seen": "2026-06-14",
     "appearance_dates": [
-      "2026-06-08",
       "2026-06-12",
       "2026-06-13",
       "2026-06-14"
@@ -2071,12 +2042,13 @@
   },
   "0x1d366d225e7f4fd7bbfb5a0ccc11ca0de1e135c8": {
     "first_seen": "2026-09-03",
-    "last_seen": "2026-09-06",
+    "last_seen": "2026-09-07",
     "appearance_dates": [
       "2026-09-03",
       "2026-09-04",
       "2026-09-05",
-      "2026-09-06"
+      "2026-09-06",
+      "2026-09-07"
     ],
     "username_history": [
       "BALEBABOY"
@@ -2094,12 +2066,13 @@
   },
   "0xb3204d2b9cd53e24f5c42db7b7ca10fbcac5a8b6": {
     "first_seen": "2026-09-03",
-    "last_seen": "2026-09-06",
+    "last_seen": "2026-09-07",
     "appearance_dates": [
       "2026-09-03",
       "2026-09-04",
       "2026-09-05",
-      "2026-09-06"
+      "2026-09-06",
+      "2026-09-07"
     ],
     "username_history": [
       "luckyone2"
@@ -2283,6 +2256,16 @@
     ],
     "username_history": [
       "vrsd"
+    ]
+  },
+  "0x2c8019974e5a541c2101191cd108d4abaca808ff": {
+    "first_seen": "2026-09-07",
+    "last_seen": "2026-09-07",
+    "appearance_dates": [
+      "2026-09-07"
+    ],
+    "username_history": [
+      "WhiteMonster7"
     ]
   }
 }
