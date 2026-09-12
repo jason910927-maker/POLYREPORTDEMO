@@ -3,8 +3,6 @@
     "first_seen": "2026-06-05",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14",
       "2026-06-15",
       "2026-06-16",
@@ -15,23 +13,10 @@
       "TurretOnX"
     ]
   },
-  "0xa938bd6071fed6384654b06ffa3e67d7a8d4bad0": {
-    "first_seen": "2026-06-05",
-    "last_seen": "2026-06-13",
-    "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13"
-    ],
-    "username_history": [
-      "asdgwezcasdq"
-    ]
-  },
   "0x85bbb00a84f100a74ec6a479ce6f8f45b04c9ada": {
     "first_seen": "2026-06-07",
     "last_seen": "2026-06-14",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14"
     ],
     "username_history": [
@@ -42,8 +27,6 @@
     "first_seen": "2026-06-10",
     "last_seen": "2026-06-15",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14",
       "2026-06-15"
     ],
@@ -51,23 +34,10 @@
       "hkimcont"
     ]
   },
-  "0x9f8f189cdf3d1c4e7cede39946aa8fabe7019813": {
-    "first_seen": "2026-06-10",
-    "last_seen": "2026-06-13",
-    "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13"
-    ],
-    "username_history": [
-      "OneTwoUp"
-    ]
-  },
   "0x2dc214c37a2723c045a74e53d872e574e021fcad": {
     "first_seen": "2026-06-12",
     "last_seen": "2026-06-14",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14"
     ],
     "username_history": [
@@ -78,8 +48,6 @@
     "first_seen": "2026-06-12",
     "last_seen": "2026-06-14",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14"
     ],
     "username_history": [
@@ -90,8 +58,6 @@
     "first_seen": "2026-06-12",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-12",
-      "2026-06-13",
       "2026-06-14",
       "2026-06-15",
       "2026-06-16",
@@ -105,7 +71,6 @@
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-15",
     "appearance_dates": [
-      "2026-06-13",
       "2026-06-14",
       "2026-06-15"
     ],
@@ -114,31 +79,10 @@
       "chuchita"
     ]
   },
-  "0x8dcbcb3112444d06455005b0b6533e8e12956d5b": {
-    "first_seen": "2026-06-13",
-    "last_seen": "2026-06-13",
-    "appearance_dates": [
-      "2026-06-13"
-    ],
-    "username_history": [
-      "0x8DcBCB3112444d06455005B0B6533E8E12956D5b-1781209075274"
-    ]
-  },
-  "0xc430e5b17128df7ce78d69fa28bc7de038641ebf": {
-    "first_seen": "2026-06-13",
-    "last_seen": "2026-06-13",
-    "appearance_dates": [
-      "2026-06-13"
-    ],
-    "username_history": [
-      "Gourmet1"
-    ]
-  },
   "0xbba84878f74ad26893c1828e07e25684a707b4f8": {
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-19",
     "appearance_dates": [
-      "2026-06-13",
       "2026-06-14",
       "2026-06-15",
       "2026-06-16",
@@ -704,10 +648,11 @@
   },
   "0x48792a9dd93b6dc2c6296cdd55bc7a053c065547": {
     "first_seen": "2026-07-05",
-    "last_seen": "2026-09-10",
+    "last_seen": "2026-09-12",
     "appearance_dates": [
       "2026-07-05",
-      "2026-09-10"
+      "2026-09-10",
+      "2026-09-12"
     ],
     "username_history": [
       "trueblueaussie"
@@ -2232,9 +2177,10 @@
   },
   "0xf19c1162e97a1170d0ec1b8ef9f47c4883770767": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-10",
+    "last_seen": "2026-09-12",
     "appearance_dates": [
-      "2026-09-10"
+      "2026-09-10",
+      "2026-09-12"
     ],
     "username_history": [
       "PrtySwamp"
@@ -2242,9 +2188,10 @@
   },
   "0x310105a3b553a06d44f10d2002a017b2d43d7544": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-10",
+    "last_seen": "2026-09-12",
     "appearance_dates": [
-      "2026-09-10"
+      "2026-09-10",
+      "2026-09-12"
     ],
     "username_history": [
       "0x310105a3b553a06d44F10d2002a017B2D43d7544-1782630267642"
@@ -2268,6 +2215,26 @@
     ],
     "username_history": [
       "bbqq123"
+    ]
+  },
+  "0xda856317923415a534d8952e6f8abde17c2e1ca7": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "appearance_dates": [
+      "2026-09-12"
+    ],
+    "username_history": [
+      "Yellow-Fever"
+    ]
+  },
+  "0x718cc547c1ae200d1367a66d2d7b7ea614fdb4c2": {
+    "first_seen": "2026-09-12",
+    "last_seen": "2026-09-12",
+    "appearance_dates": [
+      "2026-09-12"
+    ],
+    "username_history": [
+      "0x718CC547C1AE200D1367a66d2d7B7Ea614Fdb4c2-1775504134316"
     ]
   }
 }
