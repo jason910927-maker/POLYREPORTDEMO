@@ -3,7 +3,6 @@
     "first_seen": "2026-06-05",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15",
       "2026-06-16",
       "2026-06-17"
@@ -13,52 +12,20 @@
       "TurretOnX"
     ]
   },
-  "0x85bbb00a84f100a74ec6a479ce6f8f45b04c9ada": {
-    "first_seen": "2026-06-07",
-    "last_seen": "2026-06-14",
-    "appearance_dates": [
-      "2026-06-14"
-    ],
-    "username_history": [
-      "zezj"
-    ]
-  },
   "0x3d50d49babadb8fb3e44485fa05c2604c90e713d": {
     "first_seen": "2026-06-10",
     "last_seen": "2026-06-15",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15"
     ],
     "username_history": [
       "hkimcont"
     ]
   },
-  "0x2dc214c37a2723c045a74e53d872e574e021fcad": {
-    "first_seen": "2026-06-12",
-    "last_seen": "2026-06-14",
-    "appearance_dates": [
-      "2026-06-14"
-    ],
-    "username_history": [
-      "0x679d686CD424Fc07539ae7919F9A2f4223fcB575-1770759395291"
-    ]
-  },
-  "0x3169b66ed90372454519dc7a833ec39a807fac5a": {
-    "first_seen": "2026-06-12",
-    "last_seen": "2026-06-14",
-    "appearance_dates": [
-      "2026-06-14"
-    ],
-    "username_history": [
-      "FirstStep"
-    ]
-  },
   "0x16581ee7c20cc69496517692a192636485a2d10e": {
     "first_seen": "2026-06-12",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15",
       "2026-06-16",
       "2026-06-17"
@@ -71,7 +38,6 @@
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-15",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15"
     ],
     "username_history": [
@@ -83,7 +49,6 @@
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-19",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15",
       "2026-06-16",
       "2026-06-17",
@@ -94,31 +59,10 @@
       "cryptolova"
     ]
   },
-  "0x84288ce8020e4282b01636754c8848985ba19210": {
-    "first_seen": "2026-06-14",
-    "last_seen": "2026-06-14",
-    "appearance_dates": [
-      "2026-06-14"
-    ],
-    "username_history": [
-      "zzz888999"
-    ]
-  },
-  "0xd47107e357c4688bffc76504541f5280760bedf8": {
-    "first_seen": "2026-06-14",
-    "last_seen": "2026-06-14",
-    "appearance_dates": [
-      "2026-06-14"
-    ],
-    "username_history": [
-      "Jittz"
-    ]
-  },
   "0xa7229f3cd642fa8edab1edbca9a11b3523c9c09b": {
     "first_seen": "2026-06-14",
     "last_seen": "2026-06-27",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15",
       "2026-06-16",
       "2026-06-17",
@@ -141,7 +85,6 @@
     "first_seen": "2026-06-14",
     "last_seen": "2026-06-15",
     "appearance_dates": [
-      "2026-06-14",
       "2026-06-15"
     ],
     "username_history": [
@@ -648,11 +591,12 @@
   },
   "0x48792a9dd93b6dc2c6296cdd55bc7a053c065547": {
     "first_seen": "2026-07-05",
-    "last_seen": "2026-09-12",
+    "last_seen": "2026-09-13",
     "appearance_dates": [
       "2026-07-05",
       "2026-09-10",
-      "2026-09-12"
+      "2026-09-12",
+      "2026-09-13"
     ],
     "username_history": [
       "trueblueaussie"
@@ -2177,10 +2121,11 @@
   },
   "0xf19c1162e97a1170d0ec1b8ef9f47c4883770767": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-12",
+    "last_seen": "2026-09-13",
     "appearance_dates": [
       "2026-09-10",
-      "2026-09-12"
+      "2026-09-12",
+      "2026-09-13"
     ],
     "username_history": [
       "PrtySwamp"
@@ -2188,10 +2133,11 @@
   },
   "0x310105a3b553a06d44f10d2002a017b2d43d7544": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-12",
+    "last_seen": "2026-09-13",
     "appearance_dates": [
       "2026-09-10",
-      "2026-09-12"
+      "2026-09-12",
+      "2026-09-13"
     ],
     "username_history": [
       "0x310105a3b553a06d44F10d2002a017B2D43d7544-1782630267642"
@@ -2235,6 +2181,16 @@
     ],
     "username_history": [
       "0x718CC547C1AE200D1367a66d2d7B7Ea614Fdb4c2-1775504134316"
+    ]
+  },
+  "0xc00d2129307d4445108b352be3529f4491533ca4": {
+    "first_seen": "2026-09-13",
+    "last_seen": "2026-09-13",
+    "appearance_dates": [
+      "2026-09-13"
+    ],
+    "username_history": [
+      "Unifrm313"
     ]
   }
 }
