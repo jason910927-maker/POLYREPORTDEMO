@@ -3,7 +3,6 @@
     "first_seen": "2026-06-05",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-15",
       "2026-06-16",
       "2026-06-17"
     ],
@@ -12,21 +11,10 @@
       "TurretOnX"
     ]
   },
-  "0x3d50d49babadb8fb3e44485fa05c2604c90e713d": {
-    "first_seen": "2026-06-10",
-    "last_seen": "2026-06-15",
-    "appearance_dates": [
-      "2026-06-15"
-    ],
-    "username_history": [
-      "hkimcont"
-    ]
-  },
   "0x16581ee7c20cc69496517692a192636485a2d10e": {
     "first_seen": "2026-06-12",
     "last_seen": "2026-06-17",
     "appearance_dates": [
-      "2026-06-15",
       "2026-06-16",
       "2026-06-17"
     ],
@@ -34,22 +22,10 @@
       "bigstones"
     ]
   },
-  "0xc53643ed8499c8326921d4c07961164d9665f086": {
-    "first_seen": "2026-06-13",
-    "last_seen": "2026-06-15",
-    "appearance_dates": [
-      "2026-06-15"
-    ],
-    "username_history": [
-      "sinayevskaya",
-      "chuchita"
-    ]
-  },
   "0xbba84878f74ad26893c1828e07e25684a707b4f8": {
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-19",
     "appearance_dates": [
-      "2026-06-15",
       "2026-06-16",
       "2026-06-17",
       "2026-06-18",
@@ -63,7 +39,6 @@
     "first_seen": "2026-06-14",
     "last_seen": "2026-06-27",
     "appearance_dates": [
-      "2026-06-15",
       "2026-06-16",
       "2026-06-17",
       "2026-06-18",
@@ -79,26 +54,6 @@
     ],
     "username_history": [
       "fdsafdsafdsaf"
-    ]
-  },
-  "0x54488e88f32160815682c335cd89b0c119ea1a7b": {
-    "first_seen": "2026-06-14",
-    "last_seen": "2026-06-15",
-    "appearance_dates": [
-      "2026-06-15"
-    ],
-    "username_history": [
-      "Huanhuan"
-    ]
-  },
-  "0x7815aee0ad967be0cd032e834f98a0004dee2ed1": {
-    "first_seen": "2026-06-15",
-    "last_seen": "2026-06-15",
-    "appearance_dates": [
-      "2026-06-15"
-    ],
-    "username_history": [
-      "0x189DAC7a19BAD1E0Af78cf03D7398Acb7a3c6162-1756841072313"
     ]
   },
   "0x3e174c76214b402716a7f4272cb929dc5060d3d8": {
@@ -591,12 +546,13 @@
   },
   "0x48792a9dd93b6dc2c6296cdd55bc7a053c065547": {
     "first_seen": "2026-07-05",
-    "last_seen": "2026-09-13",
+    "last_seen": "2026-09-14",
     "appearance_dates": [
       "2026-07-05",
       "2026-09-10",
       "2026-09-12",
-      "2026-09-13"
+      "2026-09-13",
+      "2026-09-14"
     ],
     "username_history": [
       "trueblueaussie"
@@ -2121,11 +2077,12 @@
   },
   "0xf19c1162e97a1170d0ec1b8ef9f47c4883770767": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-13",
+    "last_seen": "2026-09-14",
     "appearance_dates": [
       "2026-09-10",
       "2026-09-12",
-      "2026-09-13"
+      "2026-09-13",
+      "2026-09-14"
     ],
     "username_history": [
       "PrtySwamp"
@@ -2133,11 +2090,12 @@
   },
   "0x310105a3b553a06d44f10d2002a017b2d43d7544": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-13",
+    "last_seen": "2026-09-14",
     "appearance_dates": [
       "2026-09-10",
       "2026-09-12",
-      "2026-09-13"
+      "2026-09-13",
+      "2026-09-14"
     ],
     "username_history": [
       "0x310105a3b553a06d44F10d2002a017B2D43d7544-1782630267642"
@@ -2201,6 +2159,26 @@
     ],
     "username_history": [
       "bajacaligold"
+    ]
+  },
+  "0x5394e93e653e0e84af2e9219eeff64530aa4e47c": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "appearance_dates": [
+      "2026-09-14"
+    ],
+    "username_history": [
+      "0x5394e93e653E0e84Af2E9219eEFF64530Aa4E47c-1769330371981"
+    ]
+  },
+  "0x799b6aa710f1c1af137fdd25cc2834c9f0412102": {
+    "first_seen": "2026-09-14",
+    "last_seen": "2026-09-14",
+    "appearance_dates": [
+      "2026-09-14"
+    ],
+    "username_history": [
+      "user098422"
     ]
   }
 }
