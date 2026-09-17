@@ -3,7 +3,6 @@
     "first_seen": "2026-06-13",
     "last_seen": "2026-06-19",
     "appearance_dates": [
-      "2026-06-18",
       "2026-06-19"
     ],
     "username_history": [
@@ -14,7 +13,6 @@
     "first_seen": "2026-06-14",
     "last_seen": "2026-06-27",
     "appearance_dates": [
-      "2026-06-18",
       "2026-06-19",
       "2026-06-20",
       "2026-06-21",
@@ -43,7 +41,6 @@
     "first_seen": "2026-06-17",
     "last_seen": "2026-06-24",
     "appearance_dates": [
-      "2026-06-18",
       "2026-06-19",
       "2026-06-20",
       "2026-06-21",
@@ -53,26 +50,6 @@
     ],
     "username_history": [
       "Facaixiaoshou"
-    ]
-  },
-  "0xde294a409a8870b3029b935e451a696e13ef89b1": {
-    "first_seen": "2026-06-18",
-    "last_seen": "2026-06-18",
-    "appearance_dates": [
-      "2026-06-18"
-    ],
-    "username_history": [
-      "boobaz"
-    ]
-  },
-  "0x4e05f848c2ab8e02ff23cee508e4aab2af0d7720": {
-    "first_seen": "2026-06-18",
-    "last_seen": "2026-06-18",
-    "appearance_dates": [
-      "2026-06-18"
-    ],
-    "username_history": [
-      "billmfia"
     ]
   },
   "0x37ee3bceb4fbf028fb90d1463a4a5354da02f86f": {
@@ -2009,14 +1986,15 @@
   },
   "0xf19c1162e97a1170d0ec1b8ef9f47c4883770767": {
     "first_seen": "2026-09-10",
-    "last_seen": "2026-09-16",
+    "last_seen": "2026-09-17",
     "appearance_dates": [
       "2026-09-10",
       "2026-09-12",
       "2026-09-13",
       "2026-09-14",
       "2026-09-15",
-      "2026-09-16"
+      "2026-09-16",
+      "2026-09-17"
     ],
     "username_history": [
       "PrtySwamp"
@@ -2097,11 +2075,12 @@
   },
   "0x5394e93e653e0e84af2e9219eeff64530aa4e47c": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-16",
+    "last_seen": "2026-09-17",
     "appearance_dates": [
       "2026-09-14",
       "2026-09-15",
-      "2026-09-16"
+      "2026-09-16",
+      "2026-09-17"
     ],
     "username_history": [
       "0x5394e93e653E0e84Af2E9219eEFF64530Aa4E47c-1769330371981"
@@ -2109,11 +2088,12 @@
   },
   "0x799b6aa710f1c1af137fdd25cc2834c9f0412102": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-16",
+    "last_seen": "2026-09-17",
     "appearance_dates": [
       "2026-09-14",
       "2026-09-15",
-      "2026-09-16"
+      "2026-09-16",
+      "2026-09-17"
     ],
     "username_history": [
       "user098422"
@@ -2121,12 +2101,33 @@
   },
   "0x95c6c9a6727ed203e97230dda61ab19a020e1508": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-16",
+    "last_seen": "2026-09-17",
     "appearance_dates": [
-      "2026-09-16"
+      "2026-09-16",
+      "2026-09-17"
     ],
     "username_history": [
       "DelidelaDele"
+    ]
+  },
+  "0x39953e4f8192061b85eaf7d1054d9dba099e67cf": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "appearance_dates": [
+      "2026-09-17"
+    ],
+    "username_history": [
+      "takotsubo"
+    ]
+  },
+  "0xd6b9826588d8894cb70fe25a9ade09c88beb4515": {
+    "first_seen": "2026-09-17",
+    "last_seen": "2026-09-17",
+    "appearance_dates": [
+      "2026-09-17"
+    ],
+    "username_history": [
+      "goldfisherrr"
     ]
   }
 }
