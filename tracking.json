@@ -3,7 +3,6 @@
     "first_seen": "2026-06-14",
     "last_seen": "2026-06-27",
     "appearance_dates": [
-      "2026-06-23",
       "2026-06-24",
       "2026-06-25",
       "2026-06-26",
@@ -17,7 +16,6 @@
     "first_seen": "2026-06-17",
     "last_seen": "2026-06-24",
     "appearance_dates": [
-      "2026-06-23",
       "2026-06-24"
     ],
     "username_history": [
@@ -32,24 +30,6 @@
     ],
     "username_history": [
       "0x37ee3BCEb4fBf028fb90D1463A4a5354Da02f86F-1781205947489"
-    ]
-  },
-  "0xb4bad13f1ff0f70cc4a68230d3bf6f81b8bbdaba": {
-    "first_seen": "2026-06-22",
-    "last_seen": "2026-06-23",
-    "appearance_dates": [
-      "2026-06-23"
-    ],
-    "username_history": []
-  },
-  "0xfe5428c1b7fae9f29cc5ce3b393d9a77251541d6": {
-    "first_seen": "2026-06-23",
-    "last_seen": "2026-06-23",
-    "appearance_dates": [
-      "2026-06-23"
-    ],
-    "username_history": [
-      "0xFE5428C1B7faE9F29CC5cE3B393d9a77251541D6-1734980249939"
     ]
   },
   "0x73a3ffacfe1f743c95a4988460e1863c9804ee24": {
@@ -2048,7 +2028,7 @@
   },
   "0x5394e93e653e0e84af2e9219eeff64530aa4e47c": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-21",
+    "last_seen": "2026-09-22",
     "appearance_dates": [
       "2026-09-14",
       "2026-09-15",
@@ -2057,7 +2037,8 @@
       "2026-09-18",
       "2026-09-19",
       "2026-09-20",
-      "2026-09-21"
+      "2026-09-21",
+      "2026-09-22"
     ],
     "username_history": [
       "0x5394e93e653E0e84Af2E9219eEFF64530Aa4E47c-1769330371981"
@@ -2081,14 +2062,15 @@
   },
   "0x95c6c9a6727ed203e97230dda61ab19a020e1508": {
     "first_seen": "2026-09-16",
-    "last_seen": "2026-09-21",
+    "last_seen": "2026-09-22",
     "appearance_dates": [
       "2026-09-16",
       "2026-09-17",
       "2026-09-18",
       "2026-09-19",
       "2026-09-20",
-      "2026-09-21"
+      "2026-09-21",
+      "2026-09-22"
     ],
     "username_history": [
       "DelidelaDele"
@@ -2218,6 +2200,36 @@
     ],
     "username_history": [
       "SevenTons"
+    ]
+  },
+  "0xee88371850f0e1332c526e1b8e6f43a7e3ef2826": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "appearance_dates": [
+      "2026-09-22"
+    ],
+    "username_history": [
+      "comboseoa"
+    ]
+  },
+  "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "appearance_dates": [
+      "2026-09-22"
+    ],
+    "username_history": [
+      "vtcchampion53"
+    ]
+  },
+  "0x52a3d09dfc47bacc18634dda9d962be530c0ebae": {
+    "first_seen": "2026-09-22",
+    "last_seen": "2026-09-22",
+    "appearance_dates": [
+      "2026-09-22"
+    ],
+    "username_history": [
+      "lebronstinks"
     ]
   }
 }
