@@ -9,14 +9,6 @@
       "0x37ee3BCEb4fBf028fb90D1463A4a5354Da02f86F-1781205947489"
     ]
   },
-  "0xee6712ea09d6a9c86793bb6dde10ea59040e67a6": {
-    "first_seen": "2026-06-30",
-    "last_seen": "2026-06-30",
-    "appearance_dates": [
-      "2026-06-30"
-    ],
-    "username_history": []
-  },
   "0x335f4ee26177522f88a6bcd8427b08dabfce444f": {
     "first_seen": "2026-07-01",
     "last_seen": "2026-07-01",
@@ -1984,7 +1976,7 @@
   },
   "0x5394e93e653e0e84af2e9219eeff64530aa4e47c": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-27",
+    "last_seen": "2026-09-29",
     "appearance_dates": [
       "2026-09-14",
       "2026-09-15",
@@ -1999,7 +1991,8 @@
       "2026-09-24",
       "2026-09-25",
       "2026-09-26",
-      "2026-09-27"
+      "2026-09-27",
+      "2026-09-29"
     ],
     "username_history": [
       "0x5394e93e653E0e84Af2E9219eEFF64530Aa4E47c-1769330371981"
@@ -2180,7 +2173,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-28",
+    "last_seen": "2026-09-29",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -2188,7 +2181,8 @@
       "2026-09-25",
       "2026-09-26",
       "2026-09-27",
-      "2026-09-28"
+      "2026-09-28",
+      "2026-09-29"
     ],
     "username_history": [
       "vtcchampion53"
@@ -2222,6 +2216,16 @@
     ],
     "username_history": [
       "MedoD3P"
+    ]
+  },
+  "0xbba460a0d0fa3205986acf64a70499b3e5e5ef69": {
+    "first_seen": "2026-09-29",
+    "last_seen": "2026-09-29",
+    "appearance_dates": [
+      "2026-09-29"
+    ],
+    "username_history": [
+      "strominion"
     ]
   }
 }
