@@ -3,7 +3,6 @@
     "first_seen": "2026-07-01",
     "last_seen": "2026-07-04",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-03",
       "2026-07-04"
     ],
@@ -13,28 +12,16 @@
     "first_seen": "2026-07-01",
     "last_seen": "2026-07-03",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-03"
     ],
     "username_history": [
       "chinamax"
     ]
   },
-  "0xa61f3bd609d7aebed85dd4053a043c5fe21d2500": {
-    "first_seen": "2026-07-01",
-    "last_seen": "2026-07-02",
-    "appearance_dates": [
-      "2026-07-02"
-    ],
-    "username_history": [
-      "0xA61F3bd609d7Aebed85Dd4053A043C5FE21d2500-1782503608183"
-    ]
-  },
   "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-06",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-04",
       "2026-07-05",
       "2026-07-06"
@@ -43,21 +30,10 @@
       "cbbbbb"
     ]
   },
-  "0x254e913a4465cde1a6eeebf6792346048601e722": {
-    "first_seen": "2026-07-02",
-    "last_seen": "2026-07-02",
-    "appearance_dates": [
-      "2026-07-02"
-    ],
-    "username_history": [
-      "0x254E913A4465cDE1A6eeEbF6792346048601e722-1782665699380"
-    ]
-  },
   "0x20b80ebb96e2051540e1d475e4ce122fc282aa04": {
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-05",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-03",
       "2026-07-04",
       "2026-07-05"
@@ -66,21 +42,10 @@
       "tes21sa"
     ]
   },
-  "0x66392da57052f9383255c778147b1d3f578c0e59": {
-    "first_seen": "2026-07-02",
-    "last_seen": "2026-07-02",
-    "appearance_dates": [
-      "2026-07-02"
-    ],
-    "username_history": [
-      "JRC2"
-    ]
-  },
   "0x811d7f8cf22db03145ba6db7c9eb29fca4cc7ef5": {
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-06",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-03",
       "2026-07-04",
       "2026-07-05",
@@ -94,22 +59,11 @@
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-04",
     "appearance_dates": [
-      "2026-07-02",
       "2026-07-03",
       "2026-07-04"
     ],
     "username_history": [
       "zacnogamble"
-    ]
-  },
-  "0xab6a7da501eb0f53ab56f758e7c399f9249a2978": {
-    "first_seen": "2026-07-02",
-    "last_seen": "2026-07-02",
-    "appearance_dates": [
-      "2026-07-02"
-    ],
-    "username_history": [
-      "prostozero"
     ]
   },
   "0xdb46586f80bcf3efbfa7ed06c0203134d7d7fe05": {
@@ -1851,7 +1805,7 @@
   },
   "0x5394e93e653e0e84af2e9219eeff64530aa4e47c": {
     "first_seen": "2026-09-14",
-    "last_seen": "2026-09-30",
+    "last_seen": "2026-10-01",
     "appearance_dates": [
       "2026-09-14",
       "2026-09-15",
@@ -1868,7 +1822,8 @@
       "2026-09-26",
       "2026-09-27",
       "2026-09-29",
-      "2026-09-30"
+      "2026-09-30",
+      "2026-10-01"
     ],
     "username_history": [
       "0x5394e93e653E0e84Af2E9219eEFF64530Aa4E47c-1769330371981"
@@ -2049,7 +2004,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-30",
+    "last_seen": "2026-10-01",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -2059,7 +2014,8 @@
       "2026-09-27",
       "2026-09-28",
       "2026-09-29",
-      "2026-09-30"
+      "2026-09-30",
+      "2026-10-01"
     ],
     "username_history": [
       "vtcchampion53"
@@ -2097,10 +2053,11 @@
   },
   "0xbba460a0d0fa3205986acf64a70499b3e5e5ef69": {
     "first_seen": "2026-09-29",
-    "last_seen": "2026-09-30",
+    "last_seen": "2026-10-01",
     "appearance_dates": [
       "2026-09-29",
-      "2026-09-30"
+      "2026-09-30",
+      "2026-10-01"
     ],
     "username_history": [
       "strominion"
@@ -2108,9 +2065,10 @@
   },
   "0xb8bf6f5bb560541b212dc70eb437057a374327e2": {
     "first_seen": "2026-09-30",
-    "last_seen": "2026-09-30",
+    "last_seen": "2026-10-01",
     "appearance_dates": [
-      "2026-09-30"
+      "2026-09-30",
+      "2026-10-01"
     ],
     "username_history": [
       "Italianoo"
