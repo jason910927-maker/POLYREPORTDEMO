@@ -1,17 +1,8 @@
 {
-  "0x45e6f90cd5293b89c642526f6de521990df165e5": {
-    "first_seen": "2026-07-01",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": []
-  },
   "0x118c53b76327efc21e46744a4c3b7aa823b7e13e": {
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-06",
     "appearance_dates": [
-      "2026-07-04",
       "2026-07-05",
       "2026-07-06"
     ],
@@ -23,7 +14,6 @@
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-05",
     "appearance_dates": [
-      "2026-07-04",
       "2026-07-05"
     ],
     "username_history": [
@@ -34,82 +24,11 @@
     "first_seen": "2026-07-02",
     "last_seen": "2026-07-06",
     "appearance_dates": [
-      "2026-07-04",
       "2026-07-05",
       "2026-07-06"
     ],
     "username_history": [
       "vvv6667"
-    ]
-  },
-  "0xb5f610da3e3563ab86679086b70922f014f0aba9": {
-    "first_seen": "2026-07-02",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "zacnogamble"
-    ]
-  },
-  "0x28d3d125b46549687c799cd0f3819a7e9e42c27c": {
-    "first_seen": "2026-07-03",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "0x8642857E31C4ffF173040f847f2503f58D572F16-1772442841175"
-    ]
-  },
-  "0xb5b60d821300cef591b7c2a7647fd38e5ecaca29": {
-    "first_seen": "2026-07-03",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "hgawx"
-    ]
-  },
-  "0x77bcd040dfa67f8a1de094b05442b99c0f6fb29e": {
-    "first_seen": "2026-07-04",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "ma1lone"
-    ]
-  },
-  "0x81d660b27a86a406f453505ac2a6575e2fbcbe2c": {
-    "first_seen": "2026-07-04",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "luckery"
-    ]
-  },
-  "0xe2eec74eb1e21b87e08a7c195f91966425899024": {
-    "first_seen": "2026-07-04",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "Halda179"
-    ]
-  },
-  "0x08e459e56e8cc0c3776a4d61c7c14c980e67ef71": {
-    "first_seen": "2026-07-04",
-    "last_seen": "2026-07-04",
-    "appearance_dates": [
-      "2026-07-04"
-    ],
-    "username_history": [
-      "worldcpu"
     ]
   },
   "0x1c3f8f2f4b3cb507d9d952a40e47a839868fe87c": {
@@ -1959,7 +1878,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-02",
+    "last_seen": "2026-10-03",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1971,7 +1890,8 @@
       "2026-09-29",
       "2026-09-30",
       "2026-10-01",
-      "2026-10-02"
+      "2026-10-02",
+      "2026-10-03"
     ],
     "username_history": [
       "vtcchampion53"
@@ -2009,12 +1929,13 @@
   },
   "0xbba460a0d0fa3205986acf64a70499b3e5e5ef69": {
     "first_seen": "2026-09-29",
-    "last_seen": "2026-10-02",
+    "last_seen": "2026-10-03",
     "appearance_dates": [
       "2026-09-29",
       "2026-09-30",
       "2026-10-01",
-      "2026-10-02"
+      "2026-10-02",
+      "2026-10-03"
     ],
     "username_history": [
       "strominion"
@@ -2022,11 +1943,12 @@
   },
   "0xb8bf6f5bb560541b212dc70eb437057a374327e2": {
     "first_seen": "2026-09-30",
-    "last_seen": "2026-10-02",
+    "last_seen": "2026-10-03",
     "appearance_dates": [
       "2026-09-30",
       "2026-10-01",
-      "2026-10-02"
+      "2026-10-02",
+      "2026-10-03"
     ],
     "username_history": [
       "Italianoo"
@@ -2040,6 +1962,26 @@
     ],
     "username_history": [
       "aloe-leaf"
+    ]
+  },
+  "0x856ac2b10fb37c9b74e18f16da2acedfa60f4ea2": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "appearance_dates": [
+      "2026-10-03"
+    ],
+    "username_history": [
+      "57284910"
+    ]
+  },
+  "0xa164b901678d14b57b89a8d4e928956fe46a8b02": {
+    "first_seen": "2026-10-03",
+    "last_seen": "2026-10-03",
+    "appearance_dates": [
+      "2026-10-03"
+    ],
+    "username_history": [
+      "SparYel"
     ]
   }
 }
