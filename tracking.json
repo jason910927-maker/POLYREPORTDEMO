@@ -14,21 +14,10 @@
       "trueblueaussie"
     ]
   },
-  "0x107895cfb17a3b527ccf46eb612a2cd250c13385": {
-    "first_seen": "2026-07-06",
-    "last_seen": "2026-07-10",
-    "appearance_dates": [
-      "2026-07-10"
-    ],
-    "username_history": [
-      "Jackbudd15"
-    ]
-  },
   "0x0bf4e337efc7c954cd7ae2c150df3b1fd3c7c5f6": {
     "first_seen": "2026-07-06",
     "last_seen": "2026-07-13",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13"
@@ -37,21 +26,10 @@
       "-.-x"
     ]
   },
-  "0x66b58093676354bc03bf3a9ead97c230635b5bd9": {
-    "first_seen": "2026-07-07",
-    "last_seen": "2026-07-10",
-    "appearance_dates": [
-      "2026-07-10"
-    ],
-    "username_history": [
-      "1369aa"
-    ]
-  },
   "0x9636b638a9b942b5945b0a54e86acd4120ddd08b": {
     "first_seen": "2026-07-08",
     "last_seen": "2026-07-18",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13",
@@ -79,7 +57,6 @@
     "first_seen": "2026-07-09",
     "last_seen": "2026-07-23",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13",
@@ -95,7 +72,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-20",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13",
@@ -110,7 +86,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-11",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11"
     ],
     "username_history": [
@@ -121,7 +96,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-12",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12"
     ],
@@ -133,7 +107,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-15",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-11",
       "2026-07-12",
       "2026-07-13",
@@ -148,21 +121,10 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-30",
     "appearance_dates": [
-      "2026-07-10",
       "2026-07-30"
     ],
     "username_history": [
       "RonaldoCry"
-    ]
-  },
-  "0xb4516f9562b5f5bbd25959009cf774818eb1d7b3": {
-    "first_seen": "2026-07-10",
-    "last_seen": "2026-07-10",
-    "appearance_dates": [
-      "2026-07-10"
-    ],
-    "username_history": [
-      "a17367162806"
     ]
   },
   "0x3dcb35faf3d1ccfd47b15b03439a866b1fb77743": {
@@ -1687,13 +1649,14 @@
   },
   "0xe36756aa4756928b9f501dc1acf1dccb09752104": {
     "first_seen": "2026-09-20",
-    "last_seen": "2026-10-08",
+    "last_seen": "2026-10-09",
     "appearance_dates": [
       "2026-09-20",
       "2026-09-21",
       "2026-10-06",
       "2026-10-07",
-      "2026-10-08"
+      "2026-10-08",
+      "2026-10-09"
     ],
     "username_history": [
       "legioncre"
@@ -1782,7 +1745,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-08",
+    "last_seen": "2026-10-09",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1800,7 +1763,8 @@
       "2026-10-05",
       "2026-10-06",
       "2026-10-07",
-      "2026-10-08"
+      "2026-10-08",
+      "2026-10-09"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1900,12 +1864,13 @@
   },
   "0x9153857e57e22ae7f68fed032a9d9f19595874e1": {
     "first_seen": "2026-10-05",
-    "last_seen": "2026-10-08",
+    "last_seen": "2026-10-09",
     "appearance_dates": [
       "2026-10-05",
       "2026-10-06",
       "2026-10-07",
-      "2026-10-08"
+      "2026-10-08",
+      "2026-10-09"
     ],
     "username_history": [
       "Tontis"
@@ -1939,6 +1904,16 @@
     ],
     "username_history": [
       "mbmbbbmbv"
+    ]
+  },
+  "0x120640a1deffe6b53e291eba74acf1dbe8274528": {
+    "first_seen": "2026-10-09",
+    "last_seen": "2026-10-09",
+    "appearance_dates": [
+      "2026-10-09"
+    ],
+    "username_history": [
+      "trinity1248"
     ]
   }
 }
