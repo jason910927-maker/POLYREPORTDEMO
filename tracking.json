@@ -18,7 +18,6 @@
     "first_seen": "2026-07-06",
     "last_seen": "2026-07-13",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12",
       "2026-07-13"
     ],
@@ -30,7 +29,6 @@
     "first_seen": "2026-07-08",
     "last_seen": "2026-07-18",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12",
       "2026-07-13",
       "2026-07-14",
@@ -43,21 +41,10 @@
       "agromonkey"
     ]
   },
-  "0x1fd7649d7514d636b1fc97599e19308b26af401f": {
-    "first_seen": "2026-07-08",
-    "last_seen": "2026-07-11",
-    "appearance_dates": [
-      "2026-07-11"
-    ],
-    "username_history": [
-      "xx44c"
-    ]
-  },
   "0xe0af5cbfb9d6a56579a03f8c07e5bd98a3d5a098": {
     "first_seen": "2026-07-09",
     "last_seen": "2026-07-23",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12",
       "2026-07-13",
       "2026-07-22",
@@ -72,7 +59,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-20",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12",
       "2026-07-13",
       "2026-07-14",
@@ -82,21 +68,10 @@
       "ivantoney"
     ]
   },
-  "0xd19029fcd8aa726e6472842e6bb63f641d7738f9": {
-    "first_seen": "2026-07-10",
-    "last_seen": "2026-07-11",
-    "appearance_dates": [
-      "2026-07-11"
-    ],
-    "username_history": [
-      "hbo338"
-    ]
-  },
   "0xd44f4dcf4bbb6b20db270c478261e2d799f37842": {
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-12",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12"
     ],
     "username_history": [
@@ -107,7 +82,6 @@
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-15",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12",
       "2026-07-13",
       "2026-07-14",
@@ -127,21 +101,10 @@
       "RonaldoCry"
     ]
   },
-  "0x3dcb35faf3d1ccfd47b15b03439a866b1fb77743": {
-    "first_seen": "2026-07-11",
-    "last_seen": "2026-07-11",
-    "appearance_dates": [
-      "2026-07-11"
-    ],
-    "username_history": [
-      "0x3dcb35FaF3D1CcFd47b15b03439A866b1fB77743-1783611327133"
-    ]
-  },
   "0x3fe2f2457f82d1e6fc7ecf5a502be69f6f5756e9": {
     "first_seen": "2026-07-11",
     "last_seen": "2026-07-12",
     "appearance_dates": [
-      "2026-07-11",
       "2026-07-12"
     ],
     "username_history": [
@@ -1745,7 +1708,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-09",
+    "last_seen": "2026-10-10",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1764,7 +1727,8 @@
       "2026-10-06",
       "2026-10-07",
       "2026-10-08",
-      "2026-10-09"
+      "2026-10-09",
+      "2026-10-10"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1864,13 +1828,14 @@
   },
   "0x9153857e57e22ae7f68fed032a9d9f19595874e1": {
     "first_seen": "2026-10-05",
-    "last_seen": "2026-10-09",
+    "last_seen": "2026-10-10",
     "appearance_dates": [
       "2026-10-05",
       "2026-10-06",
       "2026-10-07",
       "2026-10-08",
-      "2026-10-09"
+      "2026-10-09",
+      "2026-10-10"
     ],
     "username_history": [
       "Tontis"
@@ -1914,6 +1879,16 @@
     ],
     "username_history": [
       "trinity1248"
+    ]
+  },
+  "0x1eb93479b3425ad57aef1442be4624a27880f884": {
+    "first_seen": "2026-10-10",
+    "last_seen": "2026-10-10",
+    "appearance_dates": [
+      "2026-10-10"
+    ],
+    "username_history": [
+      "PuntersPunter"
     ]
   }
 }
