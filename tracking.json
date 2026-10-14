@@ -18,7 +18,6 @@
     "first_seen": "2026-07-08",
     "last_seen": "2026-07-18",
     "appearance_dates": [
-      "2026-07-15",
       "2026-07-16",
       "2026-07-17",
       "2026-07-18"
@@ -49,16 +48,6 @@
       "ivantoney"
     ]
   },
-  "0xfd7c64f694ceeaaf7dbdc6337c80b457f028dc40": {
-    "first_seen": "2026-07-10",
-    "last_seen": "2026-07-15",
-    "appearance_dates": [
-      "2026-07-15"
-    ],
-    "username_history": [
-      "Esptein"
-    ]
-  },
   "0xe29bdcbf3bc35326f439008b35e77db15dc3ff35": {
     "first_seen": "2026-07-10",
     "last_seen": "2026-07-30",
@@ -67,36 +56,6 @@
     ],
     "username_history": [
       "RonaldoCry"
-    ]
-  },
-  "0x3ea2cd9da75e99c7e6ef07206c341aad247de8e5": {
-    "first_seen": "2026-07-12",
-    "last_seen": "2026-07-15",
-    "appearance_dates": [
-      "2026-07-15"
-    ],
-    "username_history": [
-      "akasa"
-    ]
-  },
-  "0xc0c426cfdbace70bb89d371aa80d3b1cac1cf745": {
-    "first_seen": "2026-07-13",
-    "last_seen": "2026-07-15",
-    "appearance_dates": [
-      "2026-07-15"
-    ],
-    "username_history": [
-      "kedaya8888"
-    ]
-  },
-  "0x73a08a8fd6e871cfdeb22c836f6db76d8a67f79f": {
-    "first_seen": "2026-07-15",
-    "last_seen": "2026-07-15",
-    "appearance_dates": [
-      "2026-07-15"
-    ],
-    "username_history": [
-      "dj712"
     ]
   },
   "0x323239497bf22069f1ea44008a362a150c7518ae": {
@@ -1640,10 +1599,11 @@
   },
   "0xee88371850f0e1332c526e1b8e6f43a7e3ef2826": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-09-24",
+    "last_seen": "2026-10-14",
     "appearance_dates": [
       "2026-09-22",
-      "2026-09-24"
+      "2026-09-24",
+      "2026-10-14"
     ],
     "username_history": [
       "comboseoa"
@@ -1651,7 +1611,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-13",
+    "last_seen": "2026-10-14",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1674,7 +1634,8 @@
       "2026-10-10",
       "2026-10-11",
       "2026-10-12",
-      "2026-10-13"
+      "2026-10-13",
+      "2026-10-14"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1682,10 +1643,11 @@
   },
   "0x52a3d09dfc47bacc18634dda9d962be530c0ebae": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-05",
+    "last_seen": "2026-10-14",
     "appearance_dates": [
       "2026-09-22",
-      "2026-10-05"
+      "2026-10-05",
+      "2026-10-14"
     ],
     "username_history": [
       "lebronstinks"
@@ -1821,11 +1783,12 @@
   },
   "0x120640a1deffe6b53e291eba74acf1dbe8274528": {
     "first_seen": "2026-10-09",
-    "last_seen": "2026-10-13",
+    "last_seen": "2026-10-14",
     "appearance_dates": [
       "2026-10-09",
       "2026-10-12",
-      "2026-10-13"
+      "2026-10-13",
+      "2026-10-14"
     ],
     "username_history": [
       "trinity1248"
@@ -1850,6 +1813,26 @@
     ],
     "username_history": [
       "0x167D74FC517d5F7CE4c594E77c6117bBc588E531-1791765134911"
+    ]
+  },
+  "0xfb3fc3fcb11e7ca071650b2bc7e04317102f5447": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "appearance_dates": [
+      "2026-10-14"
+    ],
+    "username_history": [
+      "minmaricinminnar"
+    ]
+  },
+  "0xc80709d3b3d30b9a403c94c56925705c0e3d8038": {
+    "first_seen": "2026-10-14",
+    "last_seen": "2026-10-14",
+    "appearance_dates": [
+      "2026-10-14"
+    ],
+    "username_history": [
+      "Irfanyousuf"
     ]
   }
 }
