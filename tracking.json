@@ -1781,9 +1781,10 @@
   },
   "0x167d74fc517d5f7ce4c594e77c6117bbc588e531": {
     "first_seen": "2026-10-13",
-    "last_seen": "2026-10-13",
+    "last_seen": "2026-10-18",
     "appearance_dates": [
-      "2026-10-13"
+      "2026-10-13",
+      "2026-10-18"
     ],
     "username_history": [
       "0x167D74FC517d5F7CE4c594E77c6117bBc588E531-1791765134911"
@@ -1820,6 +1821,16 @@
     ],
     "username_history": [
       "csgostar"
+    ]
+  },
+  "0xc4a68d127318fd917a188c35e839a0707e374e4e": {
+    "first_seen": "2026-10-18",
+    "last_seen": "2026-10-18",
+    "appearance_dates": [
+      "2026-10-18"
+    ],
+    "username_history": [
+      "Raisuu"
     ]
   }
 }
