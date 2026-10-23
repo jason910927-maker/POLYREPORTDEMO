@@ -24,31 +24,10 @@
       "RonaldoCry"
     ]
   },
-  "0x7542fa229f63a7bd8a9ca4584638004a39317a20": {
-    "first_seen": "2026-07-23",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "highpal"
-    ]
-  },
-  "0x4d5c0683dd4e6a41e0bb3a54e5283462b36ed8f2": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "baileysclub"
-    ]
-  },
   "0xec981ed70ae69c5cbcac08c1ba063e734f6bafcd": {
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-24",
       "2026-07-25",
       "2026-07-26"
     ],
@@ -56,41 +35,10 @@
       "0xheavy888"
     ]
   },
-  "0xf418d3a1a941292f9c8707d62a14980c5beb95a3": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "TAKERNER"
-    ]
-  },
-  "0x4bbe10ba5b7f6df147c0dae17b46c44a6e562cf3": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "How.Dare.You"
-    ]
-  },
-  "0xc34b4901be324718c176100e350211d97b199296": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "ForAndWithYou"
-    ]
-  },
   "0x1f9e15f39bbd5d163b0eacf0fbef647ced9e4f1a": {
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-24",
       "2026-07-25",
       "2026-07-26"
     ],
@@ -103,7 +51,6 @@
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-24",
       "2026-07-25",
       "2026-07-27"
     ],
@@ -111,21 +58,10 @@
       "sir-upalot"
     ]
   },
-  "0xb2e42d29690b7b63335a03c0fd5e64df0681b7f1": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-24",
-    "appearance_dates": [
-      "2026-07-24"
-    ],
-    "username_history": [
-      "0xb2e42D29690B7B63335a03C0Fd5E64Df0681B7f1-1778811987251"
-    ]
-  },
   "0x161a7f666ca49d592848cf415b42f49a84714103": {
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-25",
     "appearance_dates": [
-      "2026-07-24",
       "2026-07-25"
     ],
     "username_history": [
@@ -136,7 +72,6 @@
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-24",
       "2026-07-25",
       "2026-07-26",
       "2026-07-27"
@@ -1542,7 +1477,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-22",
+    "last_seen": "2026-10-23",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1574,7 +1509,8 @@
       "2026-10-19",
       "2026-10-20",
       "2026-10-21",
-      "2026-10-22"
+      "2026-10-22",
+      "2026-10-23"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1582,7 +1518,7 @@
   },
   "0x52a3d09dfc47bacc18634dda9d962be530c0ebae": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-20",
+    "last_seen": "2026-10-23",
     "appearance_dates": [
       "2026-09-22",
       "2026-10-05",
@@ -1592,7 +1528,8 @@
       "2026-10-17",
       "2026-10-18",
       "2026-10-19",
-      "2026-10-20"
+      "2026-10-20",
+      "2026-10-23"
     ],
     "username_history": [
       "lebronstinks"
@@ -1803,13 +1740,14 @@
   },
   "0xc4a68d127318fd917a188c35e839a0707e374e4e": {
     "first_seen": "2026-10-18",
-    "last_seen": "2026-10-22",
+    "last_seen": "2026-10-23",
     "appearance_dates": [
       "2026-10-18",
       "2026-10-19",
       "2026-10-20",
       "2026-10-21",
-      "2026-10-22"
+      "2026-10-22",
+      "2026-10-23"
     ],
     "username_history": [
       "Raisuu"
@@ -1837,10 +1775,11 @@
   },
   "0xf72f81c7449f1c87f7131aaebeed13bcaf75a115": {
     "first_seen": "2026-10-21",
-    "last_seen": "2026-10-22",
+    "last_seen": "2026-10-23",
     "appearance_dates": [
       "2026-10-21",
-      "2026-10-22"
+      "2026-10-22",
+      "2026-10-23"
     ],
     "username_history": [
       "dhgreg"
@@ -1848,12 +1787,23 @@
   },
   "0x7eb0803aae3d8b3e2e7f186a0fbcdfedded73282": {
     "first_seen": "2026-10-22",
-    "last_seen": "2026-10-22",
+    "last_seen": "2026-10-23",
     "appearance_dates": [
-      "2026-10-22"
+      "2026-10-22",
+      "2026-10-23"
     ],
     "username_history": [
       "frede13337"
+    ]
+  },
+  "0xb1d30490fa2ec8dc55591e8c71d3d64b6e0fc279": {
+    "first_seen": "2026-10-23",
+    "last_seen": "2026-10-23",
+    "appearance_dates": [
+      "2026-10-23"
+    ],
+    "username_history": [
+      "hoodquant"
     ]
   }
 }
