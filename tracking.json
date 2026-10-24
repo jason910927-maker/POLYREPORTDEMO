@@ -28,7 +28,6 @@
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-26"
     ],
     "username_history": [
@@ -39,7 +38,6 @@
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-26"
     ],
     "username_history": [
@@ -51,28 +49,16 @@
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-27"
     ],
     "username_history": [
       "sir-upalot"
     ]
   },
-  "0x161a7f666ca49d592848cf415b42f49a84714103": {
-    "first_seen": "2026-07-24",
-    "last_seen": "2026-07-25",
-    "appearance_dates": [
-      "2026-07-25"
-    ],
-    "username_history": [
-      "torta.tech"
-    ]
-  },
   "0xa2a020a382c90b292331ef36e62a2680e3df7e90": {
     "first_seen": "2026-07-24",
     "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-26",
       "2026-07-27"
     ],
@@ -80,62 +66,20 @@
       "Ermelo"
     ]
   },
-  "0xa05ec37f1039fab381d8f353354d00cd8c594394": {
-    "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
-    "appearance_dates": [
-      "2026-07-25"
-    ],
-    "username_history": [
-      "Xhhh-060"
-    ]
-  },
-  "0xf00698742d193fa8e88c86de98c15973c2a1bb6c": {
-    "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
-    "appearance_dates": [
-      "2026-07-25"
-    ],
-    "username_history": [
-      "TimSheHe"
-    ]
-  },
   "0xba8c5fbcc5f58b0e4ae0c1413e0413f8c803e77d": {
     "first_seen": "2026-07-25",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-26"
     ],
     "username_history": [
       "Rock.San"
     ]
   },
-  "0x3da89a55cdd4b5c69f80e5cd3ef1782a3e0480c3": {
-    "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
-    "appearance_dates": [
-      "2026-07-25"
-    ],
-    "username_history": [
-      "0x3DA89a55CdD4b5c69F80E5Cd3ef1782a3E0480c3-1777119032461"
-    ]
-  },
-  "0x2d6ac4f70307102ac46e9e6ded67f3838ddf8add": {
-    "first_seen": "2026-07-25",
-    "last_seen": "2026-07-25",
-    "appearance_dates": [
-      "2026-07-25"
-    ],
-    "username_history": [
-      "GC-P"
-    ]
-  },
   "0xfcdc071df7080c214196bb0b3b751e5417f9d8e3": {
     "first_seen": "2026-07-25",
     "last_seen": "2026-07-26",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-26"
     ],
     "username_history": [
@@ -146,7 +90,6 @@
     "first_seen": "2026-07-25",
     "last_seen": "2026-07-27",
     "appearance_dates": [
-      "2026-07-25",
       "2026-07-27"
     ],
     "username_history": [
@@ -1477,7 +1420,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-23",
+    "last_seen": "2026-10-24",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1510,7 +1453,8 @@
       "2026-10-20",
       "2026-10-21",
       "2026-10-22",
-      "2026-10-23"
+      "2026-10-23",
+      "2026-10-24"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1740,14 +1684,15 @@
   },
   "0xc4a68d127318fd917a188c35e839a0707e374e4e": {
     "first_seen": "2026-10-18",
-    "last_seen": "2026-10-23",
+    "last_seen": "2026-10-24",
     "appearance_dates": [
       "2026-10-18",
       "2026-10-19",
       "2026-10-20",
       "2026-10-21",
       "2026-10-22",
-      "2026-10-23"
+      "2026-10-23",
+      "2026-10-24"
     ],
     "username_history": [
       "Raisuu"
@@ -1787,10 +1732,11 @@
   },
   "0x7eb0803aae3d8b3e2e7f186a0fbcdfedded73282": {
     "first_seen": "2026-10-22",
-    "last_seen": "2026-10-23",
+    "last_seen": "2026-10-24",
     "appearance_dates": [
       "2026-10-22",
-      "2026-10-23"
+      "2026-10-23",
+      "2026-10-24"
     ],
     "username_history": [
       "frede13337"
