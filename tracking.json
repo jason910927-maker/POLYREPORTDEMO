@@ -1127,7 +1127,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-26",
+    "last_seen": "2026-10-27",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1163,7 +1163,8 @@
       "2026-10-23",
       "2026-10-24",
       "2026-10-25",
-      "2026-10-26"
+      "2026-10-26",
+      "2026-10-27"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1484,9 +1485,10 @@
   },
   "0xdc8230705cdaad7de0a0b87be1d435ef91bdf956": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-26",
+    "last_seen": "2026-10-27",
     "appearance_dates": [
-      "2026-10-26"
+      "2026-10-26",
+      "2026-10-27"
     ],
     "username_history": [
       "sneakysnake"
@@ -1494,9 +1496,10 @@
   },
   "0x8f94386fbb81185463ce5d381492aa27bab49a1e": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-26",
+    "last_seen": "2026-10-27",
     "appearance_dates": [
-      "2026-10-26"
+      "2026-10-26",
+      "2026-10-27"
     ],
     "username_history": [
       "0x8f94386fbb81185463ce5d381492aa27bab49a1e-1792696592847"
@@ -1504,12 +1507,43 @@
   },
   "0x13d23e733fbf1d7a5bda12d51116b748cbc71344": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-26",
+    "last_seen": "2026-10-27",
     "appearance_dates": [
-      "2026-10-26"
+      "2026-10-26",
+      "2026-10-27"
     ],
     "username_history": [
       "tiagsluiz1"
+    ]
+  },
+  "0x2b8a8ea88c38838a5e691f610e1d02af79e49fae": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "appearance_dates": [
+      "2026-10-27"
+    ],
+    "username_history": [
+      "prosperity8"
+    ]
+  },
+  "0xe966177219a0655b7aec3140a52b5e883007fa3e": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "appearance_dates": [
+      "2026-10-27"
+    ],
+    "username_history": [
+      "denver28"
+    ]
+  },
+  "0xd06c49e1c86f970bc5c48f91169a607e9b03cdaf": {
+    "first_seen": "2026-10-27",
+    "last_seen": "2026-10-27",
+    "appearance_dates": [
+      "2026-10-27"
+    ],
+    "username_history": [
+      "Skritopoolniy"
     ]
   }
 }
