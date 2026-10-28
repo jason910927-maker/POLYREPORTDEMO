@@ -1552,9 +1552,10 @@
   },
   "0xcfaf1bc91dc630ffb40fedb8d043a5863d769144": {
     "first_seen": "2026-10-27",
-    "last_seen": "2026-10-27",
+    "last_seen": "2026-10-28",
     "appearance_dates": [
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-28"
     ],
     "username_history": [
       "huhikjhk"
@@ -1578,6 +1579,16 @@
     ],
     "username_history": [
       "OldZz"
+    ]
+  },
+  "0x8314fd1f002a4e9bbf4b5abb939e24949a4e0f1e": {
+    "first_seen": "2026-10-28",
+    "last_seen": "2026-10-28",
+    "appearance_dates": [
+      "2026-10-28"
+    ],
+    "username_history": [
+      "TheComboConnoisseur"
     ]
   }
 }
