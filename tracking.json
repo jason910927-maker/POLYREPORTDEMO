@@ -1127,7 +1127,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-27",
+    "last_seen": "2026-10-28",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1164,7 +1164,8 @@
       "2026-10-24",
       "2026-10-25",
       "2026-10-26",
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-28"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1486,10 +1487,11 @@
   },
   "0xdc8230705cdaad7de0a0b87be1d435ef91bdf956": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-27",
+    "last_seen": "2026-10-28",
     "appearance_dates": [
       "2026-10-26",
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-28"
     ],
     "username_history": [
       "sneakysnake"
@@ -1508,10 +1510,11 @@
   },
   "0x13d23e733fbf1d7a5bda12d51116b748cbc71344": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-27",
+    "last_seen": "2026-10-28",
     "appearance_dates": [
       "2026-10-26",
-      "2026-10-27"
+      "2026-10-27",
+      "2026-10-28"
     ],
     "username_history": [
       "tiagsluiz1"
@@ -1555,6 +1558,26 @@
     ],
     "username_history": [
       "huhikjhk"
+    ]
+  },
+  "0xf8164a94e27cdced0cc975e21308fb099b2d0433": {
+    "first_seen": "2026-10-28",
+    "last_seen": "2026-10-28",
+    "appearance_dates": [
+      "2026-10-28"
+    ],
+    "username_history": [
+      "0xF8164A94e27CdCeD0cC975e21308fB099B2D0433-1772692168144"
+    ]
+  },
+  "0x298b2f52482ddd9fb6f4002bd96ba94e5511f406": {
+    "first_seen": "2026-10-28",
+    "last_seen": "2026-10-28",
+    "appearance_dates": [
+      "2026-10-28"
+    ],
+    "username_history": [
+      "OldZz"
     ]
   }
 }
