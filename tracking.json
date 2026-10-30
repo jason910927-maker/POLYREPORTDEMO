@@ -14,16 +14,6 @@
       "trueblueaussie"
     ]
   },
-  "0xad6524acf884fb3c8f76d6c9908a75d7c09d970b": {
-    "first_seen": "2026-07-30",
-    "last_seen": "2026-07-31",
-    "appearance_dates": [
-      "2026-07-31"
-    ],
-    "username_history": [
-      "Worlf"
-    ]
-  },
   "0xdc788e5724ef1fa66d025e63b2c8fc34fe5ced32": {
     "first_seen": "2026-08-01",
     "last_seen": "2026-08-02",
@@ -1116,7 +1106,7 @@
   },
   "0x3e9ff2dbf2a6356ee47049e9f3c43a70cb55d57f": {
     "first_seen": "2026-09-22",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "appearance_dates": [
       "2026-09-22",
       "2026-09-23",
@@ -1155,7 +1145,8 @@
       "2026-10-26",
       "2026-10-27",
       "2026-10-28",
-      "2026-10-29"
+      "2026-10-29",
+      "2026-10-30"
     ],
     "username_history": [
       "vtcchampion53"
@@ -1477,12 +1468,13 @@
   },
   "0xdc8230705cdaad7de0a0b87be1d435ef91bdf956": {
     "first_seen": "2026-10-26",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "appearance_dates": [
       "2026-10-26",
       "2026-10-27",
       "2026-10-28",
-      "2026-10-29"
+      "2026-10-29",
+      "2026-10-30"
     ],
     "username_history": [
       "sneakysnake"
@@ -1584,12 +1576,33 @@
   },
   "0xd8a30c07ac91942cc386e65c3d475a732ab387c2": {
     "first_seen": "2026-10-29",
-    "last_seen": "2026-10-29",
+    "last_seen": "2026-10-30",
     "appearance_dates": [
-      "2026-10-29"
+      "2026-10-29",
+      "2026-10-30"
     ],
     "username_history": [
       "Tayeb26"
+    ]
+  },
+  "0x69b64063cab9f3c64cab663f2904ce82c6337eaf": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "appearance_dates": [
+      "2026-10-30"
+    ],
+    "username_history": [
+      "akooll"
+    ]
+  },
+  "0xf58461c50899fdc80c61f72c5cd4b11e1bfde875": {
+    "first_seen": "2026-10-30",
+    "last_seen": "2026-10-30",
+    "appearance_dates": [
+      "2026-10-30"
+    ],
+    "username_history": [
+      "Luigi3333"
     ]
   }
 }
